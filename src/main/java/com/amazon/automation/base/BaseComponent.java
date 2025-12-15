@@ -7,8 +7,9 @@ import com.amazon.automation.utils.WaitUtils;
 public abstract class BaseComponent {
 	protected final WebDriver driver;
 	protected final WaitUtils wait;
+
 	protected BaseComponent(WebDriver driver) {
-		this.driver=driver;
-		this.wait = new WaitUtils(driver,15);
+		this.driver = driver;
+		this.wait = new WaitUtils(driver, 15);
 	}
 }
