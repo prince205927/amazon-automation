@@ -3,7 +3,7 @@
 <suite name="Amazon Test Suite" parallel="false">
     <test name="Simple Tests">
         <classes>
-            <class name="com.amazon.automation.AmazonHomePageTest"/>
+            <class name="com.amazon.automation.tests.search.SearchKeywordTests"/>
         </classes>
     </test>
 </suite>
