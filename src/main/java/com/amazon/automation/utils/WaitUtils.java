@@ -1,6 +1,7 @@
 package com.amazon.automation.utils;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,4 +23,10 @@ public class WaitUtils {
 	public WebElement clickable(WebElement element) {
 		return wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
+	
+	public List<WebElement> visibleAll(List<WebElement> elements){
+		wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+		return elements;
+	}
+
 }

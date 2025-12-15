@@ -16,6 +16,6 @@ public class SearchNoResultsTests extends BaseTest {
 		home.searchBar().type(invalidKeyword);
 		home.searchBar().submitSearch();
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-		Assert.assertFalse(results.hasResults(), "No result tiles should be there for invalid keyword" );
+		Assert.assertFalse(results.hasResults(), "No result tiles should be there for invalid keyword");
 	}
 }

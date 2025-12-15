@@ -10,34 +10,35 @@ import com.amazon.automation.base.BasePage;
 import com.amazon.automation.utils.WaitUtils;
 
 public class SearchResultsPage extends BasePage {
-	
+
 	private final WaitUtils wait;
-	
-	//search term heading 
+
+	// search term heading
 	@FindBy(css = "span.a-color-state")
 	private WebElement searchTermHeader;
-	
-	//product title links
-	@FindBy(css="div[data-component-type='s-search-result']")
+
+	// product title links
+	@FindBy(css = "div[data-component-type='s-search-result']")
 	private List<WebElement> titleLinks;
-	
-	//main container
-	@FindBy(css="div.s-main-slot")
+
+	// main container
+	@FindBy(css = "div.s-main-slot")
 	private WebElement mainSlot;
+
 	public SearchResultsPage(WebDriver driver) {
 		super(driver);
 		this.wait = new WaitUtils(driver, 15);
 	}
-	
+
 	public SearchResultsPage waitForResults() {
-			wait.visible(mainSlot);
-			return this;
+		wait.visible(mainSlot);
+		return this;
 	}
-	
+
 	public boolean hasResults() {
-		return titleLinks!=null && !titleLinks.isEmpty();
+		return titleLinks != null && !titleLinks.isEmpty();
 	}
-	
+
 	public String currentSearchTerm() {
 		return searchTermHeader.getText();
 	}
