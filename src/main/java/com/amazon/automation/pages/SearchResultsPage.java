@@ -37,4 +37,8 @@ public class SearchResultsPage extends BasePage {
 	public boolean hasResults() {
 		return titleLinks!=null && !titleLinks.isEmpty();
 	}
+	
+	public String currentSearchTerm() {
+		return searchTermHeader.getText();
+	}
 }

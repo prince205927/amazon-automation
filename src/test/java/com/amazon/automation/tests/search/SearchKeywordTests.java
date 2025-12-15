@@ -21,5 +21,10 @@ public class SearchKeywordTests extends BaseTest {
 		
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
 		Assert.assertTrue(results.hasResults(), "At least one searh result is needed");
+		
+		String term = results.currentSearchTerm();
+		Assert.assertTrue(term.toLowerCase().contains(keyword.toLowerCase()), "Search heading must reflect the searched keyword");
+		
+		
 	}
 }
