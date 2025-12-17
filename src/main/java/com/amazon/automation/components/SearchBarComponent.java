@@ -39,36 +39,28 @@ public class SearchBarComponent {
 		wait.visible(submitButton).click();
 	}
 
-//	public boolean suggestionsVisible() {
-//		try {
-//			for(int i = 0 ; i<10 ; i++) {
-//				if(suggestions!=null) return true;
-//			}
-//		}
-//	}
-	
 	public int getSuggestionsSize() {
 		try {
 			wait.visibleAll(suggestions);
 			return suggestions.size();
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			return 0;
 		}
 	}
-	
+
 	public String getSuggestionText(int index) {
-		if(suggestions==null) return "";
+		if (suggestions == null)
+			return "";
 		return suggestions.get(index).getText();
 	}
-	
+
 	public boolean clickSuggestionByIndex(int index) {
-		if(suggestions==null) return false;
+		if (suggestions == null)
+			return false;
 		try {
 			wait.clickable(suggestions.get(index)).click();
 			return true;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
 	}

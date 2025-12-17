@@ -3,6 +3,7 @@ package com.amazon.automation.utils;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -28,5 +29,27 @@ public class WaitUtils {
 		wait.until(ExpectedConditions.visibilityOfAllElements(elements));
 		return elements;
 	}
+	
+	public WebElement untilVisible(By locator) {
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	
+	public WebElement presenceOfElement(By locator) {
+	    return presenceOfElement(locator, 15);
+	}
+	
+	public WebElement presenceOfElement(By locator, int timeoutSeconds) {
+	    return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	}
+	
+	public WebElement clickable(By locator) {
+	    return wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
 
+	public WebElement visible(By locator) {
+	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+
+	
 }

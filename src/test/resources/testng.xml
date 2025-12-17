@@ -6,6 +6,8 @@
             <class name="com.amazon.automation.tests.search.SearchKeywordTests"/>
              <class name="com.amazon.automation.tests.search.SearchNoResultsTests"/>
               <class name="com.amazon.automation.tests.search.SearchAutosuggestTests"/>
+			<class name="com.amazon.automation.tests.navigation.CategoryNavigationTests"/>
+				
         </classes>
     </test>
 </suite>
