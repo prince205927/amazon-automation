@@ -18,12 +18,13 @@ public class SearchKeywordTests extends BaseTest {
 		final String keyword = "laptop";
 		home.searchBar().type(keyword);
 		home.searchBar().submitSearch();
-		
+
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
 		Assert.assertTrue(results.hasResults(), "At least one search result is needed");
-		
+
 		String term = results.currentSearchTerm();
-		Assert.assertTrue(term.toLowerCase().contains(keyword.toLowerCase()), "Search heading must reflect the searched keyword");
-		
+		Assert.assertTrue(term.toLowerCase().contains(keyword.toLowerCase()),
+				"Search heading must reflect the searched keyword");
+
 	}
 }

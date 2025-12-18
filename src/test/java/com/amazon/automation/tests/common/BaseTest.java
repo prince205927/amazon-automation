@@ -8,16 +8,16 @@ import com.amazon.automation.pages.ContinuePage;
 import com.amazon.automation.pages.HomePage;
 
 public class BaseTest {
-	@BeforeMethod(alwaysRun=true)
+	@BeforeMethod(alwaysRun = true)
 	public void setUp() {
 		DriverFactory.initDriver();
 	}
-	
-	@AfterMethod(alwaysRun=true)
+
+	@AfterMethod(alwaysRun = true)
 	public void tearDown() {
 		DriverFactory.quitDriver();
 	}
-	
+
 	protected HomePage openHomeReady() {
 		DriverFactory.getDriver().get("https://www.amazon.com/");
 		ContinuePage continued = new ContinuePage(DriverFactory.getDriver());

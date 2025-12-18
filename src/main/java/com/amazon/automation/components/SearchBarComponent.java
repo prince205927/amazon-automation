@@ -7,11 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.amazon.automation.base.BaseComponent;
 import com.amazon.automation.utils.WaitUtils;
 
-public class SearchBarComponent {
-	private final WebDriver driver;
-	private final WaitUtils wait;
+public class SearchBarComponent extends BaseComponent {
 
 	@FindBy(id = "twotabsearchtextbox")
 	private WebElement searchBox;
@@ -23,9 +22,7 @@ public class SearchBarComponent {
 	private List<WebElement> suggestions;
 
 	public SearchBarComponent(WebDriver driver) {
-		this.driver = driver;
-		this.wait = new WaitUtils(driver, 15);
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	public SearchBarComponent type(String text) {

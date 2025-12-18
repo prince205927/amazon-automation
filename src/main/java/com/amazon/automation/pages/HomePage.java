@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.amazon.automation.base.BasePage;
 import com.amazon.automation.components.CategoryMenuComponent;
+import com.amazon.automation.components.FilterPanelComponent;
 //import com.amazon.automation.components.FilterPanelComponent;
 import com.amazon.automation.components.SearchBarComponent;
 
@@ -24,7 +25,7 @@ public class HomePage extends BasePage {
 		return new CategoryMenuComponent(driver);
 	}
 	
-//	public FilterPanelComponent filters() {
-//		return new FilterPanelComponent(driver);
-//	}
+	public FilterPanelComponent filters() {
+		return new FilterPanelComponent(driver);
+	}
 }

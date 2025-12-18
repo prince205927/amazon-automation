@@ -7,12 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.amazon.automation.base.BaseComponent;
 import com.amazon.automation.utils.WaitUtils;
 
-public class CategoryMenuComponent {
-	private final WebDriver driver;
-	private final WaitUtils wait;
-
+public class CategoryMenuComponent extends BaseComponent {
 	@FindBy(id = "nav-hamburger-menu")
 	private WebElement allMenuButton;
 
@@ -20,9 +18,7 @@ public class CategoryMenuComponent {
 	private WebElement menuContent;
 
 	public CategoryMenuComponent(WebDriver driver) {
-		this.driver = driver;
-		this.wait = new WaitUtils(driver, 15);
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 
 	public CategoryMenuComponent openMenu() {
