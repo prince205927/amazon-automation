@@ -27,9 +27,12 @@ public class SearchResultsPage extends BasePage {
 	// main container
 	@FindBy(css = "div.s-main-slot")
 	private WebElement mainSlot;
-
+	
+	//product titles
 	@FindBy(css = "h2.a-size-medium")
 	private List<WebElement> productTitles;
+	
+	
 	public SearchResultsPage(WebDriver driver) {
 		super(driver);
 		this.wait = new WaitUtils(driver, 15);
@@ -61,4 +64,23 @@ public class SearchResultsPage extends BasePage {
 		}
 		return true;
 	}
+	
+	public boolean checkRatings() {
+    List<WebElement> ratings =
+            driver.findElements(By.cssSelector("div.s-main-slot div[data-asin] a.a-popover-trigger"));
+
+    for (WebElement rating : ratings) {
+        String ratingText = rating.getAttribute("aria-label");
+        double ratingValue = Double.parseDouble(
+                ratingText.split(" ")[0].replace(",", ".")
+        );
+
+        if (ratingValue < 4.0) {
+            System.out.println("Product with rating " + ratingValue + " failed the check.");
+            return false;
+        }
+    }
+    return true;
+}
+
 }

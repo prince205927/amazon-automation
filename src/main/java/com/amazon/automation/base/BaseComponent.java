@@ -1,6 +1,7 @@
 package com.amazon.automation.base;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import com.amazon.automation.utils.WaitUtils;
 
@@ -11,5 +12,6 @@ public abstract class BaseComponent {
 	protected BaseComponent(WebDriver driver) {
 		this.driver = driver;
 		this.wait = new WaitUtils(driver, 15);
+		PageFactory.initElements(driver, this);
 	}
 }

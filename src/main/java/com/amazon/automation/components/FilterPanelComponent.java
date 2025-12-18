@@ -21,6 +21,17 @@ public class FilterPanelComponent extends BaseComponent {
 		WebElement foundBrand = wait.clickable(By.xpath(xpath));
 		return foundBrand;
 	}
+	
+	public WebElement findRatings(String state) {
+		if("before".equalsIgnoreCase(state)) {
+		return wait.clickable(By.cssSelector("a[aria-label='Apply 4 Stars & Up filter to narrow results']"));
+		}
+		else
+			return wait.clickable(By.cssSelector("a[aria-label='Remove 4 Stars & Up filter to expand results']"));
+	}
+	public void clickRatings() {
+		findRatings("before").click();
+	}
 
 	public void clickBrand(String brand) {
 		findBrand(brand).click();
@@ -28,6 +39,10 @@ public class FilterPanelComponent extends BaseComponent {
 
 	public boolean selectedStateCheck(String brand) {
 		return Boolean.parseBoolean(findBrand(brand).getAttribute("aria-current"));
+	}
+	
+	public boolean selectedStateCheck() {
+	    return Boolean.parseBoolean(findRatings("after").getAttribute("aria-current"));
 	}
 
 }
