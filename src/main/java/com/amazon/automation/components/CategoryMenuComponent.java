@@ -5,10 +5,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-
 import com.amazon.automation.base.BaseComponent;
-import com.amazon.automation.utils.WaitUtils;
 
 public class CategoryMenuComponent extends BaseComponent {
 	@FindBy(id = "nav-hamburger-menu")
@@ -40,7 +37,6 @@ public class CategoryMenuComponent extends BaseComponent {
 		}
 	}
 
-	// getting category element
 	public WebElement getCategory(String categoryText) {
 		try {
 			return driver.findElement(By
@@ -51,36 +47,69 @@ public class CategoryMenuComponent extends BaseComponent {
 		}
 	}
 
-	// getting subcategory element
 	private WebElement getSubCategory(String subCategoryText) {
-
 		WebElement subCategory = driver.findElement(By.xpath(
 				"//a[contains(@class,'hmenu-item') and contains(normalize-space(), '" + subCategoryText + "')]"));
-
-		// Scroll into view if needed
 		scrollIntoViewWithinMenu(subCategory);
-
 		return subCategory;
 	}
 
 	public CategoryMenuComponent clickCategory(String categoryText) {
-		WebElement category = getCategory(categoryText);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		wait.clickable(category).click();
+		WebElement category = wait.clickable(getCategory(categoryText));
+		category.click();
+		waitForCategoryTransition();
 		return this;
 	}
 
+	private void waitForCategoryTransition() {
+		By visibleMenu = By.cssSelector("div.hmenu.hmenu-visible.hmenu-translateX");
+		By leftMenu = By.cssSelector("div.hmenu.hmenu-translateX-left");
+
+		// waiting for visible menu
+		wait.visible(visibleMenu);
+
+		// waiting for transitions to complete
+		wait.waitForCSSTransitionToComplete(visibleMenu);
+		wait.waitForCSSTransitionToComplete(leftMenu);
+	}
+
+	public CategoryMenuComponent waitForMenuToOpen() {
+		// waiting for menu canvas to be visible
+		wait.visible(By.cssSelector("div#hmenu-canvas.hmenu-translateX"));
+
+		// waiting for opening animation to complete
+		wait.waitForCSSTransitionToComplete(By.cssSelector("div#hmenu-canvas.hmenu-translateX"));
+
+		return this;
+	}
+
+	private void waitForTransformAnimationsToComplete() {
+		// waiting for visible animation to complete
+		wait.waitUntil(driver -> {
+			try {
+				WebElement visibleMenu = driver.findElement(By.cssSelector("div.hmenu.hmenu-visible.hmenu-translateX"));
+				String transform = visibleMenu.getCssValue("transform");
+				return transform != null && !transform.equals("none");
+			} catch (Exception e) {
+				return false;
+			}
+		});
+
+		// waiting for left menu animation to complete
+		wait.waitUntil(driver -> {
+			try {
+				WebElement leftMenu = driver.findElement(By.cssSelector("div.hmenu.hmenu-translateX-left"));
+				String transform = leftMenu.getCssValue("transform");
+				return transform != null && !transform.equals("none");
+			} catch (Exception e) {
+				return false;
+			}
+		});
+	}
+
 	public void clickSubCategory(String subCategoryText) {
-		WebElement subCategory = getSubCategory(subCategoryText);
-		wait.clickable(subCategory);
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", subCategory); // here using .click will
-																							// result to
-																							// ElementIntercepted
-																							// problem
+		WebElement subCategory = wait.clickable(getSubCategory(subCategoryText));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", subCategory);
 	}
 
 	public void navigateTo(String categoryText, String subCategoryText) {
@@ -90,7 +119,6 @@ public class CategoryMenuComponent extends BaseComponent {
 		}
 	}
 
-	// scrolls into view within the hamburger container
 	private void scrollIntoViewWithinMenu(WebElement element) {
 		try {
 			((JavascriptExecutor) driver)
@@ -98,5 +126,4 @@ public class CategoryMenuComponent extends BaseComponent {
 		} catch (Exception e) {
 		}
 	}
-
 }

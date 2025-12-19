@@ -29,6 +29,17 @@ public class FilterPanelComponent extends BaseComponent {
 		else
 			return wait.clickable(By.cssSelector("a[aria-label='Remove 4 Stars & Up filter to expand results']"));
 	}
+	
+	public WebElement findPriceRange(String range) {
+		String xpath = "//span[@data-action='sf-select-dynamic-filter']"+ "//a[normalize-space()='" + range + "']";
+		WebElement foundPriceRange = wait.clickable(By.xpath(xpath));
+		return foundPriceRange;
+	}
+	
+	public void clickPriceRange(String range) {
+		findPriceRange(range);
+	}
+	
 	public void clickRatings() {
 		findRatings("before").click();
 	}
@@ -44,5 +55,7 @@ public class FilterPanelComponent extends BaseComponent {
 	public boolean selectedStateCheck() {
 	    return Boolean.parseBoolean(findRatings("after").getAttribute("aria-current"));
 	}
-
+	
+	
+	
 }

@@ -15,12 +15,9 @@ public class CategoryNavigationTests extends BaseTest {
 		String categoryText = "Arts & Crafts";
 		String subCategoryText = "Crafting";
 		HomePage home = openHomeReady();
-		// Opening menu
-		home.categoryMenu().openMenu();
-		// Clicking category using the component method
-		home.categoryMenu().clickCategory(categoryText);
-		// Clicking subcategory
-		home.categoryMenu().clickSubCategory(subCategoryText);
+		// opening menu and clicking categories and subcategories
+		home.categoryMenu().openMenu().waitForMenuToOpen().clickCategory(categoryText).clickSubCategory(subCategoryText);;
+
 		// Assertions
 		String currentUrl = DriverFactory.getDriver().getCurrentUrl();
 		Assert.assertFalse(currentUrl.contains("ref=nav_em_linktree_fail"),

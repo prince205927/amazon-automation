@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -50,6 +52,43 @@ public class WaitUtils {
 	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
-
-	
+	public boolean waitUntil(ExpectedCondition<?> condition) {
+        try {
+            wait.until(condition);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+    
+    public <T> T waitUntilWithReturn(ExpectedCondition<T> condition) {
+        return wait.until(condition);
+    }
+    
+    public void waitForCSSTransitionToComplete(By locator) {
+        try {
+            wait.until(driver -> {
+                try {
+                    WebElement element = driver.findElement(locator);
+                    Boolean transitionComplete = (Boolean) ((JavascriptExecutor) driver)
+                        .executeScript(
+                            "var elem = arguments[0];" +
+                            "var cs = window.getComputedStyle(elem);" +
+                            "var transitionDuration = cs.getPropertyValue('transition-duration');" +
+                            "return transitionDuration === '0s' || transitionDuration === '';",
+                            element
+                        );
+                    return transitionComplete;
+                } catch (Exception e) {
+                    return false;
+                }
+            });
+        } catch (Exception e) {
+        }
+    }
+    
+    public boolean invisible(By locator) {
+    	return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
 }
+	

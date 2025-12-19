@@ -21,6 +21,7 @@ public class BaseTest {
 	protected HomePage openHomeReady() {
 		DriverFactory.getDriver().get("https://www.amazon.com/");
 		ContinuePage continued = new ContinuePage(DriverFactory.getDriver());
+		DriverFactory.getDriver().manage().deleteAllCookies();
 		return continued.isDisplayed() ? continued.continueShopping() : new HomePage(DriverFactory.getDriver());
 	}
 }
