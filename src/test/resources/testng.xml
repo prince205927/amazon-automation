@@ -8,8 +8,10 @@
 <!--              <class name="com.amazon.automation.tests.search.SearchAutosuggestTests"/>-->
 <!--			<class name="com.amazon.automation.tests.navigation.CategoryNavigationTests"/>-->
 <!--			<class name="com.amazon.automation.tests.filters.BrandTests"/>-->
-				<class name="com.amazon.automation.tests.filters.RatingsTest"/>
-				
+<!--				<class name="com.amazon.automation.tests.filters.RatingsTest"/>-->
+<!--					<class name="com.amazon.automation.tests.filters.PriceTests"/>-->
+					<class name="com.amazon.automation.tests.sorts.SortTests"/>
+					
         </classes>
     </test>
 </suite>

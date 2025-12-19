@@ -82,5 +82,24 @@ public class SearchResultsPage extends BasePage {
     }
     return true;
 }
+	
+	
+	public List<Integer> getAllPrices(){
+		List<Integer> prices = new ArrayList<>();
+		List<WebElement> priceElements = driver.findElements(By.cssSelector("span.a-price-whole"));
+
+		for (WebElement el : priceElements) {
+		    String text = el.getText().replace(",", "").trim();
+		    if (!text.isEmpty()) prices.add(Integer.parseInt(text));
+		}
+		return prices;
+	}
+	
+	public SearchResultsPage waitForSpinnerToDisappear() {
+		By loadingSpinner = By.cssSelector("div.s-loading-spinner");
+	    wait.invisible(loadingSpinner);
+	    return this;
+	}
+
 
 }
