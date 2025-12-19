@@ -13,16 +13,35 @@ import com.amazon.automation.pages.SearchResultsPage;
 import com.amazon.automation.tests.common.BaseTest;
 
 public class SortTests extends BaseTest {
+
 	@Test
-	public void verifySorting() {
+	public void verifyPriceLowToHighSorting() {
+		verifySorting("price-asc-rank", true);
+	}
+
+	@Test
+	public void verifyPriceHighToLowSorting() {
+		verifySorting("price-desc-rank", false);
+	}
+
+	private void verifySorting(String sortValue, boolean ascending) {
 		HomePage page = openHomeReady();
 		page.searchBar().type("laptop").submitSearch();
+
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-		page.sorts().selectSort("price-asc-rank");
+
+		page.sorts().selectSort(sortValue);
 		results.waitForSpinnerToDisappear();
-		// Assertion
+
 		List<Integer> actualPrices = results.getAllPrices();
-		List<Integer> sorted = actualPrices.stream().sorted().collect(Collectors.toList());
-		Assert.assertEquals(actualPrices, sorted, "Prices are not sorted correctly");
+		List<Integer> expectedPrices = new ArrayList<>(actualPrices);
+
+		if (ascending) {
+			expectedPrices.sort(Integer::compareTo);
+		} else {
+			expectedPrices.sort((a, b) -> b - a);
+		}
+
+		Assert.assertEquals(actualPrices, expectedPrices, "Prices are not sorted correctly");
 	}
 }
