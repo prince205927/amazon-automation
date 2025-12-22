@@ -53,16 +53,9 @@ public class SearchResultsPage extends BasePage {
 
 	public boolean checkProductTitles(String brand) {
 		String requestedBrand = brand.trim().toLowerCase();
-		List<WebElement> productTitles = driver.findElements(By.cssSelector(
-				"div.s-main-slot div[data-asin][data-component-type='s-search-result'] h2 a span")); /*
-																										 * page factory
-																										 * cannot be
-																										 * used because
-																										 * need to
-																										 * refetch
-																										 * titles after
-																										 * filtering
-																										 */
+		// page factory cannot be used because need to refetch titles after filtering
+		List<WebElement> productTitles = driver.findElements(
+				By.cssSelector("div.s-main-slot div[data-asin][data-component-type='s-search-result'] h2 a span"));
 		for (WebElement title : productTitles) {
 			String obtainedBrand = title.getText().trim().toLowerCase();
 			if (!obtainedBrand.contains(requestedBrand)) {
@@ -111,11 +104,27 @@ public class SearchResultsPage extends BasePage {
 		WebElement paginationElement = driver.findElement(By.cssSelector("div[aria-label='pagination']"));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", paginationElement);
 	}
-	
+
 	public void goToNextPage() {
-		By xpath = By.xpath("//a[contains(@class,'s-pagination-next') and not(contains(@class,'s-pagination-disabled'))]");
+		By xpath = By
+				.xpath("//a[contains(@class,'s-pagination-next') and not(contains(@class,'s-pagination-disabled'))]");
 		WebElement nextButton = driver.findElement(xpath);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", nextButton);
 	}
-	
+
+	public void openProductByIndex(int index) {
+		wait.visible(By.cssSelector("div.s-main-slot"));
+
+		List<WebElement> tiles = driver
+				.findElements(By.xpath("//div[@data-asin and @data-component-type='s-search-result']//h2"));
+
+		if (tiles.size() < index) {
+			throw new IllegalArgumentException("Not enough results");
+		}
+
+		WebElement tile = tiles.get(index - 1);
+		tile.click();
+		wait.visible(By.id("productTitle"));
+	}
+
 }
