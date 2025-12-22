@@ -12,7 +12,8 @@
 <!--					<class name="com.amazon.automation.tests.filters.PriceTests"/>-->
 <!--					<class name="com.amazon.automation.tests.sorts.SortTests"/>-->
 <!--					<class name="com.amazon.automation.tests.pagination.PaginationTests"/>-->
-					<class name="com.amazon.automation.tests.details.ProductDetailTests"/>
+<!--					<class name="com.amazon.automation.tests.details.ProductDetailTests"/>-->
+					<class name="com.amazon.automation.tests.details.ZoomAndSwitchTests"/>
 					
         </classes>
     </test>

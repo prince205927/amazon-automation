@@ -1,12 +1,22 @@
 package com.amazon.automation.pages;
 
+import java.time.Duration;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.amazon.automation.base.BasePage;
+import com.amazon.automation.components.ModalComponent;
 
 public class ProductDetailsPage extends BasePage {
 	public ProductDetailsPage(WebDriver driver) {
@@ -24,7 +34,7 @@ public class ProductDetailsPage extends BasePage {
 
 	public boolean hasImages() {
 		WebElement landingImage = driver.findElement(By.id("landingImage"));
-		List<WebElement> images = driver.findElements(By.cssSelector("span.a-button-thumbnail img"));
+		List<WebElement> images = driver.findElements(By.cssSelector("li.imageThumbnail img"));
 		return landingImage.isDisplayed() && images.get(0).getAttribute("src") != null;
 	}
 
@@ -42,7 +52,32 @@ public class ProductDetailsPage extends BasePage {
 
 	// getText didn't work here because text is hidden via CSS
 	public boolean hasAvailabilityText() {
-		WebElement availabilityText = driver.findElement(By.cssSelector("div#availability span.a-color-success"));
+		WebElement availabilityText = wait.presenceOfElement(By.cssSelector("div#availability span.a-color-success"));
 		return !availabilityText.getAttribute("innerText").trim().isEmpty();
+	}
+
+	public void clickToSeeFullView() {
+		WebElement fullView = wait.presenceOfElement(By.partialLinkText("Click to see full view"));
+		wait.clickable(fullView).click();
+		waitForTransformToComplete();
+	}
+
+	public void waitForTransformToComplete() {
+		wait.visible(By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height"));
+		wait.waitUntil(driver -> {
+			try {
+				WebElement transformingDiv = driver.findElement(
+						By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height"));
+				String transform = transformingDiv.getCssValue("transform");
+				return transform != null && !transform.equals("none");
+			} catch (Exception e) {
+				return false;
+			}
+		});
+		wait.presenceOfElement(By.className("fullscreen"));
+	}
+	
+	public ModalComponent goToModal() {
+		return new ModalComponent(driver);
 	}
 }
