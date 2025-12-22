@@ -11,15 +11,14 @@ public class SortingComponent extends BaseComponent {
 	public SortingComponent(WebDriver driver) {
 		super(driver);
 	}
-	
-	@FindBy(id ="s-result-sort-select")
+
+	@FindBy(id = "s-result-sort-select")
 	private WebElement sortingElement;
-	
+
 	Select dropdown = new Select(sortingElement);
-	
+
 	public void selectSort(String value) {
 		dropdown.selectByValue(value);
 	}
-	
 
 }
