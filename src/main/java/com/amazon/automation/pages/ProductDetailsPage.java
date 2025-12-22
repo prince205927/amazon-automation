@@ -25,8 +25,7 @@ public class ProductDetailsPage extends BasePage {
 	public boolean hasImages() {
 		WebElement landingImage = driver.findElement(By.id("landingImage"));
 		List<WebElement> images = driver.findElements(By.cssSelector("span.a-button-thumbnail img"));
-		return !landingImage.isDisplayed() && !images.isEmpty() && images.get(0).isDisplayed()
-				&& images.get(0).getAttribute("src") != null;
+		return landingImage.isDisplayed() && images.get(0).getAttribute("src") != null;
 	}
 
 	public boolean hasValidRatings() {

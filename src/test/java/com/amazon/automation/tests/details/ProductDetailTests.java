@@ -19,11 +19,14 @@ public class ProductDetailTests extends BaseTest {
 		ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
 		//Assertion 1 (validating title presence)
 		Assert.assertTrue(details.hasTitle(), "Title not present");
-		
+
 		//Assertion 2 (validating ratings)
 		Assert.assertTrue(details.hasValidRatings(), "Ratings not present");
-		
+
 		//Assertion3 (validating availability)
 		Assert.assertTrue(details.hasAvailabilityText(), "Availability text is not present");
+		
+		//Assertion 4 (validating images presence)
+		Assert.assertTrue(details.hasImages(), "Images is not present");
 	}
 }
