@@ -15,7 +15,9 @@
 <!--					<class name="com.amazon.automation.tests.details.ProductDetailTests"/>-->
 <!--					<class name="com.amazon.automation.tests.details.ZoomAndSwitchTests"/>-->
 <!--					<class name="com.amazon.automation.tests.details.VariantTests"/>-->
-					<class name="com.amazon.automation.tests.cart.AddToCartTest"/>
+<!--					<class name="com.amazon.automation.tests.cart.AddToCartTest"/>-->
+					<class name="com.amazon.automation.tests.cart.UpdateQuantityTest"/>
+
 
 
 					

@@ -82,4 +82,8 @@ public class ProductVariationsComponent extends BaseComponent {
 		String availabilityText = availabilityElement.getAttribute("innerText").trim();
 		return availabilityText.isEmpty();
 	}
+	
+
+	
+	
 }

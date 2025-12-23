@@ -98,13 +98,14 @@ public class ProductDetailsPage extends BasePage {
 		Select select = new Select(selectElement);
 		select.selectByValue(quantity);
 	}
-	
+
 	public Integer getQuantity() {
 		WebElement selectElement = driver.findElement(By.cssSelector("select#quantity"));
 		Select select = new Select(selectElement);
 		String selectedText = select.getFirstSelectedOption().getText();
 		return Integer.parseInt(selectedText);
 	}
+
 	public CartPage addToCart() {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();",
 				wait.presenceOfElement(By.cssSelector("input#add-to-cart-button")));

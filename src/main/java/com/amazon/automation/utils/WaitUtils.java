@@ -48,6 +48,10 @@ public class WaitUtils {
 	    return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 	
+	public boolean notPresent(WebElement element, String text)
+	{
+		return wait.until(ExpectedConditions.not(ExpectedConditions.textToBePresentInElement(element, text)));
+	}
 	public boolean urlContains(String url) {
 		return wait.until(ExpectedConditions.urlContains(url));
 	}
