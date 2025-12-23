@@ -24,4 +24,6 @@ public class BaseTest {
 		DriverFactory.getDriver().manage().deleteAllCookies();
 		return continued.isDisplayed() ? continued.continueShopping() : new HomePage(DriverFactory.getDriver());
 	}
+	
+	
 }

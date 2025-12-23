@@ -51,7 +51,14 @@ public class WaitUtils {
 	public WebElement visible(By locator) {
 	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
-
+	
+	public boolean staleness(WebElement element) {
+		return wait.until(ExpectedConditions.stalenessOf(element));
+	}
+	
+	public boolean presenceInElement(WebElement element, String target) {
+		return wait.until(ExpectedConditions.textToBePresentInElement(element, target));
+	}
 	public boolean waitUntil(ExpectedCondition<?> condition) {
         try {
             wait.until(condition);

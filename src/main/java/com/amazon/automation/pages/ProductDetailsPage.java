@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.amazon.automation.base.BasePage;
 import com.amazon.automation.components.ModalComponent;
+import com.amazon.automation.components.ProductVariationsComponent;
 
 public class ProductDetailsPage extends BasePage {
 	public ProductDetailsPage(WebDriver driver) {
@@ -79,5 +80,9 @@ public class ProductDetailsPage extends BasePage {
 	
 	public ModalComponent goToModal() {
 		return new ModalComponent(driver);
+	}
+	
+	public ProductVariationsComponent goToVariations() {
+		return new ProductVariationsComponent(driver);
 	}
 }
