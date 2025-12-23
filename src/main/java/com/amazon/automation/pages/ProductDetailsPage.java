@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.amazon.automation.base.BasePage;
@@ -77,12 +78,41 @@ public class ProductDetailsPage extends BasePage {
 		});
 		wait.presenceOfElement(By.className("fullscreen"));
 	}
-	
+
 	public ModalComponent goToModal() {
 		return new ModalComponent(driver);
 	}
-	
+
 	public ProductVariationsComponent goToVariations() {
 		return new ProductVariationsComponent(driver);
 	}
+
+	public String getProductName() {
+		WebElement productNameElement = driver.findElement(By.id("productTitle"));
+		String productName = productNameElement.getAttribute("innerText").trim();
+		return productName;
+	}
+
+	public void selectQuantity(String quantity) {
+		WebElement selectElement = driver.findElement(By.cssSelector("select#quantity"));
+		Select select = new Select(selectElement);
+		select.selectByValue(quantity);
+	}
+	
+	public Integer getQuantity() {
+		WebElement selectElement = driver.findElement(By.cssSelector("select#quantity"));
+		Select select = new Select(selectElement);
+		String selectedText = select.getFirstSelectedOption().getText();
+		return Integer.parseInt(selectedText);
+	}
+	public CartPage addToCart() {
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+				wait.presenceOfElement(By.cssSelector("input#add-to-cart-button")));
+		wait.visible(By.xpath("//h1[contains(.,'Added to cart')]"));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+				wait.presenceOfElement(By.xpath("(//a[contains(.,'Go to Cart')])[1]")));
+		wait.urlContains("/cart");
+		return new CartPage(driver);
+	}
+
 }

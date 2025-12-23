@@ -47,7 +47,10 @@ public class WaitUtils {
 	public WebElement clickable(By locator) {
 	    return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
-
+	
+	public boolean urlContains(String url) {
+		return wait.until(ExpectedConditions.urlContains(url));
+	}
 	public WebElement visible(By locator) {
 	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
