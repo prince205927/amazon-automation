@@ -66,6 +66,9 @@ public class WaitUtils {
 	public boolean presenceInElement(WebElement element, String target) {
 		return wait.until(ExpectedConditions.textToBePresentInElement(element, target));
 	}
+	public boolean presenceInElement(By locator, String target) {
+		return wait.until(ExpectedConditions.textToBePresentInElementLocated(locator, target));
+	}
 	public boolean waitUntil(ExpectedCondition<?> condition) {
         try {
             wait.until(condition);

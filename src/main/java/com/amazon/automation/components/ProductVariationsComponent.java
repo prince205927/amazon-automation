@@ -1,11 +1,15 @@
 package com.amazon.automation.components;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.amazon.automation.base.BaseComponent;
 
@@ -32,58 +36,62 @@ public class ProductVariationsComponent extends BaseComponent {
 		}
 		return null;
 	}
-
 	public String chooseSize(String text) {
-		List<WebElement> availableSizes = driver.findElements(By.cssSelector("span.swatch-title-text-display"));
-		WebElement sizeName = wait
-				.presenceOfElement(By.cssSelector("span#inline-twister-expanded-dimension-text-size_name"));
-		for (WebElement size : availableSizes) {
-			String sizeText = size.getAttribute("innerText").trim();
-			if (text.equalsIgnoreCase(sizeText)) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", size);
-				wait.presenceInElement(sizeName, text);
-				return sizeText;
-			}
-		}
-
-		return null;
+	    List<WebElement> availableSizes = driver.findElements(
+	        By.cssSelector("span.swatch-title-text-display")
+	    );
+	    
+	    By sizeNameLocator = By.cssSelector("span#inline-twister-expanded-dimension-text-size_name");
+	    Actions actions = new Actions(driver);
+	    
+	    for (WebElement size : availableSizes) {
+	        String sizeText = size.getAttribute("innerText").trim();
+	        
+	        if (text.equalsIgnoreCase(sizeText)) {
+	            WebElement clickableElement = size.findElement(
+	                By.xpath("./ancestor::div[contains(@class, 'swatch-title-text-container')]")
+	            );
+	            
+	            actions.moveToElement(clickableElement).click().perform();
+	            wait.presenceInElement(sizeNameLocator, text);
+	            
+	            return sizeText;
+	        }
+	    }
+	    
+	    return null;
 	}
-	
 	public Double getPrice() {
-	    WebElement priceWhole = driver.findElement(By.cssSelector("span.priceToPay span.a-price-whole"));
-	    WebElement priceFraction = driver.findElement(By.cssSelector("span.priceToPay span.a-price-fraction"));
+		WebElement priceWhole = driver.findElement(By.cssSelector("span.priceToPay span.a-price-whole"));
+		WebElement priceFraction = driver.findElement(By.cssSelector("span.priceToPay span.a-price-fraction"));
 
-	    String whole = priceWhole.getText().trim();   
-	    String fraction = priceFraction.getText().trim(); 
+		String whole = priceWhole.getText().trim();
+		String fraction = priceFraction.getText().trim();
 
-	    String priceString = whole + "." + fraction;      
-	    double price = Double.parseDouble(priceString);
+		String priceString = whole + "." + fraction;
+		double price = Double.parseDouble(priceString);
 
-	    return price;
+		return price;
 	}
-	
-	
+
 	public boolean isBlank() {
-		 WebElement priceWhole = driver.findElement(By.cssSelector("span.priceToPay span.a-price-whole"));
-		    WebElement priceFraction = driver.findElement(By.cssSelector("span.priceToPay span.a-price-fraction"));
-		    String whole = priceWhole.getText().trim();   
-		    String fraction = priceFraction.getText().trim(); 
-		 return whole.isEmpty() && fraction.isEmpty();
+		WebElement priceWhole = driver.findElement(By.cssSelector("span.priceToPay span.a-price-whole"));
+		WebElement priceFraction = driver.findElement(By.cssSelector("span.priceToPay span.a-price-fraction"));
+		String whole = priceWhole.getText().trim();
+		String fraction = priceFraction.getText().trim();
+		return whole.isEmpty() && fraction.isEmpty();
 	}
-	
+
 	public String getAvailabilityStatus() {
 		WebElement availabilityElement = driver.findElement(By.cssSelector("div#availability span.a-size-medium"));
 		String availabilityText = availabilityElement.getAttribute("innerText").trim();
 		return availabilityText;
 	}
-	
+
 	public boolean isAvailabilityStatusBlank() {
 		WebElement availabilityElement = driver.findElement(By.cssSelector("div#availability span.a-size-medium"));
 		String availabilityText = availabilityElement.getAttribute("innerText").trim();
 		return availabilityText.isEmpty();
 	}
-	
 
-	
-	
 }

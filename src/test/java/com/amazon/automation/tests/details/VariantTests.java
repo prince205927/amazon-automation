@@ -14,7 +14,7 @@ public class VariantTests extends BaseTest {
 	public void verifyColor() {
 		HomePage home = openHomeReady();
 		home.changeLocation("United Kingdom");
-		String searchedColor = "Charcoal Heather";
+		String searchedColor = "White";
 		String searchedSize = "Medium";
 		home.searchBar().type("shirt").submitSearch();
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();

@@ -17,8 +17,9 @@
 <!--					<class name="com.amazon.automation.tests.details.VariantTests"/>-->
 <!--					<class name="com.amazon.automation.tests.cart.AddToCartTest"/>-->
 <!--					<class name="com.amazon.automation.tests.cart.UpdateQuantityTest"/>-->
-					<class name="com.amazon.automation.tests.cart.RemoveItemTest"/>
-
+<!--					<class name="com.amazon.automation.tests.cart.RemoveItemTest"/>-->
+						<class name="com.amazon.automation.tests.cart.OutOfStockTest"/>
+					
 
 
 					

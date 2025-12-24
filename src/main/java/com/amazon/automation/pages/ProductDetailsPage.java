@@ -115,5 +115,20 @@ public class ProductDetailsPage extends BasePage {
 		wait.urlContains("/cart");
 		return new CartPage(driver);
 	}
+	
+	public boolean isOutOfStockMessageVisible() {
+		return wait.visible(By.cssSelector("div#outOfStock")).isDisplayed();
+	}
+	
+	public boolean isAddToCartPresent() {
+	    try {
+	        WebElement addToCartButton =
+	            wait.presenceOfElement(By.cssSelector("input#add-to-cart-button"));
+	        return addToCartButton.isDisplayed();
+	    } catch (TimeoutException e) {
+	        return false;
+	    }
+	}
+
 
 }
