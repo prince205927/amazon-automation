@@ -44,5 +44,20 @@ public class CartPage extends BasePage {
 		wait.invisible(By.cssSelector("span.a-spinner.a-spinner-small"));
 
 	}
+	
+	public void removeItemFromCart() {
+		wait.clickable(By.cssSelector("input[data-action='delete-active']")).click();
+		wait.presenceOfElement(By.className("sc-list-item-removed-msg"));
+	}
+	
+	public Integer getBadgeCount() {
+		String badgeCountText = wait.presenceOfElement(By.cssSelector("span#nav-cart-count")).getAttribute("innerText").trim();
+		return Integer.parseInt(badgeCountText);
+	}
+	
+	public String getToastMessage() {
+		 return wait.presenceOfElement(By.xpath("//span[contains(@id,'sc-list-item-removed-msg-text-delete')]")).getAttribute("innerText").trim();
+	}
+	
 
 }
