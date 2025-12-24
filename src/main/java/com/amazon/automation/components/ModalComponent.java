@@ -22,9 +22,7 @@ public class ModalComponent extends BaseComponent {
 		super(driver);
 	}
 	public boolean isFullViewOpen() {
-		By div = By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height");
-		WebElement transformingDiv = wait.visible(div);
-		return transformingDiv.getCssValue("display").equalsIgnoreCase("block");
+		return wait.presenceOfElement(By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height")).getCssValue("display").contains("block");
 	}
 	public Map<String, String> getImageDetails() {
 		WebElement landingImage = wait.presenceOfElement(By.className("fullscreen"));
