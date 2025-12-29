@@ -13,17 +13,9 @@ public class RatingsTest extends BaseTest {
 	public void verifyRatings() {
 		HomePage page = openHomeReady();
 		page.searchBar().type("laptop").submitSearch();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
 		page.filters().clickRatings();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
+	
 		// Assertion 1 (Ratings filter parameters)
 		String currentUrl = DriverFactory.getDriver().getCurrentUrl();
 		Assert.assertTrue(currentUrl.contains("p_72"), "Brand filter parameters are missing in the URL");
@@ -33,7 +25,6 @@ public class RatingsTest extends BaseTest {
 		Assert.assertTrue(ratingsState, "The ratings should be checked");
 		
 		//Assertion 3 (verification of filter)
-		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
 		boolean filterState = results.checkRatings();
 		Assert.assertTrue(filterState, "Some products don't have expected ratings");
 		

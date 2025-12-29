@@ -18,97 +18,97 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.amazon.automation.base.BaseComponent;
 
 public class ModalComponent extends BaseComponent {
+
+	private final By fullViewModal =
+			By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height");
+
+	private final By landingImage =
+			By.className("fullscreen");
+
+	private final By thumbnails =
+			By.cssSelector("div.ivRow div.ivThumbImage");
+
 	public ModalComponent(WebDriver driver) {
 		super(driver);
 	}
+
 	public boolean isFullViewOpen() {
-		return wait.presenceOfElement(By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height")).getCssValue("display").contains("block");
+		return wait.presenceOfElement(fullViewModal)
+				.getCssValue("display")
+				.contains("block");
 	}
+
 	public Map<String, String> getImageDetails() {
-		WebElement landingImage = wait.presenceOfElement(By.className("fullscreen"));
+		WebElement image = wait.presenceOfElement(landingImage);
 		Map<String, String> details = new LinkedHashMap<>();
-		details.put("src", landingImage.getAttribute("src"));
-		details.put("alt", landingImage.getAttribute("alt"));
-		details.put("data-old-hires", landingImage.getAttribute("data-old-hires"));
-		details.put("currentSrc", landingImage.getAttribute("currentSrc"));
+		details.put("src", image.getAttribute("src"));
+		details.put("alt", image.getAttribute("alt"));
+		details.put("data-old-hires", image.getAttribute("data-old-hires"));
+		details.put("currentSrc", image.getAttribute("currentSrc"));
 		return details;
 	}
 
 	public boolean checkSwitchingBehaviour() {
-	    List<WebElement> thumbnails = driver.findElements(By.cssSelector("div.ivRow div.ivThumbImage"));
-	    
-	    if (thumbnails.size() <= 1) {
-	        System.out.println("Not enough thumbnails to test switching");
-	        return false;
-	    }
-	    
-	    boolean allSwitchesWorked = true;
-	    
-	    for (int i = 1; i < thumbnails.size(); i++) {
-	        Map<String, String> beforeClick = getImageDetails();
-	        System.out.println("\n--- Clicking thumbnail " + (i + 1) + " ---");
-	        System.out.println("Before click: " + beforeClick.get("src"));
-	        
-	        WebElement thumbnail = thumbnails.get(i);
-	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", thumbnail);
-	        
-	        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        try {
-	            waiter.until(ExpectedConditions.not(
-	                ExpectedConditions.attributeContains(By.className("fullscreen"), "src", beforeClick.get("src"))
-	            ));
-	            
-	            Map<String, String> afterClick = getImageDetails();
-	            System.out.println("After click: " + afterClick.get("src"));
-	            
-	            boolean changed = !beforeClick.get("src").equals(afterClick.get("src"));
-	            
-	            if (changed) {
-	                System.out.println("Thumbnail " + (i + 1) + " switched successfully");
-	            } else {
-	                System.out.println("Thumbnail " + (i + 1) + " did NOT switch");
-	                allSwitchesWorked = false;
-	            }
-	            
-	        } catch (TimeoutException e) {
-	            System.out.println("Thumbnail " + (i + 1) + " - timeout waiting for image change");
-	            allSwitchesWorked = false;
-	        }
-	    }
-	    
-	    return allSwitchesWorked;
+		List<WebElement> thumbnailList = driver.findElements(thumbnails);
+
+		if (thumbnailList.size() <= 1) {
+			return false;
+		}
+
+		boolean allSwitchesWorked = true;
+
+		for (int i = 1; i < thumbnailList.size(); i++) {
+			Map<String, String> beforeClick = getImageDetails();
+
+			WebElement thumbnail = thumbnailList.get(i);
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", thumbnail);
+
+			WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
+			try {
+				waiter.until(ExpectedConditions.not(
+						ExpectedConditions.attributeContains(
+								landingImage, "src", beforeClick.get("src"))));
+
+				Map<String, String> afterClick = getImageDetails();
+
+				boolean changed = !beforeClick.get("src").equals(afterClick.get("src"));
+				if (!changed) {
+					allSwitchesWorked = false;
+				}
+
+			} catch (TimeoutException e) {
+				allSwitchesWorked = false;
+			}
+		}
+
+		return allSwitchesWorked;
 	}
 
 	public int getImageHeight() {
-		WebElement landingImage = wait.presenceOfElement(By.className("fullscreen"));
-		return landingImage.getSize().getHeight();
+		return wait.presenceOfElement(landingImage).getSize().getHeight();
 	}
 
 	public int getImageWidth() {
-		WebElement landingImage = wait.presenceOfElement(By.className("fullscreen"));
-		return landingImage.getSize().getWidth();
+		return wait.presenceOfElement(landingImage).getSize().getWidth();
 	}
 
 	public void zoomInteraction() {
-		WebElement landingImage = wait.presenceOfElement(By.className("fullscreen"));
-		int currentHeight = landingImage.getSize().getHeight();
+		WebElement image = wait.presenceOfElement(landingImage);
+		int currentHeight = image.getSize().getHeight();
 
 		Actions action = new Actions(driver);
-		action.moveToElement(landingImage).perform();
+		action.moveToElement(image).perform();
 
-		landingImage = wait.clickable(By.className("fullscreen"));
-		landingImage.click();
+		image = wait.clickable(landingImage);
+		image.click();
 
-		// waiting for dimension change to complete
 		wait.waitUntil(driver -> {
 			try {
-				WebElement img = driver.findElement(By.className("fullscreen"));
-				int newHeight = img.getSize().getHeight();
-				return newHeight != currentHeight;
+				WebElement img = driver.findElement(landingImage);
+				return img.getSize().getHeight() != currentHeight;
 			} catch (StaleElementReferenceException e) {
 				return false;
 			}
 		});
 	}
-	
 }

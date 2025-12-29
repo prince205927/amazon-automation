@@ -169,7 +169,13 @@ public class AddToCartTest extends BaseTest {
 	            expectedCart.addProduct(expectedProduct);
 	      
 	            addedCount++;
-	            
+//	            try {
+//	            	Thread.sleep(20000);
+//	            }
+//	            catch(Exception e){
+//	            	
+//	            }
+//	            
 	            System.out.println(" Successfully added product " + addedCount + " of " + numberOfProducts);
 	           
 	        } catch (Exception e) {
