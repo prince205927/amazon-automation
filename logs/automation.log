@@ -1219,3 +1219,133 @@
 2025-12-29 16:29:02.286 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
 2025-12-29 16:29:02.286 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
 2025-12-29 16:29:02.287 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:11.829 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:11.832 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:21:11.833 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:11.866 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - Setting up test: OutOfStockTest
+2025-12-29 17:21:15.037 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - WebDriver initialized successfully
+2025-12-29 17:21:15.053 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - Opening Amazon homepage
+2025-12-29 17:21:17.044 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - Cookies cleared
+2025-12-29 17:21:27.279 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - Homepage loaded directly
+2025-12-29 17:21:34.492 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - Tearing down test: OutOfStockTest
+2025-12-29 17:21:34.992 [main] INFO  com.amazon.automation.tests.cart.OutOfStockTest - WebDriver closed successfully
+2025-12-29 17:21:35.042 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:35.043 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:21:35.043 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:55.821 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:55.828 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:21:55.828 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:21:55.856 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Setting up test: AddToCartTest
+2025-12-29 17:21:58.013 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - WebDriver initialized successfully
+2025-12-29 17:21:58.021 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Opening Amazon homepage
+2025-12-29 17:21:59.623 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Cookies cleared
+2025-12-29 17:22:09.798 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Homepage loaded directly
+2025-12-29 17:22:36.537 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Tearing down test: AddToCartTest
+2025-12-29 17:22:36.963 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - WebDriver closed successfully
+2025-12-29 17:22:36.985 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:22:36.986 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:22:36.986 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:22:56.260 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:22:56.269 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:22:56.269 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:22:56.300 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Setting up test: AddToCartTest
+2025-12-29 17:22:58.568 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - WebDriver initialized successfully
+2025-12-29 17:22:58.578 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Opening Amazon homepage
+2025-12-29 17:23:00.416 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Cookies cleared
+2025-12-29 17:23:10.756 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Homepage loaded directly
+2025-12-29 17:24:22.693 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - Tearing down test: AddToCartTest
+2025-12-29 17:24:23.227 [main] INFO  com.amazon.automation.tests.cart.AddToCartTest - WebDriver closed successfully
+2025-12-29 17:24:23.249 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:24:23.249 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:24:23.249 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:25:08.224 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:25:08.231 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:25:08.231 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:25:08.263 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:25:10.432 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:25:10.439 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:25:13.447 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:25:13.475 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Continue page displayed, clicking continue shopping
+2025-12-29 17:26:08.595 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:26:09.121 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:26:09.146 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:26:09.146 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:26:09.147 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:26:19.120 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:26:19.129 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:26:19.129 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:26:19.156 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:26:21.330 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:26:21.330 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:26:23.299 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:26:33.627 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:27:58.229 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:27:58.817 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:27:58.835 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:27:58.835 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:27:58.835 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:28:25.680 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:28:25.685 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:28:25.685 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:28:25.720 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:28:27.882 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:28:27.892 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:28:30.113 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:28:40.406 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:29:53.934 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:29:54.557 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:29:54.584 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:29:54.585 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:29:54.585 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:38:16.713 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:38:16.721 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:38:16.721 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:38:16.752 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:38:18.923 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:38:18.932 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:38:20.935 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:38:30.956 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:39:51.409 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:39:52.096 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:39:52.144 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:39:52.144 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:39:52.144 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:40:43.965 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:40:43.973 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:40:43.973 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:40:44.000 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:40:46.186 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:40:46.206 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:40:48.365 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:40:58.715 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:41:58.778 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:41:59.358 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:41:59.387 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:41:59.387 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:41:59.388 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:42:14.558 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:42:14.566 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:42:14.566 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:42:14.595 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:42:16.890 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:42:16.911 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:42:19.162 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:42:29.462 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:43:39.502 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:43:40.090 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:43:40.108 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:43:40.108 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:43:40.108 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:53:47.881 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:53:47.889 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE STARTED
+2025-12-29 17:53:47.890 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:53:47.915 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Setting up test: RemoveItemTest
+2025-12-29 17:53:50.073 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver initialized successfully
+2025-12-29 17:53:50.081 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Opening Amazon homepage
+2025-12-29 17:53:52.318 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Cookies cleared
+2025-12-29 17:54:02.685 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Homepage loaded directly
+2025-12-29 17:55:05.691 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - Tearing down test: RemoveItemTest
+2025-12-29 17:55:06.255 [main] INFO  com.amazon.automation.tests.cart.RemoveItemTest - WebDriver closed successfully
+2025-12-29 17:55:06.274 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================
+2025-12-29 17:55:06.274 [main] INFO  com.amazon.automation.utils.LoggerUtil - TEST SUITE COMPLETED
+2025-12-29 17:55:06.274 [main] INFO  com.amazon.automation.utils.LoggerUtil - ========================================

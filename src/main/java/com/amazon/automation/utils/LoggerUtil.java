@@ -7,9 +7,6 @@ public class LoggerUtil {
     
     private static ThreadLocal<Logger> loggerThreadLocal = new ThreadLocal<>();
     
-    /**
-     * Get logger for the calling class
-     */
     public static Logger getLogger() {
         if (loggerThreadLocal.get() == null) {
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
@@ -18,17 +15,11 @@ public class LoggerUtil {
         }
         return loggerThreadLocal.get();
     }
-    
-    /**
-     * Get logger for specific class
-     */
+   
     public static Logger getLogger(Class<?> clazz) {
         return LogManager.getLogger(clazz);
     }
     
-    /**
-     * Remove logger from thread local
-     */
     public static void removeLogger() {
         loggerThreadLocal.remove();
     }
@@ -76,9 +67,9 @@ public class LoggerUtil {
     
     public static void assertion(String description, boolean passed) {
         if (passed) {
-            getLogger().info("✓ ASSERTION PASSED: " + description);
+            getLogger().info("ASSERTION PASSED: " + description);
         } else {
-            getLogger().error("✗ ASSERTION FAILED: " + description);
+            getLogger().error("ASSERTION FAILED: " + description);
         }
     }
 }
