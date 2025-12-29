@@ -32,6 +32,10 @@ public class WaitUtils {
 		return elements;
 	}
 	
+	public List<WebElement> visibleAll(By locator) {
+		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+	
 	public WebElement untilVisible(By locator) {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}

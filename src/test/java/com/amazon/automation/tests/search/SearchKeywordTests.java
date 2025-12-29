@@ -25,6 +25,50 @@ public class SearchKeywordTests extends BaseTest {
 		String term = results.currentSearchTerm();
 		Assert.assertTrue(term.toLowerCase().contains(keyword.toLowerCase()),
 				"Search heading must reflect the searched keyword");
+	}
+	
+	@Test
+	public void searchWithMixedCaseKeyword() {
+		HomePage home = openHomeReady();
+		final String keyword = "WiReLeSs MoUsE";
+		home.searchBar().type(keyword);
+		home.searchBar().submitSearch();
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+		Assert.assertTrue(results.hasResults(), "At least one search result is needed");
 
+		String term = results.currentSearchTerm();
+		Assert.assertTrue(term.toLowerCase().contains(keyword.toLowerCase()),
+				"Search heading must reflect the searched keyword");
+	}
+	
+	@Test
+	public void searchWithExtraSpaces() {
+		HomePage home = openHomeReady();
+		final String keywordWithSpaces = "         bluetooth speaker   ";
+		final String expectedKeyword = "bluetooth speaker";
+		home.searchBar().type(keywordWithSpaces);
+		home.searchBar().submitSearch();
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+		Assert.assertTrue(results.hasResults(), "At least one search result is needed");
+		
+		String term = results.currentSearchTerm();
+		Assert.assertTrue(term.toLowerCase().contains(expectedKeyword.toLowerCase()),
+				"Extra spaces should be trimmed in search term");	
+		}
+	
+	@Test
+	public void searchAfterClearingPreviousInput() {
+		HomePage home = openHomeReady();
+		home.searchBar().type("iphone");
+		home.searchBar().clearSearchBar();
+		final String newKeyword = "ipad";
+		home.searchBar().type(newKeyword);
+		home.searchBar().submitSearch();
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+		String term = results.currentSearchTerm();
+		Assert.assertTrue(term.toLowerCase().contains(newKeyword.toLowerCase()),
+				"New search term should be reflected after clearning previous input");
+		Assert.assertFalse(term.toLowerCase().contains("iphone"),
+				"old keyword should not appear in results");
 	}
 }

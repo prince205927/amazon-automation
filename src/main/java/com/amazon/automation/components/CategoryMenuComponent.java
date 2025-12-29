@@ -1,5 +1,7 @@
 package com.amazon.automation.components;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,16 +10,31 @@ import org.openqa.selenium.support.FindBy;
 import com.amazon.automation.base.BaseComponent;
 
 public class CategoryMenuComponent extends BaseComponent {
-	@FindBy(id = "nav-hamburger-menu")
-	private WebElement allMenuButton;
+	
+	//static locators
+	private final By allMenuButton = By.id("nav-hamburger-menu");
+	private final By menuContent = By.cssSelector("div#hmenu-content");
 
-	@FindBy(css = "div#hmenu-content")
-	private WebElement menuContent;
+	private final By shopByDepartmentCategories = By
+			.cssSelector("section[aria-labelledby='Shop by Department'] li a[role='button'] div");
+
+	private final By shopByDepartmentSeeAll = By
+			.cssSelector("section[aria-labelledby='Shop by Department'] a[aria-label='See all']");
+
+	private final By visibleMenu = By.cssSelector("div.hmenu.hmenu-visible.hmenu-translateX");
+
+	private final By leftMenu = By.cssSelector("div.hmenu.hmenu-translateX-left");
+
+	private final By menuCanvas = By.cssSelector("div#hmenu-canvas.hmenu-translateX");
+
+	
+	private String lastClickedCategoryText;
 
 	public CategoryMenuComponent(WebDriver driver) {
 		super(driver);
 	}
 
+	//menu actions
 	public CategoryMenuComponent openMenu() {
 		try {
 			if (isMenuOpen())
@@ -37,19 +54,36 @@ public class CategoryMenuComponent extends BaseComponent {
 		}
 	}
 
+	//category locators
+	private By categoryByText(String categoryText) {
+		return By.xpath("//a[contains(@class,'hmenu-item') and .//div[normalize-space()='" + categoryText + "']]");
+	}
+
+	private By categoryFallbackByText(String categoryText) {
+		return By.xpath("//a[contains(@class,'hmenu-item') and normalize-space()='" + categoryText + "']");
+	}
+
+	private By subCategoryByText(String subCategoryText) {
+		return By
+				.xpath("//a[contains(@class,'hmenu-item') and contains(normalize-space(), '" + subCategoryText + "')]");
+	}
+
+	private By subCategoriesByLastClickedCategory() {
+		return By.xpath("//section[contains(@aria-labelledby, \"" + lastClickedCategoryText + "\")]//li//a");
+	}
+
+	
+	//category actions
 	public WebElement getCategory(String categoryText) {
 		try {
-			return driver.findElement(By
-					.xpath("//a[contains(@class,'hmenu-item') and .//div[normalize-space()='" + categoryText + "']]"));
+			return driver.findElement(categoryByText(categoryText));
 		} catch (Exception e) {
-			return driver.findElement(
-					By.xpath("//a[contains(@class,'hmenu-item') and normalize-space()='" + categoryText + "']"));
+			return driver.findElement(categoryFallbackByText(categoryText));
 		}
 	}
 
 	private WebElement getSubCategory(String subCategoryText) {
-		WebElement subCategory = driver.findElement(By.xpath(
-				"//a[contains(@class,'hmenu-item') and contains(normalize-space(), '" + subCategoryText + "')]"));
+		WebElement subCategory = driver.findElement(subCategoryByText(subCategoryText));
 		scrollIntoViewWithinMenu(subCategory);
 		return subCategory;
 	}
@@ -61,51 +95,67 @@ public class CategoryMenuComponent extends BaseComponent {
 		return this;
 	}
 
+	public CategoryMenuComponent clickCategoryByIndex(int index) {
+		List<WebElement> categories = driver.findElements(shopByDepartmentCategories);
+
+		if (index > 3) {
+			wait.clickable(shopByDepartmentSeeAll).click();
+			categories = driver.findElements(shopByDepartmentCategories);
+		}
+
+		wait.clickable(categories.get(index)).click();
+		lastClickedCategoryText = categories.get(index).getAttribute("innerText");
+		waitForCategoryTransition();
+		return this;
+	}
+
+	public String clickSubCategoryByIndex(int index) {
+		List<WebElement> subCategories = driver.findElements(subCategoriesByLastClickedCategory());
+
+		if (index >= subCategories.size()) {
+			throw new RuntimeException("Index out of range. Found only " + subCategories.size() + " subcategories.");
+		}
+
+		WebElement subCategory = subCategories.get(index);
+		String subCategoryTitle = subCategory.getAttribute("innerText");
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", subCategory);
+		return subCategoryTitle;
+	}
+
+	//waits and transitions
 	private void waitForCategoryTransition() {
-		By visibleMenu = By.cssSelector("div.hmenu.hmenu-visible.hmenu-translateX");
-		By leftMenu = By.cssSelector("div.hmenu.hmenu-translateX-left");
-
-		// waiting for visible menu
 		wait.visible(visibleMenu);
-
-		// waiting for transitions to complete
 		wait.waitForCSSTransitionToComplete(visibleMenu);
 		wait.waitForCSSTransitionToComplete(leftMenu);
 	}
 
 	public CategoryMenuComponent waitForMenuToOpen() {
-		// waiting for menu canvas to be visible
-		wait.visible(By.cssSelector("div#hmenu-canvas.hmenu-translateX"));
-
-		// waiting for opening animation to complete
-		wait.waitForCSSTransitionToComplete(By.cssSelector("div#hmenu-canvas.hmenu-translateX"));
-
+		wait.visible(menuCanvas);
+		wait.waitForCSSTransitionToComplete(menuCanvas);
 		return this;
 	}
 
 	private void waitForTransformAnimationsToComplete() {
-		// waiting for visible animation to complete
 		wait.waitUntil(driver -> {
 			try {
-				WebElement visibleMenu = driver.findElement(By.cssSelector("div.hmenu.hmenu-visible.hmenu-translateX"));
-				String transform = visibleMenu.getCssValue("transform");
+				String transform = driver.findElement(visibleMenu).getCssValue("transform");
 				return transform != null && !transform.equals("none");
 			} catch (Exception e) {
 				return false;
 			}
 		});
 
-		// waiting for left menu animation to complete
 		wait.waitUntil(driver -> {
 			try {
-				WebElement leftMenu = driver.findElement(By.cssSelector("div.hmenu.hmenu-translateX-left"));
-				String transform = leftMenu.getCssValue("transform");
+				String transform = driver.findElement(leftMenu).getCssValue("transform");
 				return transform != null && !transform.equals("none");
 			} catch (Exception e) {
 				return false;
 			}
 		});
 	}
+
+	//navigation helpers
 
 	public void clickSubCategory(String subCategoryText) {
 		WebElement subCategory = wait.clickable(getSubCategory(subCategoryText));

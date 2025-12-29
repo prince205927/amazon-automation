@@ -2,7 +2,11 @@ package com.amazon.automation.components;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,14 +17,11 @@ import com.amazon.automation.utils.WaitUtils;
 
 public class SearchBarComponent extends BaseComponent {
 
-	@FindBy(id = "twotabsearchtextbox")
-	private WebElement searchBox;
+	private final By searchBox = By.id("twotabsearchtextbox");
 
-	@FindBy(id = "nav-search-submit-button")
-	private WebElement submitButton;
+	private final By submitButton = By.id("nav-search-submit-button");
 
-	@FindBy(css = "div.autocomplete-results-container div.s-suggestion")
-	private List<WebElement> suggestions;
+	private final By suggestions = By.cssSelector("div.autocomplete-results-container div.s-suggestion");
 
 	public SearchBarComponent(WebDriver driver) {
 		super(driver);
@@ -33,33 +34,45 @@ public class SearchBarComponent extends BaseComponent {
 		return this;
 	}
 
-	public void submitSearch() {
+	public SearchBarComponent submitSearch() {
 		wait.visible(submitButton).click();
+		return this;
 	}
 
 	public int getSuggestionsSize() {
 		try {
 			wait.visibleAll(suggestions);
-			return suggestions.size();
-		} catch (Exception e) {
-			return 0;
+			return driver.findElements(suggestions).size();
+		} catch (NoSuchElementException | TimeoutException e) {
+	        System.out.println("No suggestions found or timeout occurred: " + e.getMessage());
+	        return 0;
 		}
 	}
 
 	public String getSuggestionText(int index) {
-		if (suggestions == null)
+		List<WebElement> suggestionList = driver.findElements(suggestions);
+		if (suggestionList == null || suggestionList.isEmpty())
 			return "";
-		return suggestions.get(index).getText();
+		return suggestionList.get(index).getText();
 	}
 
 	public boolean clickSuggestionByIndex(int index) {
-		if (suggestions == null)
+		List<WebElement> suggestionList = driver.findElements(suggestions);
+		if (suggestionList == null || suggestionList.isEmpty())
 			return false;
 		try {
-			wait.clickable(suggestions.get(index)).click();
+			wait.clickable(suggestionList.get(index)).click();
 			return true;
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	public void clearSearchBar() {
+		WebElement box = wait.clickable(searchBox);
+		box.click();
+		box.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		box.sendKeys(Keys.DELETE);
+		wait.invisible(suggestions);
 	}
 }
