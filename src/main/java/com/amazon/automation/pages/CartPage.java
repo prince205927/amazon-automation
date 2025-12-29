@@ -14,6 +14,28 @@ import com.amazon.automation.base.BasePage;
 import com.amazon.automation.tests.models.ProductData;
 
 public class CartPage extends BasePage {
+
+	private final By activeCart = By.cssSelector("div#sc-active-cart");
+
+	private final By cartLink = By.cssSelector("a#nav-cart");
+
+	private final By cartItems = By.cssSelector("div.sc-list-item[role='listitem'], div.sc-list-item");
+
+	private final By productTitles = By.cssSelector("span.sc-product-title");
+
+	private final By productUnitPrices = By.cssSelector("div.sc-badge-price-to-pay span[aria-hidden='true']");
+
+	private final By productQuantities = By.cssSelector("span[data-a-selector='inner-value']");
+
+	private final By cartBadgeCount = By.cssSelector("span#nav-cart-count");
+
+	private final By deleteButtons = By.cssSelector("input[data-action='delete-active']");
+
+	private final By incrementButtons = By.cssSelector("button[data-a-selector='increment']");
+
+	private final By decrementButtons = By.cssSelector("button[data-a-selector='decrement']");
+	
+	private final By spinner = By.cssSelector("span.a-spinner.a-spinner-small");
 	public CartPage(WebDriver driver) {
 		super(driver);
 	}

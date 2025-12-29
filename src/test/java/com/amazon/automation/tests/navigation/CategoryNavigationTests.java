@@ -11,7 +11,7 @@ import com.amazon.automation.tests.common.BaseTest;
 
 public class CategoryNavigationTests extends BaseTest {
 	@Test
-	public void debugMenuStructureTest() {
+	public void verifyCategoryNavigationByVisibleText() {
 		String categoryText = "Arts & Crafts";
 		String subCategoryText = "Crafting";
 		HomePage home = openHomeReady();
@@ -25,6 +25,19 @@ public class CategoryNavigationTests extends BaseTest {
 
 		Assert.assertTrue(currentUrl.toLowerCase().contains(subCategoryText.toLowerCase()),
 				"Should navigate to url containing the subcategory text " + currentUrl);
-
 	}
+	
+	@Test
+	public void verifyCategoryNavigationByIndex() {
+		HomePage home = openHomeReady();
+		String title = home.categoryMenu().openMenu().waitForMenuToOpen().clickCategoryByIndex(10).clickSubCategoryByIndex(4);
+		String currentUrl = DriverFactory.getDriver().getCurrentUrl();
+		Assert.assertFalse(currentUrl.contains("ref=nav_em_linktree_fail"),
+				"Navigation should not result in error page");
+
+		Assert.assertTrue(currentUrl.toLowerCase().contains(title.toLowerCase()),
+				"Should navigate to url containing the subcategory text " + currentUrl);
+	}
+	
+	
 }

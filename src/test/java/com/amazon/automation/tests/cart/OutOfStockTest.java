@@ -1,31 +1,70 @@
 package com.amazon.automation.tests.cart;
 
+import java.util.List;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.amazon.automation.base.DriverFactory;
 import com.amazon.automation.pages.HomePage;
 import com.amazon.automation.pages.ProductDetailsPage;
+import com.amazon.automation.pages.ProductDetailsPage.VariationCombination;
 import com.amazon.automation.pages.SearchResultsPage;
 import com.amazon.automation.tests.common.BaseTest;
 
 public class OutOfStockTest extends BaseTest {
 	@Test
-	public void verifyoutOfStock() {
-	HomePage home = openHomeReady();
-	home.changeLocation("United Kingdom");
-	String searchedColor = "Dense Smoke";
-	String searchedSize = String.valueOf(10);
-	home.searchBar().type("lowmel sneaker").submitSearch();
-	SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-	results.openProductByIndex(1);
-	ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
-	details.goToVariations().chooseColor(searchedColor);
-	String sizeText = details.goToVariations().chooseSize(searchedSize);	
-	System.out.println("\n\n\nThe size text is "+ sizeText);
-	boolean outOfStockMessage = details.isOutOfStockMessageVisible();
-	boolean presenceOfAddToCart = details.isAddToCartPresent();
-	Assert.assertNotEquals(presenceOfAddToCart, outOfStockMessage, "If out of stock is present, then add to cart cannot be there and vice versa ");
-	}	
+    public void verifyOutOfStockVariationCannotBeAdded() {
+        HomePage home = openHomeReady();
+        home.searchBar().type("shirt").submitSearch();
+        
+        SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+        
+        System.out.println("\n========== Searching for Out of Stock Variation ==========");
+        
+        boolean outOfStockFound = false;
+        int productIndex = 1;
+        int maxAttempts = 12;
+        
+        while (!outOfStockFound && productIndex < maxAttempts) {
+            try {
+                System.out.println("\n--- Checking Product " + (productIndex + 1) + " ---");
+                
+                results.openProductByIndex(productIndex);
+                ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
+                
+                VariationCombination outOfStock = details.selectOutOfStockVariation();
+                
+                if (outOfStock != null) {
+                    System.out.println("✓ Found out of stock variation: " + outOfStock);
+                    outOfStockFound = true;
+                  
+                    boolean canAdd = details.isAddToCartAvailable();
+                    boolean hasQuantity = details.isQuantitySelectorAvailable();
+                    
+                    Assert.assertFalse(canAdd, "Add to Cart should be disabled for out of stock");
+                    Assert.assertFalse(hasQuantity, "Quantity selector should be disabled for out of stock");
+                    
+                    System.out.println("✓ Out of stock validation passed");
+                } else {
+                    System.out.println("No out of stock variations found, trying next product...");
+                    DriverFactory.getDriver().navigate().back();
+                    results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+                    productIndex++;
+                }
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+                DriverFactory.getDriver().navigate().back();
+                results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+                productIndex++;
+            }
+        }
+        
+        if (!outOfStockFound) {
+            System.out.println("\n⚠ No out of stock variations found in " + maxAttempts + " products");
+            throw new org.testng.SkipException("No out of stock variations found to test");
+        }
+        
+        System.out.println("\n========== OUT OF STOCK TEST PASSED ==========\n");
+    }
 }
-

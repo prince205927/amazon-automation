@@ -14,16 +14,9 @@ public class PaginationTests extends BaseTest {
 		HomePage home = openHomeReady();
 		home.searchBar().type("laptop").submitSearch();
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-		results.scrolltoPagination();
+		results.scrollToPagination();
 		results.goToNextPage();
 		results.waitForResults();
-		try {
-			Thread.sleep(5000);
-		}
-		catch(Exception e){
-			
-		}
-		
 		//Assertion 1 (validating page number in url)
 		Assert.assertTrue(DriverFactory.getDriver().getCurrentUrl().contains("page=2"), "Change in page number is not reflected in URL");
 		

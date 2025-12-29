@@ -35,7 +35,7 @@ public class ProductDetailsPage extends BasePage {
 	        return variations;
 	    }
 	public ProductDetailsPage waitForResults() {
-		wait.visible(By.id("ppd"));
+		wait.visible(productContainer);
 		return this;
 	}
 	public static class VariationCombination {
@@ -357,25 +357,21 @@ public class ProductDetailsPage extends BasePage {
 	 
 	
 	public boolean hasTitle() {
-		return !driver.findElement(By.id("productTitle")).getText().trim().isEmpty();
+		return !driver.findElement(productTitle).getText().trim().isEmpty();
 	}
 
 	public boolean hasImages() {
-		WebElement landingImage = driver.findElement(By.id("landingImage"));
-		List<WebElement> images = driver.findElements(By.cssSelector("li.imageThumbnail img"));
-		return landingImage.isDisplayed() && images.get(0).getAttribute("src") != null;
+		WebElement mainImage = driver.findElement(landingImage);
+		List<WebElement> images = driver.findElements(imageThumbnails);
+		return mainImage.isDisplayed() && images.get(0).getAttribute("src") != null;
 	}
 
 	public boolean hasValidRatings() {
-		List<WebElement> ratings = driver.findElements(By.cssSelector("a.a-popover-trigger span.a-icon-alt"));
-		if (ratings.isEmpty()) {
-			System.out.println("No ratings");
+		List<WebElement> ratingElements = driver.findElements(ratings);
+		if (ratingElements.isEmpty())
 			return false;
-		}
-		// getText didn't work here because text is hidden via CSS
-		String partialText = ratings.get(0).getAttribute("innerText").trim().toLowerCase();
-		return partialText.contains("out of 5");
-
+		String text = ratingElements.get(0).getAttribute("innerText").trim().toLowerCase();
+		return text.contains("out of 5");
 	}
 	 public ProductData captureProductDetails() {
 	        ProductData product = new ProductData();
@@ -388,26 +384,22 @@ public class ProductDetailsPage extends BasePage {
 	        return product;
 	    }
 
-	// getText didn't work here because text is hidden via CSS
 	public boolean hasAvailabilityText() {
-		WebElement availabilityText = wait.presenceOfElement(By.cssSelector("div#availability span.a-color-success"));
-		return !availabilityText.getAttribute("innerText").trim().isEmpty();
+		return !wait.presenceOfElement(availabilityText).getAttribute("innerText").trim().isEmpty();
 	}
 
 	public void clickToSeeFullView() {
-		WebElement fullView = wait.presenceOfElement(By.partialLinkText("Click to see full view"));
-		wait.clickable(fullView).click();
+		wait.clickable(wait.presenceOfElement(fullViewLink)).click();
 		waitForTransformToComplete();
 	}
 
 	public void waitForTransformToComplete() {
-		wait.visible(By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height"));
+		By transformPopover = By
+				.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height");
+		wait.visible(transformPopover);
 		wait.waitUntil(driver -> {
 			try {
-				WebElement transformingDiv = driver.findElement(
-						By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height"));
-				String transform = transformingDiv.getCssValue("transform");
-				return transform != null && !transform.equals("none");
+				return !driver.findElement(transformPopover).getCssValue("transform").equals("none");
 			} catch (Exception e) {
 				return false;
 			}
@@ -415,12 +407,15 @@ public class ProductDetailsPage extends BasePage {
 		wait.presenceOfElement(By.className("fullscreen"));
 	}
 
-	public ModalComponent goToModal() {
-		return new ModalComponent(driver);
-	}
-
-	public ProductVariationsComponent goToVariations() {
-		return new ProductVariationsComponent(driver);
+	public ProductData captureProductDetails() {
+		ProductData product = new ProductData();
+		product.setTitle(getProductName());
+		product.setPrice(variations.getPrice());
+		product.setQuantity(getQuantity());
+		product.setSize(variations.getSelectedSize());
+		product.setColor(variations.getSelectedColor());
+		product.setSource("PDP");
+		return product;
 	}
 
 	public String getProductName() {
@@ -430,24 +425,21 @@ public class ProductDetailsPage extends BasePage {
 	}
 	
 	public CartPage addToCart() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();",
-				wait.presenceOfElement(By.cssSelector("input#add-to-cart-button")));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", wait.presenceOfElement(addToCartButton));
 		wait.visible(By.xpath("//h1[contains(.,'Added to cart')]"));
 		return new CartPage(driver);
 	}
-	
+
 	public boolean isOutOfStockMessageVisible() {
-		return wait.visible(By.cssSelector("div#outOfStock")).isDisplayed();
+		return wait.visible(outOfStockDiv).isDisplayed();
 	}
-	
+
 	public boolean isAddToCartPresent() {
-	    try {
-	        WebElement addToCartButton =
-	            wait.presenceOfElement(By.cssSelector("input#add-to-cart-button"));
-	        return addToCartButton.isDisplayed();
-	    } catch (TimeoutException e) {
-	        return false;
-	    }
+		try {
+			return wait.presenceOfElement(addToCartButton).isDisplayed();
+		} catch (TimeoutException e) {
+			return false;
+		}
 	}
 	/**
 	 * Select an out of stock variation intentionally
@@ -552,4 +544,41 @@ public class ProductDetailsPage extends BasePage {
 	    }
 	}
 
+	public boolean hasOutOfStockMessage() {
+		try {
+			return wait.visible(outOfStockDiv).isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public VariationCombination selectOutOfStockVariation() {
+		List<VariationCombination> allCombinations = getAllVariationCombinations();
+		for (VariationCombination combo : allCombinations) {
+			if (combo.getColor() != null)
+				chooseColor(combo.getColor());
+			if (combo.getSize() != null)
+				chooseSize(combo.getSize());
+			if (hasOutOfStockMessage() && !isVariationAvailable())
+				return combo;
+		}
+		return null;
+	}
+
+	public ProductVariationsComponent goToVariations() {
+		return new ProductVariationsComponent(driver);
+	}
+
+	public List<VariationCombination> getAllOutOfStockVariations() {
+		List<VariationCombination> outOfStockVariations = new ArrayList<>();
+		for (VariationCombination combo : getAllVariationCombinations()) {
+			if (combo.getColor() != null)
+				chooseColor(combo.getColor());
+			if (combo.getSize() != null)
+				chooseSize(combo.getSize());
+			if (!isVariationAvailable())
+				outOfStockVariations.add(combo);
+		}
+		return outOfStockVariations;
+	}
 }
