@@ -82,7 +82,7 @@ public class RemoveItemTest extends BaseTest {
         
         cart.removeItemByIndex(indexToRemove);
         
-        // Update expected cart (remember cart is in reverse order)
+        // Update expected cart
         List<ProductData> expectedProducts = expectedCart.getExpectedProducts();
         Collections.reverse(expectedProducts);
         expectedProducts.remove(indexToRemove);
@@ -111,7 +111,7 @@ public class RemoveItemTest extends BaseTest {
         
         int numberOfProducts = 2;
         int addedCount = 0;
-        int productIndex = 1;
+        int productIndex = 3;
         // Add products to cart
         while (addedCount < numberOfProducts) {
             results.openProductByIndex(productIndex);
@@ -125,11 +125,6 @@ public class RemoveItemTest extends BaseTest {
                 continue;
             }
 
-//            try {
-//                Thread.sleep(3000);
-//            } catch (Exception e) {
-//            }
-            
             ProductData expectedProduct = details.captureProductDetails();
             expectedCart.addProduct(expectedProduct);
             details.addToCart();
@@ -155,12 +150,6 @@ public class RemoveItemTest extends BaseTest {
         
         // Remove all items one by one
         cart.removeAllItems();
-        
-        // Wait for cart to update
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception e) {
-//        }
 
         // Verify cart is empty
         Assert.assertTrue(cart.isCartEmpty(), "Cart should be empty after removing all items");

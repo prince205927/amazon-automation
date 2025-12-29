@@ -136,7 +136,8 @@ public class CartPage extends BasePage {
 		try {
 			int count = getCartItemCount();
 			for (int i = 0; i < count; i++) {
-				removeItemByIndex(0);
+				removeItemByIndex(i);
+				wait.visible(By.xpath("//span[text()[contains(.,'was removed from Shopping Cart')]]"));
 			}
 		} catch (Exception e) {
 		}

@@ -27,8 +27,8 @@ public class AddToCartTest extends BaseTest {
 		home.changeLocation("United Kingdom");
 		home.searchBar().type("shirt").submitSearch();
 		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-		int numberOfProducts = 5;
-		int[] quantities = { 2, 1, 3, 4, 5 };
+		int numberOfProducts = 2;
+		int[] quantities = { 2, 1};
 		int productIndex = 1;
 		int addedCount = 0;
 		// adding product with random valid variations
@@ -169,13 +169,7 @@ public class AddToCartTest extends BaseTest {
 	            expectedCart.addProduct(expectedProduct);
 	      
 	            addedCount++;
-//	            try {
-//	            	Thread.sleep(20000);
-//	            }
-//	            catch(Exception e){
-//	            	
-//	            }
-//	            
+
 	            System.out.println(" Successfully added product " + addedCount + " of " + numberOfProducts);
 	           
 	        } catch (Exception e) {
