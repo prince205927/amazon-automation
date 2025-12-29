@@ -117,28 +117,29 @@ public class SearchResultsPage extends BasePage {
 		wait.visible(By.id("productTitle"));
 	}
 
-	public void addToCartFromListingByIndex(int index, String asin) {
-		try {
-			if (!hasAddToCartButtonByIndex(index)) {
-				System.out.println("No Add to Cart button for product index: " + index + ". Skipping...");
-				return;
-			}
-			List<WebElement> addToCartButtons = driver.findElements(By.cssSelector("button[aria-label='Add to cart']"));
-			if (index < 0 || index >= addToCartButtons.size())
-				throw new IndexOutOfBoundsException("Invalid product index: " + index);
-
-			WebElement addToCartButton = addToCartButtons.get(index);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", addToCartButton);
-			System.out.println("Clicking Add to Cart button for product index: " + index);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
-
-			System.out.println("Waiting for loading animation...");
+	public void addToCartFromListingByIndex(int index) {
+	    try {
+	        List<WebElement> tiles = driver.findElements(resultTiles);
+	        if (index < 0 || index >= tiles.size()) {
+	            throw new IndexOutOfBoundsException("Invalid index: " + index);
+	        }
+	        
+	        WebElement tile = tiles.get(index);
+	        String asin = tile.getAttribute("data-asin");
+	        
+	        // Find Add to Cart button within this tile
+	        WebElement addToCartButton = tile.findElement(By.cssSelector("button[aria-label*='Add to cart']"));
+	        
+	        // Scroll into view
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", addToCartButton);
+	        
+	        System.out.println("Clicking Add to Cart for ASIN: " + asin);
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", addToCartButton);
 			waitForListingSpinnerToDisappear();
-			waitForUpdateDivToAppear(asin);
-		} catch (Exception e) {
-			System.out.println("Error adding to cart from listing: " + e.getMessage());
-			e.printStackTrace();
-		}
+
+	    } catch (Exception e) {
+	        System.out.println("Error adding to cart at index " + index + ": " + e.getMessage());
+	    }
 	}
 
 	public void waitForUpdateDivToAppear(String asin) {
@@ -157,31 +158,81 @@ public class SearchResultsPage extends BasePage {
 	}
 
 	public ProductData getProductDataFromListingByIndex(int index) {
-		ProductData product = new ProductData();
-		try {
-			List<WebElement> titles = driver.findElements(By.cssSelector("div[data-cy='title-recipe'] h2"));
-			if (index < titles.size())
-				product.setTitle(titles.get(index).getAttribute("textContent").trim());
-			System.out.println("Got index " + index + " and for that product title is " + product.getTitle());
-
-			List<WebElement> tiles = driver
-					.findElements(By.xpath("//div[@data-asin and @data-component-type='s-search-result']"));
-			if (index < tiles.size())
-				product.setAsin(tiles.get(index).getAttribute("data-asin").trim());
-
-			String asin = product.getAsin();
-			double price = getPriceForProduct(asin);
-			System.out.println("\nPrice is " + price);
-			product.setPrice(price);
-			product.setQuantity(1);
-			product.setSource("Listing");
-
-			System.out.println("Captured product from listing: " + product.getTitle() + " | $" + product.getPrice());
-		} catch (Exception e) {
-			System.out.println("Error capturing product data from listing: " + e.getMessage());
-		}
-		return product;
+	    ProductData product = new ProductData();
+	    try {
+	        List<WebElement> tiles = driver.findElements(resultTiles);
+	        if (index < 0 || index >= tiles.size()) {
+	            throw new IndexOutOfBoundsException("Invalid index: " + index + ", total tiles: " + tiles.size());
+	        }
+	        
+	        WebElement tile = tiles.get(index);
+	        
+	        // Get ASIN
+	        String asin = tile.getAttribute("data-asin");
+	        product.setAsin(asin);
+	        
+	        // Get title
+	        try {
+	            WebElement titleElement = tile.findElement(By.cssSelector("h2 span"));
+	            product.setTitle(titleElement.getText().trim());
+	        } catch (NoSuchElementException e) {
+	            System.out.println("Could not find title for index " + index);
+	            product.setTitle("Unknown Title");
+	        }
+	        
+	        // Get price with multiple fallbacks
+	        double price = getPriceFromTile(tile, asin);
+	        product.setPrice(price);
+	        
+	        product.setQuantity(1);
+	        product.setSource("Listing");
+	        
+	        System.out.println("Captured: " + product.getTitle() + " | $" + product.getPrice() + " | ASIN: " + asin);
+	        
+	    } catch (Exception e) {
+	        System.out.println("Error capturing product data for index " + index + ": " + e.getMessage());
+	    }
+	    return product;
 	}
+	
+	private double getPriceFromTile(WebElement tile, String asin) {
+	    // Strategy 1: Look for offscreen price (most reliable)
+	    try {
+	        WebElement priceElement = tile.findElement(By.cssSelector("span.a-price span.a-offscreen"));
+	        return parsePrice(priceElement.getText());
+	    } catch (Exception e1) {
+	        System.out.println("Strategy 1 failed for ASIN " + asin);
+	    }
+	    
+	    // Strategy 2: Look for visible whole + fraction
+	    try {
+	        WebElement wholeElement = tile.findElement(By.cssSelector("span.a-price-whole"));
+	        String wholeText = wholeElement.getText().replace(",", "").trim();
+	        
+	        try {
+	            WebElement fractionElement = tile.findElement(By.cssSelector("span.a-price-fraction"));
+	            String fractionText = fractionElement.getText().trim();
+	            return Double.parseDouble(wholeText + "." + fractionText);
+	        } catch (Exception e) {
+	            // No fraction, just use whole number
+	            return Double.parseDouble(wholeText);
+	        }
+	    } catch (Exception e2) {
+	        System.out.println("Strategy 2 failed for ASIN " + asin);
+	    }
+	    
+	    // Strategy 3: Look in secondary offer recipe
+	    try {
+	        WebElement secondaryPrice = tile.findElement(By.cssSelector("div[data-cy='secondary-offer-recipe'] span.a-color-base"));
+	        return parsePrice(secondaryPrice.getText());
+	    } catch (Exception e3) {
+	        System.out.println("Strategy 3 failed for ASIN " + asin);
+	    }
+	    
+	    System.out.println(" Could not extract price for ASIN " + asin + " - returning 0.0");
+	    return 0.0;
+	}
+
 
 	public double getPriceForProduct(String asin) {
 		String primarySelector = "div[data-asin='" + asin + "'] span.a-price:not(.a-text-price) span.a-offscreen";
@@ -204,13 +255,19 @@ public class SearchResultsPage extends BasePage {
 	}
 
 	public boolean hasAddToCartButtonByIndex(int index) {
-		try {
-			List<WebElement> buttons = driver.findElements(By.xpath(
-					"//div[@data-asin and @data-component-type='s-search-result'] //button[@aria-label='Add to cart']"));
-			WebElement button = buttons.get(index);
-			return button.isDisplayed();
-		} catch (Exception e) {
-			return false;
-		}
+	    try {
+	        List<WebElement> tiles = driver.findElements(resultTiles);
+	        if (index < 0 || index >= tiles.size()) {
+	            return false;
+	        }
+	        
+	        WebElement tile = tiles.get(index);
+	        List<WebElement> buttons = tile.findElements(By.cssSelector("button[aria-label*='Add to cart']"));
+	        
+	        return !buttons.isEmpty() && buttons.get(0).isDisplayed();
+	    } catch (Exception e) {
+	        System.out.println("Error checking Add to Cart button for index " + index);
+	        return false;
+	    }
 	}
 }
