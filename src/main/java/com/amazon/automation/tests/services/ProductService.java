@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import com.amazon.automation.pages.CartPage;
 import com.amazon.automation.tests.models.CartExpectedItems;
 import com.amazon.automation.tests.models.ProductData;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 
 
 
@@ -59,24 +61,33 @@ public class ProductService {
     
     public static VerificationResult verifyCart(CartExpectedItems expectedCart, CartPage cart) {
         VerificationResult result = new VerificationResult();
+        LoggerUtil.info("========== Starting Cart Verification =========="); 
+        ExtentReportLogger.logStep("Verifying shopping cart");
         List<ProductData> actualCartProducts = cart.getAllCartProducts();
         List<ProductData> expectedProducts = expectedCart.getExpectedProducts();
         
-        System.out.println("\n========== Starting Cart Verification ==========");
-        
+       
+       
         // Verification 1: Check cart line item count
-        System.out.println("Verifying line item count...");
+
+        LoggerUtil.info("Verifying cart line item count");
         if (actualCartProducts.size() != expectedProducts.size()) {
             String error = String.format("Cart line item count mismatch. Expected: %d, Actual: %d", 
                 expectedProducts.size(), actualCartProducts.size());
-            result.addError(error);
-            System.out.println("✗ " + error);
+
+LoggerUtil.error(error);
+        ExtentReportLogger.fail(error);
+
         } else {
-            System.out.println("✓ Line item count matches: " + actualCartProducts.size());
+
+LoggerUtil.info("Line item count matches: " + actualCartProducts.size());
+        ExtentReportLogger.pass(
+                "Line item count matches: " + actualCartProducts.size());
         }
         
         // Verification 2: Check total quantity
-        System.out.println("\nVerifying total quantity...");
+
+        LoggerUtil.info("Verifying total quantity");
         int actualTotalQuantity = actualCartProducts.stream()
             .mapToInt(ProductData::getQuantity)
             .sum();
@@ -86,33 +97,51 @@ public class ProductService {
             String error = String.format("Total quantity mismatch. Expected: %d, Actual: %d", 
                 expectedTotalQuantity, actualTotalQuantity);
             result.addError(error);
-            System.out.println("✗ " + error);
+
+            LoggerUtil.error(error);
+                 ExtentReportLogger.fail(error);
         } else {
-            System.out.println("✓ Total quantity matches: " + actualTotalQuantity);
+
+LoggerUtil.info(
+                "Total quantity matches: " + actualTotalQuantity);
+        ExtentReportLogger.pass(
+                "Total quantity matches: " + actualTotalQuantity);
         }
         
         // Verification 3: Check each product details
-        System.out.println("\nVerifying individual products...");
+
+        LoggerUtil.info("Verifying individual cart products");
         for (ProductData expectedProduct : expectedProducts) {
             ProductData matchingProduct = findMatchingProduct(actualCartProducts, expectedProduct);
             
             if (matchingProduct == null) {
                 String error = "Product not found in cart: " + expectedProduct.getTitle();
-                result.addError(error);
-                System.out.println("✗ " + error);
+
+                LoggerUtil.error(error);
+                         ExtentReportLogger.fail(error);
+
                 continue;
             }
             
-            System.out.println("\nVerifying: " + expectedProduct.getTitle());
+
+LoggerUtil.info("Verifying product: " + expectedProduct.getTitle());
+        ExtentReportLogger.info(
+                "Verifying product: " + expectedProduct.getTitle());
             
             // Verify price
             if (!matchingProduct.getPrice().equals(expectedProduct.getPrice())) {
                 String error = String.format("Price mismatch for '%s'. Expected: $%.2f, Actual: $%.2f", 
                     expectedProduct.getTitle(), expectedProduct.getPrice(), matchingProduct.getPrice());
                 result.addError(error);
-                System.out.println("  ✗ " + error);
+
+                LoggerUtil.error(error);
+                         ExtentReportLogger.fail(error);
             } else {
-                System.out.println("  ✓ Price matches: $" + matchingProduct.getPrice());
+
+            	 LoggerUtil.info(
+            	                    "Price matches: $" + matchingProduct.getPrice());
+            	            ExtentReportLogger.pass(
+            	                    "Price matches: $" + matchingProduct.getPrice());
             }
             
             // Verify quantity
@@ -120,18 +149,34 @@ public class ProductService {
                 String error = String.format("Quantity mismatch for '%s'. Expected: %d, Actual: %d", 
                     expectedProduct.getTitle(), expectedProduct.getQuantity(), matchingProduct.getQuantity());
                 result.addError(error);
-                System.out.println("  ✗ " + error);
+
+                LoggerUtil.error(error);
+                          ExtentReportLogger.fail(error);
             } else {
-                System.out.println("  ✓ Quantity matches: " + matchingProduct.getQuantity());
+
+            	 LoggerUtil.info(
+            	                    "Quantity matches: " + matchingProduct.getQuantity());
+            	            ExtentReportLogger.pass(
+            	                    "Quantity matches: " + matchingProduct.getQuantity());
             }
         }
         
         if (result.isPassed()) {
-            System.out.println("\n✓ All cart verifications passed!");
+
+LoggerUtil.info("All cart verifications passed");
+        ExtentReportLogger.pass("All cart verifications passed");
         } else {
-            System.out.println("\n✗ Cart verification failed with " + result.getErrors().size() + " error(s)");
+
+            LoggerUtil.warn(
+                        "Cart verification failed with "
+                                + result.getErrors().size() + " error(s)");
+                ExtentReportLogger.logStep(
+                        "Cart verification failed with "
+                                + result.getErrors().size() + " error(s)");
+
         }
-        System.out.println("==========================================\n");
+
+        LoggerUtil.info("========== Cart Verification Completed ==========");
         
         return result;
     }

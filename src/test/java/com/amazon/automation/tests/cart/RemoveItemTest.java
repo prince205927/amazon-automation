@@ -1,10 +1,14 @@
 package com.amazon.automation.tests.cart;
 
+import static com.amazon.automation.tests.testdata.TestData.LOCATION_UK;
+import static com.amazon.automation.tests.testdata.TestData.SEARCH_SHIRT;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -17,144 +21,143 @@ import com.amazon.automation.pages.SearchResultsPage;
 import com.amazon.automation.tests.common.BaseTest;
 import com.amazon.automation.tests.models.CartExpectedItems;
 import com.amazon.automation.tests.models.ProductData;
+@Listeners(com.amazon.automation.tests.listeners.ExtentTestListener.class)
 
 public class RemoveItemTest extends BaseTest {
-    
-    @Test
-    public void verifyRemoveSingleItemFromCart() {
-        CartExpectedItems expectedCart = new CartExpectedItems();
 
-        HomePage home = openHomeReady();
-        home.changeLocation("United Kingdom");
-        home.searchBar().type("shirt").submitSearch();
-        SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-        
-        int numberOfProducts = 3;
-        int[] quantities = { 1, 1, 2};
-        int addedCount = 0;
-        int productIndex = 1;
-        
-        // adding products to cart
-        while (addedCount < numberOfProducts) {
-            results.openProductByIndex(productIndex);
-            ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
-            VariationCombination selectedVariation = details.selectRandomVariation();
+	@Test(groups = { "cart", "remove", "smoke", "regression",
+			"p1" }, priority = 1, description = "Verify remove single item from cart")
+	public void verifyRemoveSingleItemFromCart() {
+		CartExpectedItems expectedCart = new CartExpectedItems();
 
-            if (selectedVariation == null) {
-                DriverFactory.getDriver().navigate().back();
-                results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-                productIndex++;
-                continue;
-            }
+		HomePage home = openHomeReady();
+		home.changeLocation(LOCATION_UK);
+		home.searchBar().type(SEARCH_SHIRT).submitSearch();
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
 
-            
-            details.selectQuantity(String.valueOf(quantities[addedCount]));
-            ProductData expectedProduct = details.captureProductDetails();
-            expectedCart.addProduct(expectedProduct);
-            details.addToCart();
-            addedCount++;
+		int numberOfProducts = 3;
+		int[] quantities = { 1, 1, 2 };
+		int addedCount = 0;
+		int productIndex = 1;
 
+		// adding products to cart
+		while (addedCount < numberOfProducts) {
+			results.openProductByIndex(productIndex);
+			ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
+			VariationCombination selectedVariation = details.selectRandomVariation();
 
-            DriverFactory.getDriver().navigate().back();
-            DriverFactory.getDriver().navigate().back();
-            results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-            productIndex++;
+			if (selectedVariation == null) {
+				DriverFactory.getDriver().navigate().back();
+				results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+				productIndex++;
+				continue;
+			}
 
-        }
+			details.selectQuantity(String.valueOf(quantities[addedCount]));
+			ProductData expectedProduct = details.captureProductDetails();
+			expectedCart.addProduct(expectedProduct);
+			details.addToCart();
+			addedCount++;
 
-        //navigating to cart
-        CartPage cart = new CartPage(DriverFactory.getDriver());
-        cart.navigateToCart();
-        cart.waitForResults();
+			DriverFactory.getDriver().navigate().back();
+			DriverFactory.getDriver().navigate().back();
+			results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+			productIndex++;
 
-        System.out.println("\n========== Before Removal ==========");
-        expectedCart.printSummary();
-        
-        int initialCount = cart.getCartBadgeCount();
-        System.out.println("Initial cart count: " + initialCount);
+		}
 
-        // removing second item with index1
-        int indexToRemove = 1;
-        String productToRemove = cart.getProductTitleByIndex(indexToRemove);
-        int quantityToRemove = expectedCart.getExpectedProducts().get(indexToRemove).getQuantity();
-        System.out.println("\n--- Removing product at index " + indexToRemove + " ---");
-        System.out.println("Product: " + productToRemove);
-        
-        cart.removeItemByIndex(indexToRemove);
-        
-        // Update expected cart
-        List<ProductData> expectedProducts = expectedCart.getExpectedProducts();
-        Collections.reverse(expectedProducts);
-        expectedProducts.remove(indexToRemove);
-        Collections.reverse(expectedProducts);
-        
-        // Verify removal
-        int finalCount = cart.getCartBadgeCount();
-        System.out.println("\n--- After Removal ---");
-        System.out.println("Final cart count: " + finalCount);
-        
-        Assert.assertEquals(finalCount, initialCount - quantityToRemove, "Cart count should decrease by 1");
-        Assert.assertFalse(cart.isProductInCart(productToRemove), 
-            "Removed product should not be in cart");
-        
-        System.out.println("\n========== REMOVAL TEST PASSED ==========\n");
-    }
-    
-    @Test
-    public void verifyRemoveAllItemsFromCart() {
-        CartExpectedItems expectedCart = new CartExpectedItems();
+		// navigating to cart
+		CartPage cart = new CartPage(DriverFactory.getDriver());
+		cart.navigateToCart();
+		cart.waitForResults();
 
-        HomePage home = openHomeReady();
-        home.changeLocation("United Kingdom");
-        home.searchBar().type("shirt").submitSearch();
-        SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-        
-        int numberOfProducts = 2;
-        int addedCount = 0;
-        int productIndex = 3;
-        // Add products to cart
-        while (addedCount < numberOfProducts) {
-            results.openProductByIndex(productIndex);
-            ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
-            VariationCombination selectedVariation = details.selectRandomVariation();
+		System.out.println("\n========== Before Removal ==========");
+		expectedCart.printSummary();
 
-            if (selectedVariation == null) {
-                DriverFactory.getDriver().navigate().back();
-                results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-                productIndex++;
-                continue;
-            }
+		int initialCount = cart.getCartBadgeCount();
+		System.out.println("Initial cart count: " + initialCount);
 
-            ProductData expectedProduct = details.captureProductDetails();
-            expectedCart.addProduct(expectedProduct);
-            details.addToCart();
-            addedCount++;
+		// removing second item with index1
+		int indexToRemove = 1;
+		String productToRemove = cart.getProductTitleByIndex(indexToRemove);
+		int quantityToRemove = expectedCart.getExpectedProducts().get(indexToRemove).getQuantity();
+		System.out.println("\n--- Removing product at index " + indexToRemove + " ---");
+		System.out.println("Product: " + productToRemove);
 
+		cart.removeItemByIndex(indexToRemove);
 
-            DriverFactory.getDriver().navigate().back();
-            DriverFactory.getDriver().navigate().back();
-            results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
-            productIndex++;
+		// Update expected cart
+		List<ProductData> expectedProducts = expectedCart.getExpectedProducts();
+		Collections.reverse(expectedProducts);
+		expectedProducts.remove(indexToRemove);
+		Collections.reverse(expectedProducts);
 
-        }
+		// Verify removal
+		int finalCount = cart.getCartBadgeCount();
+		System.out.println("\n--- After Removal ---");
+		System.out.println("Final cart count: " + finalCount);
 
-        // Navigate to cart
-        CartPage cart = new CartPage(DriverFactory.getDriver());
-        cart.navigateToCart();
-        cart.waitForResults();
+		Assert.assertEquals(finalCount, initialCount - quantityToRemove, "Cart count should decrease by 1");
+		Assert.assertFalse(cart.isProductInCart(productToRemove), "Removed product should not be in cart");
 
-        System.out.println("\n========== Removing All Items ==========");
-        
-        int itemCount = cart.getCartItemCount();
-        System.out.println("Items to remove: " + itemCount);
-        
-        // Remove all items one by one
-        cart.removeAllItems();
+		System.out.println("\n========== REMOVAL TEST PASSED ==========\n");
+	}
 
-        // Verify cart is empty
-        Assert.assertTrue(cart.isCartEmpty(), "Cart should be empty after removing all items");
-        System.out.println("✓ Cart is empty");
-        
-        System.out.println("\n========== REMOVE ALL TEST PASSED ==========\n");
-    }
+	@Test(groups = { "cart", "remove", "regression",
+			"p2" }, priority = 2, description = "Verify remove all items from cart")
+	public void verifyRemoveAllItemsFromCart() {
+		CartExpectedItems expectedCart = new CartExpectedItems();
+
+		HomePage home = openHomeReady();
+		home.changeLocation("United Kingdom");
+		home.searchBar().type("shirt").submitSearch();
+		SearchResultsPage results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+
+		int numberOfProducts = 2;
+		int addedCount = 0;
+		int productIndex = 3;
+		// Add products to cart
+		while (addedCount < numberOfProducts) {
+			results.openProductByIndex(productIndex);
+			ProductDetailsPage details = new ProductDetailsPage(DriverFactory.getDriver()).waitForResults();
+			VariationCombination selectedVariation = details.selectRandomVariation();
+
+			if (selectedVariation == null) {
+				DriverFactory.getDriver().navigate().back();
+				results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+				productIndex++;
+				continue;
+			}
+
+			ProductData expectedProduct = details.captureProductDetails();
+			expectedCart.addProduct(expectedProduct);
+			details.addToCart();
+			addedCount++;
+
+			DriverFactory.getDriver().navigate().back();
+			DriverFactory.getDriver().navigate().back();
+			results = new SearchResultsPage(DriverFactory.getDriver()).waitForResults();
+			productIndex++;
+
+		}
+
+		// Navigate to cart
+		CartPage cart = new CartPage(DriverFactory.getDriver());
+		cart.navigateToCart();
+		cart.waitForResults();
+
+		System.out.println("\n========== Removing All Items ==========");
+
+		int itemCount = cart.getCartItemCount();
+		System.out.println("Items to remove: " + itemCount);
+
+		// Remove all items one by one
+		cart.removeAllItems();
+
+		// Verify cart is empty
+		Assert.assertTrue(cart.isCartEmpty(), "Cart should be empty after removing all items");
+		System.out.println("✓ Cart is empty");
+
+		System.out.println("\n========== REMOVE ALL TEST PASSED ==========\n");
+	}
 }

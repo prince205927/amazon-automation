@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Tests Without Slow Tests" parallel="methods" thread-count="6" verbose="1">
+    
+    <listeners>
+        <listener class-name="com.amazon.automation.tests.listeners.ExtentTestListener"/>
+    </listeners>
+    
+    <test name="Fast Tests">
+        <groups>
+            <run>
+                <include name="regression"/>
+                <exclude name="p2"/>
+                <exclude name="negative"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.amazon.automation.tests.*"/>
+        </packages>
+    </test>
+    
+</suite>

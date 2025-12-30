@@ -62,10 +62,13 @@ public class ExtentTestListener implements ITestListener {
         String screenshotPath = captureScreenshot(result.getMethod().getMethodName());
         if (screenshotPath != null) {
             try {
-                ExtentManager.getTest().addScreenCaptureFromPath(screenshotPath, "Failure Screenshot");
+                ExtentManager.getTest().fail("Failure Screenshot").addScreenCaptureFromPath(screenshotPath);
             } catch (Exception e) {
                 ExtentManager.getTest().fail("Failed to attach screenshot: " + e.getMessage());
+                e.printStackTrace();
             }
+        } else {
+            ExtentManager.getTest().fail("Screenshot could not be captured");
         }
         
         ExtentManager.getTest().fail("Test Duration: " + getExecutionTime(result) + " seconds");
@@ -94,34 +97,38 @@ public class ExtentTestListener implements ITestListener {
         try {
             WebDriver driver = DriverFactory.getDriver();
             if (driver == null) {
+                System.out.println("Driver is null, cannot capture screenshot");
                 return null;
             }
             
             TakesScreenshot ts = (TakesScreenshot) driver;
             byte[] screenshot = ts.getScreenshotAs(OutputType.BYTES);
             
-            // Create screenshots directory
-            String screenshotDir = "test-output/screenshots/";
+            // Create screenshots directory with absolute path
+            String screenshotDir = System.getProperty("user.dir") + "/test-output/screenshots/";
             File directory = new File(screenshotDir);
             if (!directory.exists()) {
                 directory.mkdirs();
             }
             
             // Generate unique filename
-            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss_SSS").format(new Date());
             String fileName = testName + "_" + timestamp + ".png";
             Path screenshotPath = Paths.get(screenshotDir + fileName);
             
             // Save screenshot
             Files.write(screenshotPath, screenshot);
             
-            return screenshotPath.toString();
+            System.out.println("Screenshot saved at: " + screenshotPath.toString());
+            
+            // Return relative path for Extent Report
+            return "./screenshots/" + fileName;
         } catch (Exception e) {
             System.out.println("Failed to capture screenshot: " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
-
     private String getExecutionTime(ITestResult result) {
         long duration = (result.getEndMillis() - result.getStartMillis()) / 1000;
         return String.valueOf(duration);

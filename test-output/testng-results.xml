@@ -1,33 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-29T17:53:47 NPT" name="Default suite" finished-at="2025-12-29T17:55:06 NPT" duration-ms="78365">
+  <suite started-at="2025-12-30T16:35:45 NPT" name="Default suite" finished-at="2025-12-30T16:36:05 NPT" duration-ms="19921">
     <groups>
+      <group name="p0">
+        <method signature="SearchKeywordTests.searchWithValidKeyword()[pri:1, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" name="searchWithValidKeyword" class="com.amazon.automation.tests.search.SearchKeywordTests"/>
+      </group> <!-- p0 -->
+      <group name="search">
+        <method signature="SearchKeywordTests.searchWithValidKeyword()[pri:1, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" name="searchWithValidKeyword" class="com.amazon.automation.tests.search.SearchKeywordTests"/>
+      </group> <!-- search -->
+      <group name="regression">
+        <method signature="SearchKeywordTests.searchWithValidKeyword()[pri:1, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" name="searchWithValidKeyword" class="com.amazon.automation.tests.search.SearchKeywordTests"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="SearchKeywordTests.searchWithValidKeyword()[pri:1, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" name="searchWithValidKeyword" class="com.amazon.automation.tests.search.SearchKeywordTests"/>
+      </group> <!-- smoke -->
     </groups>
-    <test started-at="2025-12-29T17:53:47 NPT" name="Default test" finished-at="2025-12-29T17:55:06 NPT" duration-ms="78365">
-      <class name="com.amazon.automation.tests.cart.RemoveItemTest">
-        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:com.amazon.automation.tests.cart.RemoveItemTest@9d5509a]" started-at="2025-12-29T17:53:47 NPT" name="beforeSuite" finished-at="2025-12-29T17:53:47 NPT" duration-ms="511" status="PASS">
+    <test started-at="2025-12-30T16:35:45 NPT" name="Default test" finished-at="2025-12-30T16:36:05 NPT" duration-ms="19921">
+      <class name="com.amazon.automation.tests.search.SearchKeywordTests">
+        <test-method is-config="true" signature="beforeSuite()[pri:0, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" started-at="2025-12-30T16:35:45 NPT" name="beforeSuite" finished-at="2025-12-30T16:35:45 NPT" duration-ms="772" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuite -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.amazon.automation.tests.cart.RemoveItemTest@9d5509a]" started-at="2025-12-29T17:53:47 NPT" name="setUp" finished-at="2025-12-29T17:53:50 NPT" duration-ms="2159" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" started-at="2025-12-30T16:35:46 NPT" name="setUp" finished-at="2025-12-30T16:35:48 NPT" duration-ms="2732" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyRemoveAllItemsFromCart()[pri:0, instance:com.amazon.automation.tests.cart.RemoveItemTest@9d5509a]" started-at="2025-12-29T17:53:50 NPT" name="verifyRemoveAllItemsFromCart" finished-at="2025-12-29T17:55:05 NPT" duration-ms="75614" status="PASS">
+        <test-method signature="searchWithValidKeyword()[pri:1, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" started-at="2025-12-30T16:35:48 NPT" name="searchWithValidKeyword" description="Verify search with valid keyword" finished-at="2025-12-30T16:36:05 NPT" duration-ms="16264" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[At least one search result is needed expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: At least one search result is needed expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at com.amazon.automation.tests.search.SearchKeywordTests.searchWithValidKeyword(SearchKeywordTests.java:34)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyRemoveAllItemsFromCart -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.amazon.automation.tests.cart.RemoveItemTest@9d5509a]" started-at="2025-12-29T17:55:05 NPT" name="tearDown" finished-at="2025-12-29T17:55:06 NPT" duration-ms="564" status="PASS">
+        </test-method> <!-- searchWithValidKeyword -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" started-at="2025-12-30T16:36:05 NPT" name="tearDown" finished-at="2025-12-30T16:36:05 NPT" duration-ms="507" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.amazon.automation.tests.cart.RemoveItemTest@9d5509a]" started-at="2025-12-29T17:55:06 NPT" name="afterSuite" finished-at="2025-12-29T17:55:06 NPT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="afterSuite()[pri:0, instance:com.amazon.automation.tests.search.SearchKeywordTests@179ece50]" started-at="2025-12-30T16:36:06 NPT" name="afterSuite" finished-at="2025-12-30T16:36:06 NPT" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- com.amazon.automation.tests.cart.RemoveItemTest -->
+      </class> <!-- com.amazon.automation.tests.search.SearchKeywordTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

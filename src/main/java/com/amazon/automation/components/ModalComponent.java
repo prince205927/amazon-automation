@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -16,26 +15,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.amazon.automation.base.BaseComponent;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 
 public class ModalComponent extends BaseComponent {
 
-	private final By fullViewModal =
-			By.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height");
+	private final By fullViewModal = By
+			.cssSelector("div.a-popover.a-popover-modal.a-declarative.a-popover-modal-fixed-height");
 
-	private final By landingImage =
-			By.className("fullscreen");
+	private final By landingImage = By.className("fullscreen");
 
-	private final By thumbnails =
-			By.cssSelector("div.ivRow div.ivThumbImage");
+	private final By thumbnails = By.cssSelector("div.ivRow div.ivThumbImage");
 
 	public ModalComponent(WebDriver driver) {
 		super(driver);
 	}
 
 	public boolean isFullViewOpen() {
-		return wait.presenceOfElement(fullViewModal)
-				.getCssValue("display")
-				.contains("block");
+		return wait.presenceOfElement(fullViewModal).getCssValue("display").contains("block");
 	}
 
 	public Map<String, String> getImageDetails() {
@@ -49,6 +46,10 @@ public class ModalComponent extends BaseComponent {
 	}
 
 	public boolean checkSwitchingBehaviour() {
+
+		LoggerUtil.info("Checking image thumbnail switching behavior");
+		ExtentReportLogger.logStep("Verifying image thumbnail switching");
+
 		List<WebElement> thumbnailList = driver.findElements(thumbnails);
 
 		if (thumbnailList.size() <= 1) {
@@ -61,13 +62,11 @@ public class ModalComponent extends BaseComponent {
 			Map<String, String> beforeClick = getImageDetails();
 
 			WebElement thumbnail = thumbnailList.get(i);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", thumbnail);
-
+			jsClick(thumbnail);
 			WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(10));
 			try {
-				waiter.until(ExpectedConditions.not(
-						ExpectedConditions.attributeContains(
-								landingImage, "src", beforeClick.get("src"))));
+				waiter.until(ExpectedConditions
+						.not(ExpectedConditions.attributeContains(landingImage, "src", beforeClick.get("src"))));
 
 				Map<String, String> afterClick = getImageDetails();
 
@@ -81,6 +80,8 @@ public class ModalComponent extends BaseComponent {
 			}
 		}
 
+		ExtentReportLogger.info("Thumbnail switching result: " + (allSwitchesWorked ? "SUCCESS" : "FAILURE"));
+
 		return allSwitchesWorked;
 	}
 
@@ -93,6 +94,10 @@ public class ModalComponent extends BaseComponent {
 	}
 
 	public void zoomInteraction() {
+
+		LoggerUtil.info("Performing zoom interaction on image");
+		ExtentReportLogger.logStep("Zooming into product image");
+
 		WebElement image = wait.presenceOfElement(landingImage);
 		int currentHeight = image.getSize().getHeight();
 
@@ -107,8 +112,14 @@ public class ModalComponent extends BaseComponent {
 				WebElement img = driver.findElement(landingImage);
 				return img.getSize().getHeight() != currentHeight;
 			} catch (StaleElementReferenceException e) {
+
+				LoggerUtil.warn("Stale image element during zoom interaction");
+
 				return false;
 			}
 		});
+
+		LoggerUtil.info("Zoom interaction completed successfully");
+		ExtentReportLogger.pass("Image zoom interaction successful");
 	}
 }

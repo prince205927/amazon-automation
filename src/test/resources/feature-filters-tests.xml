@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Filters Feature Suite" parallel="classes" thread-count="3" verbose="1">
+    
+    <listeners>
+        <listener class-name="com.amazon.automation.tests.listeners.ExtentTestListener"/>
+    </listeners>
+    
+    <test name="Filter Tests">
+        <groups>
+            <run>
+                <include name="filters"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.amazon.automation.tests.filters"/>
+        </packages>
+    </test>
+    
+</suite>

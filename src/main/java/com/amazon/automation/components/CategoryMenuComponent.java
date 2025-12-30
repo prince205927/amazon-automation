@@ -3,15 +3,16 @@ package com.amazon.automation.components;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.amazon.automation.base.BaseComponent;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 
 public class CategoryMenuComponent extends BaseComponent {
-	
-	//static locators
+
+	// static locators
 	private final By allMenuButton = By.id("nav-hamburger-menu");
 	private final By menuContent = By.cssSelector("div#hmenu-content");
 
@@ -27,22 +28,34 @@ public class CategoryMenuComponent extends BaseComponent {
 
 	private final By menuCanvas = By.cssSelector("div#hmenu-canvas.hmenu-translateX");
 
-	
 	private String lastClickedCategoryText;
 
 	public CategoryMenuComponent(WebDriver driver) {
 		super(driver);
+		LoggerUtil.info("CategoryMenuComponent initialized");
+		ExtentReportLogger.info("Category menu component loaded");
+
 	}
 
-	//menu actions
+	// menu actions
 	public CategoryMenuComponent openMenu() {
+		LoggerUtil.info("Attempting to open category menu");
+		ExtentReportLogger.logStep("Opening category menu");
 		try {
 			if (isMenuOpen())
-				return this;
+				LoggerUtil.info("Category menu already open");
+			ExtentReportLogger.info("Category menu already open");
+
+			return this;
 		} catch (Exception e) {
+			LoggerUtil.warn("Exception while checking menu state");
 		}
 		wait.clickable(allMenuButton).click();
 		wait.clickable(menuContent);
+
+		LoggerUtil.info("Category menu opened successfully");
+		ExtentReportLogger.pass("Category menu opened");
+
 		return this;
 	}
 
@@ -54,7 +67,7 @@ public class CategoryMenuComponent extends BaseComponent {
 		}
 	}
 
-	//category locators
+	// category locators
 	private By categoryByText(String categoryText) {
 		return By.xpath("//a[contains(@class,'hmenu-item') and .//div[normalize-space()='" + categoryText + "']]");
 	}
@@ -72,44 +85,62 @@ public class CategoryMenuComponent extends BaseComponent {
 		return By.xpath("//section[contains(@aria-labelledby, \"" + lastClickedCategoryText + "\")]//li//a");
 	}
 
-	
-	//category actions
+	// category actions
 	public WebElement getCategory(String categoryText) {
 		try {
+			LoggerUtil.info("Locating category: " + categoryText);
 			return driver.findElement(categoryByText(categoryText));
 		} catch (Exception e) {
+			LoggerUtil.warn("Primary locator failed, using fallback for category: " + categoryText);
 			return driver.findElement(categoryFallbackByText(categoryText));
 		}
 	}
 
 	private WebElement getSubCategory(String subCategoryText) {
+		LoggerUtil.info("Locating subcategory: " + subCategoryText);
 		WebElement subCategory = driver.findElement(subCategoryByText(subCategoryText));
 		scrollIntoViewWithinMenu(subCategory);
 		return subCategory;
 	}
 
 	public CategoryMenuComponent clickCategory(String categoryText) {
+		LoggerUtil.info("Clicking category: " + categoryText);
+		ExtentReportLogger.logStep("Clicking category: " + categoryText);
 		WebElement category = wait.clickable(getCategory(categoryText));
 		category.click();
+
+		LoggerUtil.info("Category clicked: " + categoryText);
+		ExtentReportLogger.pass("Category clicked: " + categoryText);
 		waitForCategoryTransition();
 		return this;
 	}
 
 	public CategoryMenuComponent clickCategoryByIndex(int index) {
+		LoggerUtil.info("Clicking category by index: " + index);
+		ExtentReportLogger.logStep("Selecting category by index: " + index);
 		List<WebElement> categories = driver.findElements(shopByDepartmentCategories);
 
 		if (index > 3) {
+			LoggerUtil.info("Index > 3, expanding categories using 'See all'");
 			wait.clickable(shopByDepartmentSeeAll).click();
 			categories = driver.findElements(shopByDepartmentCategories);
 		}
 
 		wait.clickable(categories.get(index)).click();
 		lastClickedCategoryText = categories.get(index).getAttribute("innerText");
+
+		LoggerUtil.info("Category selected: " + lastClickedCategoryText);
+		ExtentReportLogger.info("Category selected: " + lastClickedCategoryText);
+
 		waitForCategoryTransition();
 		return this;
 	}
 
 	public String clickSubCategoryByIndex(int index) {
+
+		LoggerUtil.info("Clicking subcategory by index: " + index);
+		ExtentReportLogger.logStep("Selecting subcategory by index: " + index);
+
 		List<WebElement> subCategories = driver.findElements(subCategoriesByLastClickedCategory());
 
 		if (index >= subCategories.size()) {
@@ -118,20 +149,37 @@ public class CategoryMenuComponent extends BaseComponent {
 
 		WebElement subCategory = subCategories.get(index);
 		String subCategoryTitle = subCategory.getAttribute("innerText");
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", subCategory);
+		jsClick(subCategory);
+
+		LoggerUtil.info("Subcategory clicked: " + subCategoryTitle);
+		ExtentReportLogger.pass("Navigated to subcategory: " + subCategoryTitle);
+
 		return subCategoryTitle;
 	}
 
-	//waits and transitions
+	// waits and transitions
 	private void waitForCategoryTransition() {
+
+		LoggerUtil.info("Waiting for category transition animations");
+
 		wait.visible(visibleMenu);
+		System.out.println("Visible menu waited");
 		wait.waitForCSSTransitionToComplete(visibleMenu);
 		wait.waitForCSSTransitionToComplete(leftMenu);
+
+		LoggerUtil.info("Category transition completed");
+		ExtentReportLogger.info("Menu animation completed");
 	}
 
 	public CategoryMenuComponent waitForMenuToOpen() {
+
+		LoggerUtil.info("Waiting for menu canvas to be visible");
+
 		wait.visible(menuCanvas);
 		wait.waitForCSSTransitionToComplete(menuCanvas);
+
+		LoggerUtil.info("Menu canvas fully loaded");
+
 		return this;
 	}
 
@@ -155,14 +203,25 @@ public class CategoryMenuComponent extends BaseComponent {
 		});
 	}
 
-	//navigation helpers
+	// navigation helpers
 
 	public void clickSubCategory(String subCategoryText) {
+
+		LoggerUtil.info("Clicking subcategory: " + subCategoryText);
+		ExtentReportLogger.logStep("Clicking subcategory: " + subCategoryText);
+
 		WebElement subCategory = wait.clickable(getSubCategory(subCategoryText));
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", subCategory);
+		jsClick(subCategory);
+
+		ExtentReportLogger.pass("Subcategory clicked: " + subCategoryText);
+
 	}
 
 	public void navigateTo(String categoryText, String subCategoryText) {
+
+		LoggerUtil.info("Navigating to Category: " + categoryText + " | Subcategory: " + subCategoryText);
+		ExtentReportLogger.logStep("Navigating through menu");
+
 		clickCategory(categoryText);
 		if (subCategoryText != null && !subCategoryText.isEmpty()) {
 			clickSubCategory(subCategoryText);
@@ -171,8 +230,7 @@ public class CategoryMenuComponent extends BaseComponent {
 
 	private void scrollIntoViewWithinMenu(WebElement element) {
 		try {
-			((JavascriptExecutor) driver)
-					.executeScript("arguments[0].scrollIntoView({behavior: 'auto', block: 'center'});", element);
+			jsScrollIntoView(element);
 		} catch (Exception e) {
 		}
 	}

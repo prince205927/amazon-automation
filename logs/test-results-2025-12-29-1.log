@@ -1,0 +1,930 @@
+2025-12-29 09:07:30.454 - Setting up test: OutOfStockTest
+2025-12-29 09:07:34.420 - WebDriver initialized successfully
+2025-12-29 09:07:34.430 - Opening Amazon homepage
+2025-12-29 09:07:37.004 - Cookies cleared
+2025-12-29 09:07:47.275 - Homepage loaded directly
+2025-12-29 09:08:15.776 - Tearing down test: OutOfStockTest
+2025-12-29 09:08:16.429 - WebDriver closed successfully
+2025-12-29 09:09:09.397 - Setting up test: OutOfStockTest
+2025-12-29 09:09:11.640 - WebDriver initialized successfully
+2025-12-29 09:09:11.646 - Opening Amazon homepage
+2025-12-29 09:09:14.232 - Cookies cleared
+2025-12-29 09:09:24.473 - Homepage loaded directly
+2025-12-29 09:11:22.323 - Tearing down test: OutOfStockTest
+2025-12-29 09:11:23.036 - WebDriver closed successfully
+2025-12-29 09:12:00.817 - Setting up test: OutOfStockTest
+2025-12-29 09:12:03.110 - WebDriver initialized successfully
+2025-12-29 09:12:03.118 - Opening Amazon homepage
+2025-12-29 09:12:05.088 - Cookies cleared
+2025-12-29 09:12:15.228 - Homepage loaded directly
+2025-12-29 09:13:13.348 - Tearing down test: OutOfStockTest
+2025-12-29 09:13:14.056 - WebDriver closed successfully
+2025-12-29 09:15:07.667 - Setting up test: OutOfStockTest
+2025-12-29 09:15:09.996 - WebDriver initialized successfully
+2025-12-29 09:15:10.006 - Opening Amazon homepage
+2025-12-29 09:15:12.877 - Cookies cleared
+2025-12-29 09:15:12.909 - Continue page displayed, clicking continue shopping
+2025-12-29 09:15:56.771 - Tearing down test: OutOfStockTest
+2025-12-29 09:15:57.325 - WebDriver closed successfully
+2025-12-29 09:17:19.754 - Setting up test: OutOfStockTest
+2025-12-29 09:17:22.089 - WebDriver initialized successfully
+2025-12-29 09:17:22.101 - Opening Amazon homepage
+2025-12-29 09:17:23.870 - Cookies cleared
+2025-12-29 09:17:34.054 - Homepage loaded directly
+2025-12-29 09:20:02.537 - Tearing down test: OutOfStockTest
+2025-12-29 09:20:03.233 - WebDriver closed successfully
+2025-12-29 09:22:18.195 - Setting up test: OutOfStockTest
+2025-12-29 09:22:20.549 - WebDriver initialized successfully
+2025-12-29 09:22:20.559 - Opening Amazon homepage
+2025-12-29 09:22:22.568 - Cookies cleared
+2025-12-29 09:22:32.762 - Homepage loaded directly
+2025-12-29 09:22:49.775 - Tearing down test: OutOfStockTest
+2025-12-29 09:22:50.411 - WebDriver closed successfully
+2025-12-29 09:27:52.561 - Setting up test: OutOfStockTest
+2025-12-29 09:27:54.768 - WebDriver initialized successfully
+2025-12-29 09:27:54.774 - Opening Amazon homepage
+2025-12-29 09:27:56.790 - Cookies cleared
+2025-12-29 09:28:06.890 - Homepage loaded directly
+2025-12-29 09:30:45.536 - Tearing down test: OutOfStockTest
+2025-12-29 09:30:46.099 - WebDriver closed successfully
+2025-12-29 09:40:55.253 - Setting up test: AddToCartTest
+2025-12-29 09:40:58.838 - WebDriver initialized successfully
+2025-12-29 09:40:58.846 - Opening Amazon homepage
+2025-12-29 09:41:00.917 - Cookies cleared
+2025-12-29 09:41:11.012 - Homepage loaded directly
+2025-12-29 09:43:51.944 - Tearing down test: AddToCartTest
+2025-12-29 09:43:52.695 - WebDriver closed successfully
+2025-12-29 09:45:38.488 - Setting up test: AddToCartTest
+2025-12-29 09:45:40.645 - WebDriver initialized successfully
+2025-12-29 09:45:40.653 - Opening Amazon homepage
+2025-12-29 09:45:43.032 - Cookies cleared
+2025-12-29 09:45:53.158 - Homepage loaded directly
+2025-12-29 09:48:22.123 - Tearing down test: AddToCartTest
+2025-12-29 09:48:22.795 - WebDriver closed successfully
+2025-12-29 09:53:35.809 - Setting up test: AddToCartTest
+2025-12-29 09:53:37.954 - WebDriver initialized successfully
+2025-12-29 09:53:37.962 - Opening Amazon homepage
+2025-12-29 09:53:40.789 - Cookies cleared
+2025-12-29 09:53:40.820 - Continue page displayed, clicking continue shopping
+2025-12-29 09:54:36.396 - Tearing down test: AddToCartTest
+2025-12-29 09:54:36.847 - WebDriver closed successfully
+2025-12-29 10:04:05.580 - Setting up test: AddToCartTest
+2025-12-29 10:04:07.803 - WebDriver initialized successfully
+2025-12-29 10:04:07.811 - Opening Amazon homepage
+2025-12-29 10:04:10.269 - Cookies cleared
+2025-12-29 10:04:10.303 - Continue page displayed, clicking continue shopping
+2025-12-29 10:05:05.201 - Tearing down test: AddToCartTest
+2025-12-29 10:05:05.650 - WebDriver closed successfully
+2025-12-29 10:07:02.540 - Setting up test: AddToCartTest
+2025-12-29 10:07:04.765 - WebDriver initialized successfully
+2025-12-29 10:07:04.775 - Opening Amazon homepage
+2025-12-29 10:07:07.421 - Cookies cleared
+2025-12-29 10:07:07.450 - Continue page displayed, clicking continue shopping
+2025-12-29 10:07:19.462 - Tearing down test: AddToCartTest
+2025-12-29 10:07:19.858 - WebDriver closed successfully
+2025-12-29 10:07:42.918 - Setting up test: AddToCartTest
+2025-12-29 10:07:46.116 - WebDriver initialized successfully
+2025-12-29 10:07:46.125 - Opening Amazon homepage
+2025-12-29 10:07:46.968 - Tearing down test: AddToCartTest
+2025-12-29 10:07:47.229 - WebDriver closed successfully
+2025-12-29 10:07:55.187 - Setting up test: AddToCartTest
+2025-12-29 10:07:57.349 - WebDriver initialized successfully
+2025-12-29 10:07:57.359 - Opening Amazon homepage
+2025-12-29 10:07:59.782 - Cookies cleared
+2025-12-29 10:07:59.811 - Continue page displayed, clicking continue shopping
+2025-12-29 10:08:12.770 - Tearing down test: AddToCartTest
+2025-12-29 10:08:13.168 - WebDriver closed successfully
+2025-12-29 10:09:03.014 - Setting up test: AddToCartTest
+2025-12-29 10:09:05.159 - WebDriver initialized successfully
+2025-12-29 10:09:05.166 - Opening Amazon homepage
+2025-12-29 10:09:07.251 - Cookies cleared
+2025-12-29 10:09:17.629 - Homepage loaded directly
+2025-12-29 10:09:28.499 - Tearing down test: AddToCartTest
+2025-12-29 10:09:28.929 - WebDriver closed successfully
+2025-12-29 10:11:46.534 - Setting up test: AddToCartTest
+2025-12-29 10:11:48.599 - WebDriver initialized successfully
+2025-12-29 10:11:48.606 - Opening Amazon homepage
+2025-12-29 10:11:51.121 - Cookies cleared
+2025-12-29 10:11:51.153 - Continue page displayed, clicking continue shopping
+2025-12-29 10:12:03.392 - Tearing down test: AddToCartTest
+2025-12-29 10:12:03.778 - WebDriver closed successfully
+2025-12-29 10:21:00.280 - Setting up test: AddToCartTest
+2025-12-29 10:21:02.426 - WebDriver initialized successfully
+2025-12-29 10:21:02.436 - Opening Amazon homepage
+2025-12-29 10:21:04.771 - Cookies cleared
+2025-12-29 10:21:15.015 - Homepage loaded directly
+2025-12-29 10:21:26.053 - Tearing down test: AddToCartTest
+2025-12-29 10:21:26.516 - WebDriver closed successfully
+2025-12-29 10:25:41.269 - Setting up test: AddToCartTest
+2025-12-29 10:25:43.308 - WebDriver initialized successfully
+2025-12-29 10:25:43.319 - Opening Amazon homepage
+2025-12-29 10:25:45.036 - Cookies cleared
+2025-12-29 10:25:55.440 - Homepage loaded directly
+2025-12-29 10:26:32.381 - Tearing down test: AddToCartTest
+2025-12-29 10:26:32.847 - WebDriver closed successfully
+2025-12-29 10:36:04.627 - Setting up test: AddToCartTest
+2025-12-29 10:36:06.668 - WebDriver initialized successfully
+2025-12-29 10:36:06.675 - Opening Amazon homepage
+2025-12-29 10:36:09.325 - Cookies cleared
+2025-12-29 10:36:09.354 - Continue page displayed, clicking continue shopping
+2025-12-29 10:36:37.806 - Tearing down test: AddToCartTest
+2025-12-29 10:36:38.252 - WebDriver closed successfully
+2025-12-29 10:38:42.285 - Setting up test: AddToCartTest
+2025-12-29 10:38:44.484 - WebDriver initialized successfully
+2025-12-29 10:38:44.493 - Opening Amazon homepage
+2025-12-29 10:38:46.211 - Cookies cleared
+2025-12-29 10:38:56.670 - Homepage loaded directly
+2025-12-29 10:39:23.580 - Tearing down test: AddToCartTest
+2025-12-29 10:39:24.034 - WebDriver closed successfully
+2025-12-29 10:40:06.629 - Setting up test: AddToCartTest
+2025-12-29 10:40:08.735 - WebDriver initialized successfully
+2025-12-29 10:40:08.743 - Opening Amazon homepage
+2025-12-29 10:40:11.350 - Cookies cleared
+2025-12-29 10:40:11.386 - Continue page displayed, clicking continue shopping
+2025-12-29 10:40:55.278 - Tearing down test: AddToCartTest
+2025-12-29 10:40:55.688 - WebDriver closed successfully
+2025-12-29 10:48:06.186 - Setting up test: AddToCartTest
+2025-12-29 10:48:08.229 - WebDriver initialized successfully
+2025-12-29 10:48:08.236 - Opening Amazon homepage
+2025-12-29 10:48:10.058 - Cookies cleared
+2025-12-29 10:48:20.109 - Homepage loaded directly
+2025-12-29 10:48:47.246 - Tearing down test: AddToCartTest
+2025-12-29 10:48:47.654 - WebDriver closed successfully
+2025-12-29 11:00:05.698 - Setting up test: AddToCartTest
+2025-12-29 11:00:07.907 - WebDriver initialized successfully
+2025-12-29 11:00:07.917 - Opening Amazon homepage
+2025-12-29 11:00:10.004 - Cookies cleared
+2025-12-29 11:00:20.217 - Homepage loaded directly
+2025-12-29 11:00:48.098 - Tearing down test: AddToCartTest
+2025-12-29 11:00:48.526 - WebDriver closed successfully
+2025-12-29 11:07:23.594 - Setting up test: AddToCartTest
+2025-12-29 11:07:25.720 - WebDriver initialized successfully
+2025-12-29 11:07:25.728 - Opening Amazon homepage
+2025-12-29 11:07:27.517 - Cookies cleared
+2025-12-29 11:07:37.864 - Homepage loaded directly
+2025-12-29 11:07:53.853 - Tearing down test: AddToCartTest
+2025-12-29 11:07:54.107 - WebDriver closed successfully
+2025-12-29 11:08:30.087 - Setting up test: AddToCartTest
+2025-12-29 11:08:33.249 - WebDriver initialized successfully
+2025-12-29 11:08:33.256 - Opening Amazon homepage
+2025-12-29 11:08:35.552 - Cookies cleared
+2025-12-29 11:08:46.070 - Homepage loaded directly
+2025-12-29 11:09:13.254 - Tearing down test: AddToCartTest
+2025-12-29 11:09:13.707 - WebDriver closed successfully
+2025-12-29 11:18:15.982 - Setting up test: AddToCartTest
+2025-12-29 11:18:18.087 - WebDriver initialized successfully
+2025-12-29 11:18:18.096 - Opening Amazon homepage
+2025-12-29 11:18:19.972 - Cookies cleared
+2025-12-29 11:18:30.022 - Homepage loaded directly
+2025-12-29 11:18:57.226 - Tearing down test: AddToCartTest
+2025-12-29 11:18:57.631 - WebDriver closed successfully
+2025-12-29 11:24:38.467 - Setting up test: AddToCartTest
+2025-12-29 11:24:40.574 - WebDriver initialized successfully
+2025-12-29 11:24:40.582 - Opening Amazon homepage
+2025-12-29 11:24:43.065 - Cookies cleared
+2025-12-29 11:24:43.099 - Continue page displayed, clicking continue shopping
+2025-12-29 11:24:47.774 - Tearing down test: AddToCartTest
+2025-12-29 11:24:48.005 - WebDriver closed successfully
+2025-12-29 11:25:02.545 - Setting up test: AddToCartTest
+2025-12-29 11:25:04.712 - WebDriver initialized successfully
+2025-12-29 11:25:04.723 - Opening Amazon homepage
+2025-12-29 11:25:07.148 - Cookies cleared
+2025-12-29 11:25:07.183 - Continue page displayed, clicking continue shopping
+2025-12-29 11:25:35.481 - Tearing down test: AddToCartTest
+2025-12-29 11:25:35.926 - WebDriver closed successfully
+2025-12-29 11:27:10.277 - Setting up test: AddToCartTest
+2025-12-29 11:27:12.411 - WebDriver initialized successfully
+2025-12-29 11:27:12.423 - Opening Amazon homepage
+2025-12-29 11:27:14.319 - Cookies cleared
+2025-12-29 11:27:24.434 - Homepage loaded directly
+2025-12-29 11:27:51.623 - Tearing down test: AddToCartTest
+2025-12-29 11:27:52.048 - WebDriver closed successfully
+2025-12-29 11:28:06.498 - Setting up test: AddToCartTest
+2025-12-29 11:28:08.590 - WebDriver initialized successfully
+2025-12-29 11:28:08.597 - Opening Amazon homepage
+2025-12-29 11:28:10.010 - Cookies cleared
+2025-12-29 11:28:20.234 - Homepage loaded directly
+2025-12-29 11:29:03.950 - Tearing down test: AddToCartTest
+2025-12-29 11:29:04.371 - WebDriver closed successfully
+2025-12-29 11:30:28.243 - Setting up test: AddToCartTest
+2025-12-29 11:30:30.349 - WebDriver initialized successfully
+2025-12-29 11:30:30.359 - Opening Amazon homepage
+2025-12-29 11:30:32.473 - Cookies cleared
+2025-12-29 11:30:42.845 - Homepage loaded directly
+2025-12-29 11:31:11.305 - Tearing down test: AddToCartTest
+2025-12-29 11:31:11.787 - WebDriver closed successfully
+2025-12-29 11:41:06.478 - Setting up test: AddToCartTest
+2025-12-29 11:41:08.530 - WebDriver initialized successfully
+2025-12-29 11:41:08.540 - Opening Amazon homepage
+2025-12-29 11:41:11.143 - Cookies cleared
+2025-12-29 11:41:11.180 - Continue page displayed, clicking continue shopping
+2025-12-29 11:42:30.823 - Tearing down test: AddToCartTest
+2025-12-29 11:42:31.253 - WebDriver closed successfully
+2025-12-29 11:48:31.691 - Setting up test: AddToCartTest
+2025-12-29 11:48:33.788 - WebDriver initialized successfully
+2025-12-29 11:48:33.795 - Opening Amazon homepage
+2025-12-29 11:48:35.528 - Cookies cleared
+2025-12-29 11:48:45.566 - Homepage loaded directly
+2025-12-29 11:49:32.135 - Setting up test: AddToCartTest
+2025-12-29 11:49:34.277 - WebDriver initialized successfully
+2025-12-29 11:49:34.286 - Opening Amazon homepage
+2025-12-29 11:49:36.414 - Cookies cleared
+2025-12-29 11:49:46.530 - Homepage loaded directly
+2025-12-29 11:51:53.455 - Tearing down test: AddToCartTest
+2025-12-29 11:51:53.850 - WebDriver closed successfully
+2025-12-29 12:48:49.725 - Setting up test: AddToCartTest
+2025-12-29 12:48:52.867 - WebDriver initialized successfully
+2025-12-29 12:48:52.874 - Opening Amazon homepage
+2025-12-29 12:48:55.633 - Cookies cleared
+2025-12-29 12:48:55.660 - Continue page displayed, clicking continue shopping
+2025-12-29 12:49:06.513 - Tearing down test: AddToCartTest
+2025-12-29 12:49:06.857 - WebDriver closed successfully
+2025-12-29 12:52:15.078 - Setting up test: AddToCartTest
+2025-12-29 12:52:17.342 - WebDriver initialized successfully
+2025-12-29 12:52:17.352 - Opening Amazon homepage
+2025-12-29 12:52:19.468 - Cookies cleared
+2025-12-29 12:52:29.664 - Homepage loaded directly
+2025-12-29 12:54:35.996 - Tearing down test: AddToCartTest
+2025-12-29 12:54:36.419 - WebDriver closed successfully
+2025-12-29 12:56:45.027 - Setting up test: AddToCartTest
+2025-12-29 12:56:47.165 - WebDriver initialized successfully
+2025-12-29 12:56:47.174 - Opening Amazon homepage
+2025-12-29 12:56:49.703 - Cookies cleared
+2025-12-29 12:56:49.730 - Continue page displayed, clicking continue shopping
+2025-12-29 12:57:02.207 - Tearing down test: AddToCartTest
+2025-12-29 12:57:02.698 - WebDriver closed successfully
+2025-12-29 13:01:25.641 - Setting up test: AddToCartTest
+2025-12-29 13:01:27.770 - WebDriver initialized successfully
+2025-12-29 13:01:27.780 - Opening Amazon homepage
+2025-12-29 13:01:30.372 - Cookies cleared
+2025-12-29 13:01:30.406 - Continue page displayed, clicking continue shopping
+2025-12-29 13:03:39.392 - Tearing down test: AddToCartTest
+2025-12-29 13:03:39.848 - WebDriver closed successfully
+2025-12-29 13:14:32.500 - Setting up test: OutOfStockTest
+2025-12-29 13:14:36.079 - WebDriver initialized successfully
+2025-12-29 13:14:36.099 - Opening Amazon homepage
+2025-12-29 13:14:38.026 - Cookies cleared
+2025-12-29 13:14:48.529 - Homepage loaded directly
+2025-12-29 13:17:14.362 - Tearing down test: OutOfStockTest
+2025-12-29 13:17:14.394 - WebDriver closed successfully
+2025-12-29 13:19:41.843 - Setting up test: OutOfStockTest
+2025-12-29 13:19:45.031 - WebDriver initialized successfully
+2025-12-29 13:19:45.048 - Opening Amazon homepage
+2025-12-29 13:19:47.066 - Cookies cleared
+2025-12-29 13:19:57.288 - Homepage loaded directly
+2025-12-29 13:21:27.539 - Setting up test: OutOfStockTest
+2025-12-29 13:21:30.612 - WebDriver initialized successfully
+2025-12-29 13:21:30.626 - Opening Amazon homepage
+2025-12-29 13:21:32.258 - Cookies cleared
+2025-12-29 13:21:42.313 - Homepage loaded directly
+2025-12-29 13:22:02.553 - Tearing down test: OutOfStockTest
+2025-12-29 13:22:02.938 - WebDriver closed successfully
+2025-12-29 13:22:12.827 - Setting up test: OutOfStockTest
+2025-12-29 13:22:15.704 - WebDriver initialized successfully
+2025-12-29 13:22:15.722 - Opening Amazon homepage
+2025-12-29 13:22:17.556 - Cookies cleared
+2025-12-29 13:22:27.979 - Homepage loaded directly
+2025-12-29 13:22:38.041 - Tearing down test: OutOfStockTest
+2025-12-29 13:22:38.865 - WebDriver closed successfully
+2025-12-29 13:39:25.067 - Tearing down test: OutOfStockTest
+2025-12-29 13:39:25.401 - WebDriver closed successfully
+2025-12-29 14:05:41.883 - Setting up test: OutOfStockTest
+2025-12-29 14:05:44.821 - WebDriver initialized successfully
+2025-12-29 14:05:44.827 - Opening Amazon homepage
+2025-12-29 14:05:46.761 - Cookies cleared
+2025-12-29 14:05:56.811 - Homepage loaded directly
+2025-12-29 14:06:05.471 - Tearing down test: OutOfStockTest
+2025-12-29 14:06:05.905 - WebDriver closed successfully
+2025-12-29 14:12:04.741 - Setting up test: CategoryNavigationTests
+2025-12-29 14:12:06.854 - WebDriver initialized successfully
+2025-12-29 14:12:06.856 - Opening Amazon homepage
+2025-12-29 14:12:08.873 - Cookies cleared
+2025-12-29 14:12:19.266 - Homepage loaded directly
+2025-12-29 14:12:53.086 - Tearing down test: CategoryNavigationTests
+2025-12-29 14:12:53.434 - WebDriver closed successfully
+2025-12-29 14:15:27.468 - Setting up test: CategoryNavigationTests
+2025-12-29 14:15:29.486 - WebDriver initialized successfully
+2025-12-29 14:15:29.492 - Opening Amazon homepage
+2025-12-29 14:15:32.733 - Cookies cleared
+2025-12-29 14:15:32.768 - Continue page displayed, clicking continue shopping
+2025-12-29 14:15:55.151 - Tearing down test: CategoryNavigationTests
+2025-12-29 14:15:55.526 - WebDriver closed successfully
+2025-12-29 14:16:00.904 - Setting up test: CategoryNavigationTests
+2025-12-29 14:16:02.959 - WebDriver initialized successfully
+2025-12-29 14:16:02.963 - Opening Amazon homepage
+2025-12-29 14:16:05.377 - Cookies cleared
+2025-12-29 14:16:05.406 - Continue page displayed, clicking continue shopping
+2025-12-29 14:16:25.167 - Tearing down test: CategoryNavigationTests
+2025-12-29 14:16:25.556 - WebDriver closed successfully
+2025-12-29 14:20:08.890 - Setting up test: BrandTests
+2025-12-29 14:20:10.962 - WebDriver initialized successfully
+2025-12-29 14:20:10.971 - Opening Amazon homepage
+2025-12-29 14:20:12.718 - Cookies cleared
+2025-12-29 14:20:23.065 - Homepage loaded directly
+2025-12-29 14:20:27.527 - Tearing down test: BrandTests
+2025-12-29 14:20:29.586 - WebDriver closed successfully
+2025-12-29 14:20:49.126 - Setting up test: BrandTests
+2025-12-29 14:20:51.336 - WebDriver initialized successfully
+2025-12-29 14:20:51.337 - Opening Amazon homepage
+2025-12-29 14:20:52.905 - Cookies cleared
+2025-12-29 14:21:03.364 - Homepage loaded directly
+2025-12-29 14:21:10.214 - Tearing down test: BrandTests
+2025-12-29 14:21:10.698 - WebDriver closed successfully
+2025-12-29 14:21:53.125 - Setting up test: PriceTests
+2025-12-29 14:21:55.388 - WebDriver initialized successfully
+2025-12-29 14:21:55.397 - Opening Amazon homepage
+2025-12-29 14:21:56.994 - Cookies cleared
+2025-12-29 14:22:07.352 - Homepage loaded directly
+2025-12-29 14:22:26.567 - Tearing down test: PriceTests
+2025-12-29 14:22:27.016 - WebDriver closed successfully
+2025-12-29 14:22:36.639 - Setting up test: PriceTests
+2025-12-29 14:22:38.871 - WebDriver initialized successfully
+2025-12-29 14:22:38.877 - Opening Amazon homepage
+2025-12-29 14:22:40.622 - Cookies cleared
+2025-12-29 14:22:50.934 - Homepage loaded directly
+2025-12-29 14:23:09.850 - Tearing down test: PriceTests
+2025-12-29 14:23:10.302 - WebDriver closed successfully
+2025-12-29 14:23:19.690 - Setting up test: PriceTests
+2025-12-29 14:23:22.143 - WebDriver initialized successfully
+2025-12-29 14:23:22.151 - Opening Amazon homepage
+2025-12-29 14:23:23.814 - Cookies cleared
+2025-12-29 14:23:33.852 - Homepage loaded directly
+2025-12-29 14:23:43.000 - Tearing down test: PriceTests
+2025-12-29 14:23:43.502 - WebDriver closed successfully
+2025-12-29 14:24:44.532 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:24:46.708 - WebDriver initialized successfully
+2025-12-29 14:24:46.721 - Opening Amazon homepage
+2025-12-29 14:24:48.656 - Cookies cleared
+2025-12-29 14:24:59.089 - Homepage loaded directly
+2025-12-29 14:25:06.458 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:25:06.940 - WebDriver closed successfully
+2025-12-29 14:25:17.594 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:25:19.720 - WebDriver initialized successfully
+2025-12-29 14:25:19.726 - Opening Amazon homepage
+2025-12-29 14:25:21.723 - Cookies cleared
+2025-12-29 14:25:31.990 - Homepage loaded directly
+2025-12-29 14:25:39.545 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:25:40.015 - WebDriver closed successfully
+2025-12-29 14:25:46.553 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:25:48.746 - WebDriver initialized successfully
+2025-12-29 14:25:48.746 - Opening Amazon homepage
+2025-12-29 14:25:50.854 - Cookies cleared
+2025-12-29 14:26:01.117 - Homepage loaded directly
+2025-12-29 14:26:13.315 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:26:13.894 - WebDriver closed successfully
+2025-12-29 14:28:08.002 - Setting up test: ProductDetailTests
+2025-12-29 14:28:10.134 - WebDriver initialized successfully
+2025-12-29 14:28:10.134 - Opening Amazon homepage
+2025-12-29 14:28:12.043 - Cookies cleared
+2025-12-29 14:28:22.487 - Homepage loaded directly
+2025-12-29 14:28:28.927 - Tearing down test: ProductDetailTests
+2025-12-29 14:28:29.466 - WebDriver closed successfully
+2025-12-29 14:31:35.438 - Setting up test: SearchAutosuggestTests
+2025-12-29 14:31:37.523 - WebDriver initialized successfully
+2025-12-29 14:31:37.536 - Opening Amazon homepage
+2025-12-29 14:31:39.942 - Cookies cleared
+2025-12-29 14:31:50.389 - Homepage loaded directly
+2025-12-29 14:31:54.276 - Tearing down test: SearchAutosuggestTests
+2025-12-29 14:31:54.677 - WebDriver closed successfully
+2025-12-29 14:33:51.305 - Setting up test: AddToCartTest
+2025-12-29 14:33:53.389 - WebDriver initialized successfully
+2025-12-29 14:33:53.396 - Opening Amazon homepage
+2025-12-29 14:33:55.440 - Cookies cleared
+2025-12-29 14:34:05.902 - Homepage loaded directly
+2025-12-29 14:37:27.855 - Tearing down test: AddToCartTest
+2025-12-29 14:37:28.644 - WebDriver closed successfully
+2025-12-29 14:44:21.161 - Setting up test: VariantTests
+2025-12-29 14:44:23.315 - WebDriver initialized successfully
+2025-12-29 14:44:23.323 - Opening Amazon homepage
+2025-12-29 14:44:25.561 - Cookies cleared
+2025-12-29 14:44:35.638 - Homepage loaded directly
+2025-12-29 14:44:48.708 - Tearing down test: VariantTests
+2025-12-29 14:44:49.205 - WebDriver closed successfully
+2025-12-29 14:44:56.727 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:44:58.883 - WebDriver initialized successfully
+2025-12-29 14:44:58.883 - Opening Amazon homepage
+2025-12-29 14:45:00.517 - Cookies cleared
+2025-12-29 14:45:10.717 - Homepage loaded directly
+2025-12-29 14:45:17.503 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:45:18.069 - WebDriver closed successfully
+2025-12-29 14:45:25.704 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:45:27.922 - WebDriver initialized successfully
+2025-12-29 14:45:27.936 - Opening Amazon homepage
+2025-12-29 14:45:30.473 - Cookies cleared
+2025-12-29 14:45:30.512 - Continue page displayed, clicking continue shopping
+2025-12-29 14:45:41.341 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:45:41.717 - WebDriver closed successfully
+2025-12-29 14:45:49.378 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:45:51.516 - WebDriver initialized successfully
+2025-12-29 14:45:51.523 - Opening Amazon homepage
+2025-12-29 14:45:54.035 - Cookies cleared
+2025-12-29 14:45:54.060 - Continue page displayed, clicking continue shopping
+2025-12-29 14:46:02.948 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:46:03.393 - WebDriver closed successfully
+2025-12-29 14:46:14.790 - Setting up test: ZoomAndSwitchTests
+2025-12-29 14:46:16.939 - WebDriver initialized successfully
+2025-12-29 14:46:16.949 - Opening Amazon homepage
+2025-12-29 14:46:19.475 - Cookies cleared
+2025-12-29 14:46:19.503 - Continue page displayed, clicking continue shopping
+2025-12-29 14:46:32.234 - Tearing down test: ZoomAndSwitchTests
+2025-12-29 14:46:32.591 - WebDriver closed successfully
+2025-12-29 14:50:07.137 - Setting up test: PaginationTests
+2025-12-29 14:50:09.222 - WebDriver initialized successfully
+2025-12-29 14:50:09.228 - Opening Amazon homepage
+2025-12-29 14:50:12.404 - Cookies cleared
+2025-12-29 14:50:12.436 - Continue page displayed, clicking continue shopping
+2025-12-29 14:50:24.107 - Tearing down test: PaginationTests
+2025-12-29 14:50:24.607 - WebDriver closed successfully
+2025-12-29 14:50:55.592 - Setting up test: PaginationTests
+2025-12-29 14:50:57.723 - WebDriver initialized successfully
+2025-12-29 14:50:57.731 - Opening Amazon homepage
+2025-12-29 14:51:00.195 - Cookies cleared
+2025-12-29 14:51:00.221 - Continue page displayed, clicking continue shopping
+2025-12-29 14:51:10.568 - Tearing down test: PaginationTests
+2025-12-29 14:51:10.899 - WebDriver closed successfully
+2025-12-29 14:52:44.247 - Setting up test: AddToCartTest
+2025-12-29 14:52:46.310 - WebDriver initialized successfully
+2025-12-29 14:52:46.321 - Opening Amazon homepage
+2025-12-29 14:52:48.855 - Cookies cleared
+2025-12-29 14:52:58.995 - Homepage loaded directly
+2025-12-29 15:08:26.546 - Setting up test: RatingsTest
+2025-12-29 15:08:29.483 - WebDriver initialized successfully
+2025-12-29 15:08:29.491 - Opening Amazon homepage
+2025-12-29 15:08:31.341 - Cookies cleared
+2025-12-29 15:08:41.664 - Homepage loaded directly
+2025-12-29 15:08:47.322 - Tearing down test: RatingsTest
+2025-12-29 15:08:47.783 - WebDriver closed successfully
+2025-12-29 15:08:57.631 - Setting up test: AddToCartTest
+2025-12-29 15:08:59.760 - WebDriver initialized successfully
+2025-12-29 15:08:59.767 - Opening Amazon homepage
+2025-12-29 15:09:01.616 - Cookies cleared
+2025-12-29 15:09:11.948 - Homepage loaded directly
+2025-12-29 15:09:39.298 - Tearing down test: AddToCartTest
+2025-12-29 15:09:39.733 - WebDriver closed successfully
+2025-12-29 15:10:29.501 - Setting up test: RemoveItemTest
+2025-12-29 15:10:31.577 - WebDriver initialized successfully
+2025-12-29 15:10:31.589 - Opening Amazon homepage
+2025-12-29 15:10:34.187 - Cookies cleared
+2025-12-29 15:10:34.216 - Continue page displayed, clicking continue shopping
+2025-12-29 15:13:43.478 - Tearing down test: RemoveItemTest
+2025-12-29 15:13:44.264 - WebDriver closed successfully
+2025-12-29 15:21:08.657 - Setting up test: RemoveItemTest
+2025-12-29 15:21:11.859 - WebDriver initialized successfully
+2025-12-29 15:21:11.889 - Opening Amazon homepage
+2025-12-29 15:21:13.796 - Cookies cleared
+2025-12-29 15:21:24.162 - Homepage loaded directly
+2025-12-29 15:22:34.303 - Tearing down test: RemoveItemTest
+2025-12-29 15:22:35.248 - WebDriver closed successfully
+2025-12-29 15:23:28.696 - Setting up test: RemoveItemTest
+2025-12-29 15:23:32.435 - WebDriver initialized successfully
+2025-12-29 15:23:32.456 - Opening Amazon homepage
+2025-12-29 15:23:34.780 - Cookies cleared
+2025-12-29 15:23:45.217 - Homepage loaded directly
+2025-12-29 15:25:39.767 - Tearing down test: RemoveItemTest
+2025-12-29 15:25:40.781 - WebDriver closed successfully
+2025-12-29 15:26:08.328 - Setting up test: RemoveItemTest
+2025-12-29 15:26:12.134 - WebDriver initialized successfully
+2025-12-29 15:26:12.150 - Opening Amazon homepage
+2025-12-29 15:26:14.339 - Cookies cleared
+2025-12-29 15:26:24.505 - Homepage loaded directly
+2025-12-29 15:27:53.263 - Tearing down test: RemoveItemTest
+2025-12-29 15:27:54.063 - WebDriver closed successfully
+2025-12-29 15:28:54.979 - Setting up test: RemoveItemTest
+2025-12-29 15:28:58.720 - WebDriver initialized successfully
+2025-12-29 15:28:58.742 - Opening Amazon homepage
+2025-12-29 15:29:00.977 - Cookies cleared
+2025-12-29 15:29:11.267 - Homepage loaded directly
+2025-12-29 15:30:33.060 - Tearing down test: RemoveItemTest
+2025-12-29 15:30:33.782 - WebDriver closed successfully
+2025-12-29 15:30:50.968 - Setting up test: RemoveItemTest
+2025-12-29 15:30:53.085 - WebDriver initialized successfully
+2025-12-29 15:30:53.093 - Opening Amazon homepage
+2025-12-29 15:30:54.854 - Cookies cleared
+2025-12-29 15:31:05.220 - Homepage loaded directly
+2025-12-29 15:32:10.377 - Tearing down test: RemoveItemTest
+2025-12-29 15:32:11.129 - WebDriver closed successfully
+2025-12-29 15:33:07.934 - Setting up test: UpdateQuantityTest
+2025-12-29 15:33:09.966 - WebDriver initialized successfully
+2025-12-29 15:33:09.972 - Opening Amazon homepage
+2025-12-29 15:33:12.147 - Cookies cleared
+2025-12-29 15:33:22.509 - Homepage loaded directly
+2025-12-29 15:33:39.173 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:33:39.549 - WebDriver closed successfully
+2025-12-29 15:33:52.844 - Setting up test: UpdateQuantityTest
+2025-12-29 15:33:54.910 - WebDriver initialized successfully
+2025-12-29 15:33:54.910 - Opening Amazon homepage
+2025-12-29 15:33:56.672 - Cookies cleared
+2025-12-29 15:34:06.924 - Homepage loaded directly
+2025-12-29 15:35:10.395 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:35:10.984 - WebDriver closed successfully
+2025-12-29 15:36:59.140 - Setting up test: UpdateQuantityTest
+2025-12-29 15:37:01.227 - WebDriver initialized successfully
+2025-12-29 15:37:01.238 - Opening Amazon homepage
+2025-12-29 15:37:03.889 - Cookies cleared
+2025-12-29 15:37:03.911 - Continue page displayed, clicking continue shopping
+2025-12-29 15:38:18.122 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:38:18.750 - WebDriver closed successfully
+2025-12-29 15:42:07.922 - Setting up test: UpdateQuantityTest
+2025-12-29 15:42:10.019 - WebDriver initialized successfully
+2025-12-29 15:42:10.024 - Opening Amazon homepage
+2025-12-29 15:42:12.453 - Cookies cleared
+2025-12-29 15:42:22.715 - Homepage loaded directly
+2025-12-29 15:44:19.328 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:44:20.018 - WebDriver closed successfully
+2025-12-29 15:44:34.961 - Setting up test: UpdateQuantityTest
+2025-12-29 15:44:37.037 - WebDriver initialized successfully
+2025-12-29 15:44:37.043 - Opening Amazon homepage
+2025-12-29 15:44:39.447 - Cookies cleared
+2025-12-29 15:44:49.486 - Homepage loaded directly
+2025-12-29 15:46:00.129 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:46:00.695 - WebDriver closed successfully
+2025-12-29 15:46:35.793 - Setting up test: UpdateQuantityTest
+2025-12-29 15:46:37.959 - WebDriver initialized successfully
+2025-12-29 15:46:37.969 - Opening Amazon homepage
+2025-12-29 15:46:40.733 - Cookies cleared
+2025-12-29 15:46:40.760 - Continue page displayed, clicking continue shopping
+2025-12-29 15:47:14.585 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:47:15.058 - WebDriver closed successfully
+2025-12-29 15:47:44.969 - Setting up test: UpdateQuantityTest
+2025-12-29 15:47:47.023 - WebDriver initialized successfully
+2025-12-29 15:47:47.029 - Opening Amazon homepage
+2025-12-29 15:47:49.699 - Cookies cleared
+2025-12-29 15:47:49.719 - Continue page displayed, clicking continue shopping
+2025-12-29 15:48:28.752 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:48:29.450 - WebDriver closed successfully
+2025-12-29 15:49:01.806 - Setting up test: UpdateQuantityTest
+2025-12-29 15:49:03.901 - WebDriver initialized successfully
+2025-12-29 15:49:03.908 - Opening Amazon homepage
+2025-12-29 15:49:06.595 - Cookies cleared
+2025-12-29 15:49:06.631 - Continue page displayed, clicking continue shopping
+2025-12-29 15:50:14.602 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:50:15.245 - WebDriver closed successfully
+2025-12-29 15:55:19.894 - Setting up test: UpdateQuantityTest
+2025-12-29 15:55:22.273 - WebDriver initialized successfully
+2025-12-29 15:55:22.280 - Opening Amazon homepage
+2025-12-29 15:55:23.268 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:55:23.517 - WebDriver closed successfully
+2025-12-29 15:55:53.416 - Setting up test: UpdateQuantityTest
+2025-12-29 15:55:56.157 - WebDriver initialized successfully
+2025-12-29 15:55:56.171 - Opening Amazon homepage
+2025-12-29 15:55:58.277 - Cookies cleared
+2025-12-29 15:56:08.771 - Homepage loaded directly
+2025-12-29 15:57:11.263 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:57:11.795 - WebDriver closed successfully
+2025-12-29 15:57:37.389 - Setting up test: UpdateQuantityTest
+2025-12-29 15:57:39.535 - WebDriver initialized successfully
+2025-12-29 15:57:39.539 - Opening Amazon homepage
+2025-12-29 15:57:41.595 - Cookies cleared
+2025-12-29 15:57:52.070 - Homepage loaded directly
+2025-12-29 15:58:09.044 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:58:09.463 - WebDriver closed successfully
+2025-12-29 15:58:24.080 - Setting up test: UpdateQuantityTest
+2025-12-29 15:58:26.170 - WebDriver initialized successfully
+2025-12-29 15:58:26.179 - Opening Amazon homepage
+2025-12-29 15:58:28.784 - Cookies cleared
+2025-12-29 15:58:28.814 - Continue page displayed, clicking continue shopping
+2025-12-29 15:59:07.505 - Tearing down test: UpdateQuantityTest
+2025-12-29 15:59:08.069 - WebDriver closed successfully
+2025-12-29 16:01:12.546 - Setting up test: UpdateQuantityTest
+2025-12-29 16:01:14.666 - WebDriver initialized successfully
+2025-12-29 16:01:14.671 - Opening Amazon homepage
+2025-12-29 16:01:17.200 - Cookies cleared
+2025-12-29 16:01:27.402 - Homepage loaded directly
+2025-12-29 16:01:59.414 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:01:59.924 - WebDriver closed successfully
+2025-12-29 16:02:14.358 - Setting up test: UpdateQuantityTest
+2025-12-29 16:02:16.535 - WebDriver initialized successfully
+2025-12-29 16:02:16.542 - Opening Amazon homepage
+2025-12-29 16:02:18.344 - Cookies cleared
+2025-12-29 16:02:28.744 - Homepage loaded directly
+2025-12-29 16:03:11.964 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:03:12.544 - WebDriver closed successfully
+2025-12-29 16:03:57.616 - Setting up test: UpdateQuantityTest
+2025-12-29 16:03:59.721 - WebDriver initialized successfully
+2025-12-29 16:03:59.729 - Opening Amazon homepage
+2025-12-29 16:04:01.690 - Cookies cleared
+2025-12-29 16:04:11.926 - Homepage loaded directly
+2025-12-29 16:05:24.372 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:05:24.947 - WebDriver closed successfully
+2025-12-29 16:06:01.567 - Setting up test: UpdateQuantityTest
+2025-12-29 16:06:03.799 - WebDriver initialized successfully
+2025-12-29 16:06:03.811 - Opening Amazon homepage
+2025-12-29 16:06:06.461 - Cookies cleared
+2025-12-29 16:06:06.482 - Continue page displayed, clicking continue shopping
+2025-12-29 16:07:20.287 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:07:20.845 - WebDriver closed successfully
+2025-12-29 16:10:21.391 - Setting up test: UpdateQuantityTest
+2025-12-29 16:10:24.398 - WebDriver initialized successfully
+2025-12-29 16:10:24.406 - Opening Amazon homepage
+2025-12-29 16:10:26.668 - Cookies cleared
+2025-12-29 16:10:37.001 - Homepage loaded directly
+2025-12-29 16:12:07.098 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:12:07.675 - WebDriver closed successfully
+2025-12-29 16:14:34.159 - Setting up test: UpdateQuantityTest
+2025-12-29 16:14:36.246 - WebDriver initialized successfully
+2025-12-29 16:14:36.246 - Opening Amazon homepage
+2025-12-29 16:14:38.150 - Cookies cleared
+2025-12-29 16:14:48.350 - Homepage loaded directly
+2025-12-29 16:15:55.382 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:15:55.933 - WebDriver closed successfully
+2025-12-29 16:23:13.081 - Setting up test: UpdateQuantityTest
+2025-12-29 16:23:15.146 - WebDriver initialized successfully
+2025-12-29 16:23:15.158 - Opening Amazon homepage
+2025-12-29 16:23:17.211 - Cookies cleared
+2025-12-29 16:23:27.492 - Homepage loaded directly
+2025-12-29 16:24:11.491 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:24:11.523 - WebDriver closed successfully
+2025-12-29 16:24:25.635 - Setting up test: UpdateQuantityTest
+2025-12-29 16:24:27.736 - WebDriver initialized successfully
+2025-12-29 16:24:27.747 - Opening Amazon homepage
+2025-12-29 16:24:29.695 - Cookies cleared
+2025-12-29 16:24:40.051 - Homepage loaded directly
+2025-12-29 16:25:53.767 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:25:54.401 - WebDriver closed successfully
+2025-12-29 16:27:03.054 - Setting up test: UpdateQuantityTest
+2025-12-29 16:27:05.106 - WebDriver initialized successfully
+2025-12-29 16:27:05.114 - Opening Amazon homepage
+2025-12-29 16:27:07.104 - Cookies cleared
+2025-12-29 16:27:17.527 - Homepage loaded directly
+2025-12-29 16:27:47.569 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:27:48.164 - WebDriver closed successfully
+2025-12-29 16:28:03.104 - Setting up test: UpdateQuantityTest
+2025-12-29 16:28:06.349 - WebDriver initialized successfully
+2025-12-29 16:28:06.364 - Opening Amazon homepage
+2025-12-29 16:28:08.343 - Cookies cleared
+2025-12-29 16:28:18.664 - Homepage loaded directly
+2025-12-29 16:29:01.774 - Tearing down test: UpdateQuantityTest
+2025-12-29 16:29:02.247 - WebDriver closed successfully
+2025-12-29 17:21:11.866 - Setting up test: OutOfStockTest
+2025-12-29 17:21:15.037 - WebDriver initialized successfully
+2025-12-29 17:21:15.053 - Opening Amazon homepage
+2025-12-29 17:21:17.044 - Cookies cleared
+2025-12-29 17:21:27.279 - Homepage loaded directly
+2025-12-29 17:21:34.492 - Tearing down test: OutOfStockTest
+2025-12-29 17:21:34.992 - WebDriver closed successfully
+2025-12-29 17:21:55.856 - Setting up test: AddToCartTest
+2025-12-29 17:21:58.013 - WebDriver initialized successfully
+2025-12-29 17:21:58.021 - Opening Amazon homepage
+2025-12-29 17:21:59.623 - Cookies cleared
+2025-12-29 17:22:09.798 - Homepage loaded directly
+2025-12-29 17:22:36.537 - Tearing down test: AddToCartTest
+2025-12-29 17:22:36.963 - WebDriver closed successfully
+2025-12-29 17:22:56.300 - Setting up test: AddToCartTest
+2025-12-29 17:22:58.568 - WebDriver initialized successfully
+2025-12-29 17:22:58.578 - Opening Amazon homepage
+2025-12-29 17:23:00.416 - Cookies cleared
+2025-12-29 17:23:10.756 - Homepage loaded directly
+2025-12-29 17:24:22.693 - Tearing down test: AddToCartTest
+2025-12-29 17:24:23.227 - WebDriver closed successfully
+2025-12-29 17:25:08.263 - Setting up test: RemoveItemTest
+2025-12-29 17:25:10.432 - WebDriver initialized successfully
+2025-12-29 17:25:10.439 - Opening Amazon homepage
+2025-12-29 17:25:13.447 - Cookies cleared
+2025-12-29 17:25:13.475 - Continue page displayed, clicking continue shopping
+2025-12-29 17:26:08.595 - Tearing down test: RemoveItemTest
+2025-12-29 17:26:09.121 - WebDriver closed successfully
+2025-12-29 17:26:19.156 - Setting up test: RemoveItemTest
+2025-12-29 17:26:21.330 - WebDriver initialized successfully
+2025-12-29 17:26:21.330 - Opening Amazon homepage
+2025-12-29 17:26:23.299 - Cookies cleared
+2025-12-29 17:26:33.627 - Homepage loaded directly
+2025-12-29 17:27:58.229 - Tearing down test: RemoveItemTest
+2025-12-29 17:27:58.817 - WebDriver closed successfully
+2025-12-29 17:28:25.720 - Setting up test: RemoveItemTest
+2025-12-29 17:28:27.882 - WebDriver initialized successfully
+2025-12-29 17:28:27.892 - Opening Amazon homepage
+2025-12-29 17:28:30.113 - Cookies cleared
+2025-12-29 17:28:40.406 - Homepage loaded directly
+2025-12-29 17:29:53.934 - Tearing down test: RemoveItemTest
+2025-12-29 17:29:54.557 - WebDriver closed successfully
+2025-12-29 17:38:16.752 - Setting up test: RemoveItemTest
+2025-12-29 17:38:18.923 - WebDriver initialized successfully
+2025-12-29 17:38:18.932 - Opening Amazon homepage
+2025-12-29 17:38:20.935 - Cookies cleared
+2025-12-29 17:38:30.956 - Homepage loaded directly
+2025-12-29 17:39:51.409 - Tearing down test: RemoveItemTest
+2025-12-29 17:39:52.096 - WebDriver closed successfully
+2025-12-29 17:40:44.000 - Setting up test: RemoveItemTest
+2025-12-29 17:40:46.186 - WebDriver initialized successfully
+2025-12-29 17:40:46.206 - Opening Amazon homepage
+2025-12-29 17:40:48.365 - Cookies cleared
+2025-12-29 17:40:58.715 - Homepage loaded directly
+2025-12-29 17:41:58.778 - Tearing down test: RemoveItemTest
+2025-12-29 17:41:59.358 - WebDriver closed successfully
+2025-12-29 17:42:14.595 - Setting up test: RemoveItemTest
+2025-12-29 17:42:16.890 - WebDriver initialized successfully
+2025-12-29 17:42:16.911 - Opening Amazon homepage
+2025-12-29 17:42:19.162 - Cookies cleared
+2025-12-29 17:42:29.462 - Homepage loaded directly
+2025-12-29 17:43:39.502 - Tearing down test: RemoveItemTest
+2025-12-29 17:43:40.090 - WebDriver closed successfully
+2025-12-29 17:53:47.915 - Setting up test: RemoveItemTest
+2025-12-29 17:53:50.073 - WebDriver initialized successfully
+2025-12-29 17:53:50.081 - Opening Amazon homepage
+2025-12-29 17:53:52.318 - Cookies cleared
+2025-12-29 17:54:02.685 - Homepage loaded directly
+2025-12-29 17:55:05.691 - Tearing down test: RemoveItemTest
+2025-12-29 17:55:06.255 - WebDriver closed successfully
+2025-12-29 20:47:50.892 - Setting up test: AddToCartTest
+2025-12-29 20:47:56.649 - WebDriver initialized successfully
+2025-12-29 20:47:56.660 - Opening Amazon homepage
+2025-12-29 20:47:59.638 - Cookies cleared
+2025-12-29 20:48:09.737 - Homepage loaded directly
+2025-12-29 20:48:42.762 - Tearing down test: AddToCartTest
+2025-12-29 20:48:43.373 - WebDriver closed successfully
+2025-12-29 21:23:42.492 - Setting up test: AddToCartTest
+2025-12-29 21:23:45.466 - WebDriver initialized successfully
+2025-12-29 21:23:45.480 - Opening Amazon homepage
+2025-12-29 21:23:48.646 - Cookies cleared
+2025-12-29 21:23:48.765 - Continue page displayed, clicking continue shopping
+2025-12-29 21:24:28.454 - Tearing down test: AddToCartTest
+2025-12-29 21:24:29.044 - WebDriver closed successfully
+2025-12-29 21:27:48.622 - Setting up test: AddToCartTest
+2025-12-29 21:27:52.041 - WebDriver initialized successfully
+2025-12-29 21:27:52.062 - Opening Amazon homepage
+2025-12-29 21:27:54.890 - Cookies cleared
+2025-12-29 21:28:05.065 - Homepage loaded directly
+2025-12-29 21:28:56.401 - Tearing down test: AddToCartTest
+2025-12-29 21:28:57.086 - WebDriver closed successfully
+2025-12-29 21:36:44.065 - Setting up test: AddToCartTest
+2025-12-29 21:36:47.240 - WebDriver initialized successfully
+2025-12-29 21:36:47.256 - Opening Amazon homepage
+2025-12-29 21:36:50.226 - Cookies cleared
+2025-12-29 21:37:00.726 - Homepage loaded directly
+2025-12-29 21:37:21.139 - Tearing down test: AddToCartTest
+2025-12-29 21:37:21.752 - WebDriver closed successfully
+2025-12-29 21:38:22.596 - Setting up test: AddToCartTest
+2025-12-29 21:38:25.567 - WebDriver initialized successfully
+2025-12-29 21:38:25.583 - Opening Amazon homepage
+2025-12-29 21:38:29.134 - Cookies cleared
+2025-12-29 21:38:29.266 - Continue page displayed, clicking continue shopping
+2025-12-29 21:39:03.329 - Tearing down test: AddToCartTest
+2025-12-29 21:39:03.998 - WebDriver closed successfully
+2025-12-29 21:39:29.716 - Setting up test: AddToCartTest
+2025-12-29 21:39:32.871 - WebDriver initialized successfully
+2025-12-29 21:39:32.887 - Opening Amazon homepage
+2025-12-29 21:39:36.277 - Cookies cleared
+2025-12-29 21:39:46.712 - Homepage loaded directly
+2025-12-29 21:40:19.715 - Tearing down test: AddToCartTest
+2025-12-29 21:40:20.444 - WebDriver closed successfully
+2025-12-29 21:40:41.298 - Setting up test: AddToCartTest
+2025-12-29 21:40:44.255 - WebDriver initialized successfully
+2025-12-29 21:40:44.264 - Opening Amazon homepage
+2025-12-29 21:40:47.436 - Cookies cleared
+2025-12-29 21:40:57.715 - Homepage loaded directly
+2025-12-29 21:41:28.702 - Tearing down test: AddToCartTest
+2025-12-29 21:41:29.376 - WebDriver closed successfully
+2025-12-29 21:41:55.232 - Setting up test: AddToCartTest
+2025-12-29 21:41:58.394 - WebDriver initialized successfully
+2025-12-29 21:41:58.414 - Opening Amazon homepage
+2025-12-29 21:42:02.400 - Cookies cleared
+2025-12-29 21:42:12.648 - Homepage loaded directly
+2025-12-29 21:42:40.964 - Tearing down test: AddToCartTest
+2025-12-29 21:42:41.880 - WebDriver closed successfully
+2025-12-29 21:43:04.345 - Setting up test: AddToCartTest
+2025-12-29 21:43:07.955 - WebDriver initialized successfully
+2025-12-29 21:43:07.972 - Opening Amazon homepage
+2025-12-29 21:43:11.138 - Cookies cleared
+2025-12-29 21:43:21.458 - Homepage loaded directly
+2025-12-29 21:43:53.079 - Tearing down test: AddToCartTest
+2025-12-29 21:43:53.675 - WebDriver closed successfully
+2025-12-29 21:46:32.092 - Setting up test: AddToCartTest
+2025-12-29 21:46:35.219 - WebDriver initialized successfully
+2025-12-29 21:46:35.240 - Opening Amazon homepage
+2025-12-29 21:46:38.430 - Cookies cleared
+2025-12-29 21:46:48.518 - Homepage loaded directly
+2025-12-29 21:47:12.414 - Tearing down test: AddToCartTest
+2025-12-29 21:47:13.425 - WebDriver closed successfully
+2025-12-29 21:48:28.393 - Setting up test: AddToCartTest
+2025-12-29 21:48:33.342 - WebDriver initialized successfully
+2025-12-29 21:48:33.360 - Opening Amazon homepage
+2025-12-29 21:48:36.316 - Cookies cleared
+2025-12-29 21:48:46.884 - Homepage loaded directly
+2025-12-29 21:50:06.835 - Tearing down test: AddToCartTest
+2025-12-29 21:50:07.838 - WebDriver closed successfully
+2025-12-29 21:56:11.386 - Setting up test: AddToCartTest
+2025-12-29 21:56:14.599 - WebDriver initialized successfully
+2025-12-29 21:56:14.615 - Opening Amazon homepage
+2025-12-29 21:56:15.943 - Cookies cleared
+2025-12-29 21:56:26.307 - Homepage loaded directly
+2025-12-29 21:56:41.365 - Tearing down test: AddToCartTest
+2025-12-29 21:56:41.978 - WebDriver closed successfully
+2025-12-29 21:57:01.127 - Setting up test: AddToCartTest
+2025-12-29 21:57:04.328 - WebDriver initialized successfully
+2025-12-29 21:57:04.344 - Opening Amazon homepage
+2025-12-29 21:57:07.517 - Cookies cleared
+2025-12-29 21:57:17.617 - Homepage loaded directly
+2025-12-29 21:58:47.823 - Tearing down test: AddToCartTest
+2025-12-29 21:58:48.798 - WebDriver closed successfully
+2025-12-29 21:58:48.800 - Setting up test: AddToCartTest
+2025-12-29 21:58:50.966 - WebDriver initialized successfully
+2025-12-29 21:58:50.968 - Opening Amazon homepage
+2025-12-29 21:58:54.054 - Cookies cleared
+2025-12-29 21:59:04.187 - Homepage loaded directly
+2025-12-29 21:59:28.346 - Tearing down test: AddToCartTest
+2025-12-29 21:59:28.982 - WebDriver closed successfully
+2025-12-29 22:11:00.355 - Setting up test: OutOfStockTest
+2025-12-29 22:11:03.361 - WebDriver initialized successfully
+2025-12-29 22:11:03.379 - Opening Amazon homepage
+2025-12-29 22:11:06.215 - Cookies cleared
+2025-12-29 22:11:16.552 - Homepage loaded directly
+2025-12-29 22:11:28.226 - Tearing down test: OutOfStockTest
+2025-12-29 22:11:28.977 - WebDriver closed successfully
+2025-12-29 22:11:47.555 - Setting up test: RemoveItemTest
+2025-12-29 22:11:50.564 - WebDriver initialized successfully
+2025-12-29 22:11:50.586 - Opening Amazon homepage
+2025-12-29 22:11:53.528 - Cookies cleared
+2025-12-29 22:12:03.996 - Homepage loaded directly
+2025-12-29 22:13:41.167 - Tearing down test: RemoveItemTest
+2025-12-29 22:13:42.269 - WebDriver closed successfully
+2025-12-29 22:13:42.271 - Setting up test: RemoveItemTest
+2025-12-29 22:13:44.354 - WebDriver initialized successfully
+2025-12-29 22:13:44.358 - Opening Amazon homepage
+2025-12-29 22:13:47.150 - Cookies cleared
+2025-12-29 22:13:57.508 - Homepage loaded directly
+2025-12-29 22:16:11.751 - Tearing down test: RemoveItemTest
+2025-12-29 22:16:12.661 - WebDriver closed successfully
+2025-12-29 22:16:25.093 - Setting up test: UpdateQuantityTest
+2025-12-29 22:16:28.175 - WebDriver initialized successfully
+2025-12-29 22:16:28.181 - Opening Amazon homepage
+2025-12-29 22:16:30.831 - Cookies cleared
+2025-12-29 22:16:41.003 - Homepage loaded directly
+2025-12-29 22:17:34.610 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:17:35.709 - WebDriver closed successfully
+2025-12-29 22:17:35.711 - Setting up test: UpdateQuantityTest
+2025-12-29 22:17:37.724 - WebDriver initialized successfully
+2025-12-29 22:17:37.737 - Opening Amazon homepage
+2025-12-29 22:17:41.001 - Cookies cleared
+2025-12-29 22:17:41.090 - Continue page displayed, clicking continue shopping
+2025-12-29 22:18:20.685 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:18:21.434 - WebDriver closed successfully
+2025-12-29 22:18:21.435 - Setting up test: UpdateQuantityTest
+2025-12-29 22:18:23.633 - WebDriver initialized successfully
+2025-12-29 22:18:23.633 - Opening Amazon homepage
+2025-12-29 22:18:26.628 - Cookies cleared
+2025-12-29 22:18:36.671 - Homepage loaded directly
+2025-12-29 22:20:07.130 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:20:08.096 - WebDriver closed successfully
+2025-12-29 22:23:22.828 - Setting up test: UpdateQuantityTest
+2025-12-29 22:23:26.035 - WebDriver initialized successfully
+2025-12-29 22:23:26.048 - Opening Amazon homepage
+2025-12-29 22:23:28.949 - Cookies cleared
+2025-12-29 22:23:39.487 - Homepage loaded directly
+2025-12-29 22:26:00.049 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:26:00.953 - WebDriver closed successfully
+2025-12-29 22:26:37.835 - Setting up test: UpdateQuantityTest
+2025-12-29 22:26:41.308 - WebDriver initialized successfully
+2025-12-29 22:26:41.346 - Opening Amazon homepage
+2025-12-29 22:26:45.014 - Cookies cleared
+2025-12-29 22:26:55.221 - Homepage loaded directly
+2025-12-29 22:28:37.662 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:28:38.570 - WebDriver closed successfully
+2025-12-29 22:30:06.517 - Setting up test: UpdateQuantityTest
+2025-12-29 22:30:09.941 - WebDriver initialized successfully
+2025-12-29 22:30:09.961 - Opening Amazon homepage
+2025-12-29 22:30:13.232 - Cookies cleared
+2025-12-29 22:30:23.301 - Homepage loaded directly
+2025-12-29 22:31:25.420 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:31:26.329 - WebDriver closed successfully
+2025-12-29 22:32:45.253 - Setting up test: UpdateQuantityTest
+2025-12-29 22:32:48.316 - WebDriver initialized successfully
+2025-12-29 22:32:48.333 - Opening Amazon homepage
+2025-12-29 22:32:51.181 - Cookies cleared
+2025-12-29 22:33:01.213 - Homepage loaded directly
+2025-12-29 22:33:52.794 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:33:53.664 - WebDriver closed successfully
+2025-12-29 22:34:14.756 - Setting up test: UpdateQuantityTest
+2025-12-29 22:34:18.113 - WebDriver initialized successfully
+2025-12-29 22:34:18.129 - Opening Amazon homepage
+2025-12-29 22:34:21.423 - Cookies cleared
+2025-12-29 22:34:31.746 - Homepage loaded directly
+2025-12-29 22:35:07.275 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:35:08.465 - WebDriver closed successfully
+2025-12-29 22:35:47.331 - Setting up test: UpdateQuantityTest
+2025-12-29 22:35:50.720 - WebDriver initialized successfully
+2025-12-29 22:35:50.730 - Opening Amazon homepage
+2025-12-29 22:35:53.530 - Cookies cleared
+2025-12-29 22:36:03.725 - Homepage loaded directly
+2025-12-29 22:37:40.150 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:37:41.025 - WebDriver closed successfully
+2025-12-29 22:47:18.421 - Setting up test: UpdateQuantityTest
+2025-12-29 22:47:21.738 - WebDriver initialized successfully
+2025-12-29 22:47:21.753 - Opening Amazon homepage
+2025-12-29 22:47:24.771 - Cookies cleared
+2025-12-29 22:47:34.916 - Homepage loaded directly
+2025-12-29 22:49:13.276 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:49:14.323 - WebDriver closed successfully
+2025-12-29 22:49:56.323 - Setting up test: UpdateQuantityTest
+2025-12-29 22:50:01.843 - WebDriver initialized successfully
+2025-12-29 22:50:01.861 - Opening Amazon homepage
+2025-12-29 22:50:04.730 - Cookies cleared
+2025-12-29 22:50:15.193 - Homepage loaded directly
+2025-12-29 22:51:54.913 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:51:55.729 - WebDriver closed successfully
+2025-12-29 22:54:43.900 - Setting up test: UpdateQuantityTest
+2025-12-29 22:54:48.195 - WebDriver initialized successfully
+2025-12-29 22:54:48.215 - Opening Amazon homepage
+2025-12-29 22:54:51.381 - Cookies cleared
+2025-12-29 22:54:51.516 - Continue page displayed, clicking continue shopping
+2025-12-29 22:55:02.297 - Tearing down test: UpdateQuantityTest
+2025-12-29 22:55:02.884 - WebDriver closed successfully

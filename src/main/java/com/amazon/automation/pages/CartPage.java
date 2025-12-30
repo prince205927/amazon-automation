@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.amazon.automation.base.BasePage;
 import com.amazon.automation.tests.models.ProductData;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 
 public class CartPage extends BasePage {
 
@@ -39,16 +40,32 @@ public class CartPage extends BasePage {
 	}
 
 	public CartPage waitForResults() {
+
+	    LoggerUtil.info("Waiting for cart page results to load");
+
 		wait.visible(activeCart);
+
+	    ExtentReportLogger.info("Cart page loaded");
+
 		return this;
 	}
 
 	public void navigateToCart() {
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", wait.clickable(cartLink));
+
+		 LoggerUtil.info("Navigating to cart page");
+		    ExtentReportLogger.logStep("Opening shopping cart");
+
+		jsClickWhenClickable(cartLink);
 		wait.urlContains("/cart");
+
+	    ExtentReportLogger.pass("Navigated to cart page");
+
 	}
 
 	public List<ProductData> getAllCartProducts() {
+
+	    LoggerUtil.info("Fetching all products from cart");
+
 		List<ProductData> cartProducts = new ArrayList<>();
 		int itemCount = getCartItemCount();
 
@@ -60,6 +77,8 @@ public class CartPage extends BasePage {
 			cartProducts.add(product);
 		}
 
+	    LoggerUtil.info("Total cart products retrieved: " + cartProducts.size());
+
 		return cartProducts;
 	}
 
@@ -70,6 +89,8 @@ public class CartPage extends BasePage {
 	public String getProductTitleByIndex(int index) {
 		List<WebElement> titles = driver.findElements(productTitles);
 		if (index < 0 || index >= titles.size()) {
+
+	        LoggerUtil.error("Invalid product index for title: " + index);
 			throw new IndexOutOfBoundsException("Invalid product index: " + index);
 		}
 		return titles.get(index).getAttribute("innerText").trim();
@@ -78,22 +99,21 @@ public class CartPage extends BasePage {
 	public Double getUnitPriceByIndex(int index) {
 		List<WebElement> prices = driver.findElements(productUnitPrices);
 		if (index < 0 || index >= prices.size()) {
+
+	        LoggerUtil.error("Invalid product index for price: " + index);
+
 			throw new IndexOutOfBoundsException("Invalid product index: " + index);
 		}
 		String text = prices.get(index).getAttribute("innerText").replace("$", "").replace(",", "").trim();
 		return Double.parseDouble(text);
 	}
 
-//	public Integer getQuantityByIndex(int index) {
-//		List<WebElement> quantities = driver.findElements(productQuantities);
-//		if (index < 0 || index >= quantities.size()) {
-//			throw new IndexOutOfBoundsException("Invalid product index: " + index);
-//		} 
-//		return Integer.parseInt(quantities.get(index).getText());
-//	}
 	public Integer getQuantityByIndex(int index) {
 	    List<WebElement> quantities = driver.findElements(productQuantities);
 	    if (index < 0 || index >= quantities.size()) {
+
+	        LoggerUtil.error("Invalid product index for quantity: " + index);
+
 	        throw new IndexOutOfBoundsException("Invalid product index: " + index);
 	    }
 	    
@@ -120,30 +140,54 @@ public class CartPage extends BasePage {
 	}
 
 	public void removeItemByIndex(int index) {
+
+		  LoggerUtil.info("Removing cart item at index: " + index);
+		    ExtentReportLogger.logStep("Removing item from cart (index " + index + ")");
+
 		try {
 			List<WebElement> buttons = driver.findElements(deleteButtons);
 			if (index < 0 || index >= buttons.size()) {
 				throw new IndexOutOfBoundsException("Invalid product index: " + index);
 			}
 			WebElement button = buttons.get(index);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+			jsScrollAndClick(button);
+
+	        ExtentReportLogger.pass("Item removed from cart");
+
 		} catch (Exception e) {
+
+			 LoggerUtil.warn("Failed to remove item at index: " + index);
+			        ExtentReportLogger.logStep("Unable to remove item at index: " + index);
+
 		}
 	}
 
 	public void removeAllItems() {
+
+LoggerUtil.info("Removing all items from cart");
+    ExtentReportLogger.logStep("Clearing shopping cart");
+
 		try {
 			int count = getCartItemCount();
 			for (int i = 0; i < count; i++) {
 				removeItemByIndex(i);
 				wait.visible(By.xpath("//span[text()[contains(.,'was removed from Shopping Cart')]]"));
 			}
+
+	        ExtentReportLogger.pass("All cart items removed");
+
 		} catch (Exception e) {
+
+LoggerUtil.warn("Failed while removing all cart items");
+        ExtentReportLogger.logStep("Error occurred while clearing cart");
+
 		}
 	}
 
 	public boolean isProductInCart(String productTitle) {
+
+	    LoggerUtil.info("Checking if product is present in cart: " + productTitle);
+
 		try {
 			for (WebElement title : driver.findElements(productTitles)) {
 				if (title.getAttribute("innerText").trim().contains(productTitle)) {
@@ -152,54 +196,113 @@ public class CartPage extends BasePage {
 			}
 			return false;
 		} catch (Exception e) {
+
+	        LoggerUtil.warn("Error while checking product presence in cart");
+
 			return false;
 		}
 	}
 
 	public void updateQuantityByIndex(int index, int newQuantity) {
-		try {
-			int currentQuantity = getQuantityByIndex(index);
-			if (newQuantity == 0) {
-				removeItemByIndex(index);
-				return;
-			}
 
-			if (currentQuantity == newQuantity) {
-				return;
-			}
+		  LoggerUtil.info(
+		            "Updating quantity for index " + index + " to " + newQuantity);
 
-			boolean increment = newQuantity > currentQuantity;
-			int clicks = Math.abs(newQuantity - currentQuantity);
-			for (int i = 0; i < clicks; i++) {
-				try {
-					By selector = increment ? incrementButtons : decrementButtons;
-					List<WebElement> buttons = driver.findElements(selector);
-					System.out.println("Size of buttons elements"+buttons.size());
-					if (index >= buttons.size()) {
-						break;
-					}
+		    ExtentReportLogger.logStep(
+		            "Updating cart item quantity to " + newQuantity);
 
-					WebElement button = buttons.get(index);
-					((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-					((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
-					
-					wait.invisible(spinner);
-					wait.waitUntil(driver->{
-						int updatedQty = getQuantityByIndex(index);
-		                return updatedQty != currentQuantity;
-					});
+    try {
+        int currentQuantity = getQuantityByIndex(index);
+        if (newQuantity == 0) {
+            removeItemByIndex(index);
+            return;
+        }
 
-				} catch (StaleElementReferenceException e) {
-					i--;
-				} catch (Exception e) {
-					break;
-				}
-			}
-		} catch (Exception e) {
-		}
-	}
+        if (currentQuantity == newQuantity) {
+            return;
+        }
+
+        boolean increment = newQuantity > currentQuantity;
+        int clicks = Math.abs(newQuantity - currentQuantity);
+        
+        for (int i = 0; i < clicks; i++) {
+            try {
+                By selector = increment ? incrementButtons : decrementButtons;
+                List<WebElement> buttons = driver.findElements(selector);
+                if (index >= buttons.size()) {
+                    break;
+                }
+
+                WebElement button = buttons.get(index);
+                int beforeClickQty = getQuantityByIndex(index);
+                
+                jsScrollAndClick(button);
+                
+                // Wait for spinner to disappear
+                wait.invisible(spinner);
+                
+                // Wait for quantity to actually change
+                wait.waitUntil(driver -> {
+                    try {
+                        int updatedQty = getQuantityByIndex(index);
+                        return updatedQty != beforeClickQty;
+                    } catch (Exception e) {
+                        return false;
+                    }
+                });
+
+            } catch (StaleElementReferenceException e) {
+                i--; // Retry this click
+            } catch (Exception e) {
+                break;
+            }
+        }
+        
+        // Final wait to ensure the quantity has reached the target value
+        // and DOM is fully stable with all elements present
+        wait.waitUntil(driver -> {
+            try {
+                // Verify the quantity element exists and has the correct value
+                List<WebElement> quantities = driver.findElements(productQuantities);
+                if (index >= quantities.size()) {
+                    return false;
+                }
+                int currentQty = getQuantityByIndex(index);
+                return currentQty == newQuantity;
+            } catch (Exception e) {
+                return false;
+            }
+        });
+        
+        // Additional wait to ensure all cart elements are present and stable
+        wait.waitUntil(driver -> {
+            try {
+                int itemCount = getCartItemCount();
+                List<WebElement> quantities = driver.findElements(productQuantities);
+                List<WebElement> titles = driver.findElements(productTitles);
+                // Ensure all lists have consistent sizes
+                return itemCount == quantities.size() && itemCount == titles.size();
+            } catch (Exception e) {
+                return false;
+            }
+        });
+
+        ExtentReportLogger.pass("Cart item quantity updated successfully");
+
+    } catch (Exception e) {
+
+    	 LoggerUtil.error(
+    	                "Failed to update quantity for item at index " + index);
+
+        throw new RuntimeException("Failed to update quantity for item at index " + index, e);
+    }
+}
 
 	public void incrementQuantityByIndex(int index) {
+
+LoggerUtil.info("Incrementing quantity for cart item at index: " + index);
+    ExtentReportLogger.logStep("Increasing quantity for item at index " + index);
+
 		try {
 			List<WebElement> buttons = driver.findElements(incrementButtons);
 			int currentQuantity = getQuantityByIndex(index);
@@ -207,18 +310,29 @@ public class CartPage extends BasePage {
 				throw new IndexOutOfBoundsException("Invalid product index: " + index);
 			}
 			WebElement button = buttons.get(index);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+			jsScrollAndClick(button);
 			wait.invisible(spinner);
 			wait.waitUntil(driver->{
 				int updatedQty = getQuantityByIndex(index);
                 return updatedQty != currentQuantity;
 			});
+
+LoggerUtil.info("Quantity incremented successfully for index: " + index);
+        ExtentReportLogger.pass("Quantity increased successfully");
+
 		} catch (Exception e) {
+
+			  LoggerUtil.warn("Failed to increment quantity for index: " + index);
+			        ExtentReportLogger.logStep("Unable to increment quantity for index: " + index);
+
 		}
 	}
 
 	public void decrementQuantityByIndex(int index) {
+
+LoggerUtil.info("Decrementing quantity for cart item at index: " + index);
+    ExtentReportLogger.logStep("Decreasing quantity for item at index " + index);
+
 		try {
 			List<WebElement> buttons = driver.findElements(decrementButtons);
 			int currentQuantity = getQuantityByIndex(index);
@@ -226,14 +340,21 @@ public class CartPage extends BasePage {
 				throw new IndexOutOfBoundsException("Invalid product index: " + index);
 			}
 			WebElement button = buttons.get(index);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", button);
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", button);
+			jsScrollAndClick(button);
 			wait.invisible(spinner);
 			wait.waitUntil(driver->{
 				int updatedQty = getQuantityByIndex(index);
                 return updatedQty != currentQuantity;
 			});
+
+LoggerUtil.info("Quantity decremented successfully for index: " + index);
+        ExtentReportLogger.pass("Quantity decreased successfully");
+
 		} catch (Exception e) {
+
+			 LoggerUtil.warn("Failed to decrement quantity for index: " + index);
+			        ExtentReportLogger.logStep("Unable to decrement quantity for index: " + index);
+
 		}
 	}
 
@@ -241,6 +362,9 @@ public class CartPage extends BasePage {
 		try {
 			List<WebElement> buttons = driver.findElements(incrementButtons);
 			if (index < 0 || index >= buttons.size()) {
+
+	            LoggerUtil.warn("Index out of bounds while checking increment availability: " + index);
+
 				return false;
 			}
 			WebElement button = buttons.get(index);
@@ -254,11 +378,17 @@ public class CartPage extends BasePage {
 		try {
 			List<WebElement> buttons = driver.findElements(decrementButtons);
 			if (index < 0 || index >= buttons.size()) {
+
+	            LoggerUtil.warn("Index out of bounds while checking decrement availability: " + index);
+
 				return false;
 			}
 			WebElement button = buttons.get(index);
 			return button.isEnabled() && !button.getAttribute("class").contains("disabled");
 		} catch (Exception e) {
+
+	        LoggerUtil.warn("Error while checking decrement availability at index: " + index);
+
 			return false;
 		}
 	}

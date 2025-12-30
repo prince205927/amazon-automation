@@ -1,31 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Amazon Test Suite" parallel="false">
-<listeners>
-        <listener class-name="com.amazon.automation.listeners.ExtentTestListener"/>
+<suite name="Amazon Test Suite" parallel="tests" thread-count="5" verbose="1">
+    
+    <listeners>
+        <listener class-name="com.amazon.automation.tests.listeners.ExtentTestListener"/>
     </listeners>
-    <test name="search">
+    
+    <!-- Test Group 1: Search Tests -->
+    <test name="Search Tests" preserve-order="true">
         <classes>
             <class name="com.amazon.automation.tests.search.SearchKeywordTests"/>
-             <class name="com.amazon.automation.tests.search.SearchNoResultsTests"/>
-              <class name="com.amazon.automation.tests.search.SearchAutosuggestTests"/>
-			<class name="com.amazon.automation.tests.navigation.CategoryNavigationTests"/>
-			<class name="com.amazon.automation.tests.filters.BrandTests"/>
-				<class name="com.amazon.automation.tests.filters.RatingsTest"/>
-					<class name="com.amazon.automation.tests.filters.PriceTests"/>
-					<class name="com.amazon.automation.tests.sorts.SortTests"/>
-					<class name="com.amazon.automation.tests.pagination.PaginationTests"/>
-					<class name="com.amazon.automation.tests.details.ProductDetailTests"/>
-					<class name="com.amazon.automation.tests.details.ZoomAndSwitchTests"/>
-					<class name="com.amazon.automation.tests.details.VariantTests"/>
-					<class name="com.amazon.automation.tests.cart.AddToCartTest"/>
-					<class name="com.amazon.automation.tests.cart.UpdateQuantityTest"/>
-					<class name="com.amazon.automation.tests.cart.RemoveItemTest"/>
-						<class name="com.amazon.automation.tests.cart.OutOfStockTest"/>
-					
-
-
-					
+            <class name="com.amazon.automation.tests.search.SearchNoResultsTests"/>
+            <class name="com.amazon.automation.tests.search.SearchAutosuggestTests"/>
         </classes>
     </test>
+    
+    <!-- Test Group 2: Navigation Tests -->
+    <test name="Navigation Tests" preserve-order="true">
+        <classes>
+            <class name="com.amazon.automation.tests.navigation.CategoryNavigationTests"/>
+        </classes>
+    </test>
+    
+    <!-- Test Group 3: Filter Tests -->
+    <test name="Filter Tests" preserve-order="true">
+        <classes>
+            <class name="com.amazon.automation.tests.filters.BrandTests"/>
+            <class name="com.amazon.automation.tests.filters.RatingsTest"/>
+            <class name="com.amazon.automation.tests.filters.PriceTests"/>
+        </classes>
+    </test>
+    
+    <!-- Test Group 4: Sort and Pagination Tests -->
+    <test name="Sort and Pagination Tests" preserve-order="true">
+        <classes>
+            <class name="com.amazon.automation.tests.sorts.SortTests"/>
+            <class name="com.amazon.automation.tests.pagination.PaginationTests"/>
+        </classes>
+    </test>
+    
+    <!-- Test Group 5: Product Detail Tests -->
+    <test name="Product Detail Tests" preserve-order="true">
+        <classes>
+            <class name="com.amazon.automation.tests.details.ProductDetailTests"/>
+            <class name="com.amazon.automation.tests.details.ZoomAndSwitchTests"/>
+            <class name="com.amazon.automation.tests.details.VariantTests"/>
+        </classes>
+    </test>
+    
+    <!-- Test Group 6: Cart Tests -->
+    <test name="Cart Tests" preserve-order="true">
+        <classes>
+            <class name="com.amazon.automation.tests.cart.AddToCartTest"/>
+            <class name="com.amazon.automation.tests.cart.UpdateQuantityTest"/>
+            <class name="com.amazon.automation.tests.cart.RemoveItemTest"/>
+            <class name="com.amazon.automation.tests.cart.OutOfStockTest"/>
+        </classes>
+    </test>
+    
 </suite>

@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.amazon.automation.tests.cart.RemoveItemTest">
+      <class name="com.amazon.automation.tests.search.SearchKeywordTests">
         <methods>
           <include name="beforeSuite"/>
           <include name="tearDown"/>
           <include name="setUp"/>
           <include name="afterSuite"/>
-          <include name="verifyRemoveAllItemsFromCart"/>
+          <include name="searchWithValidKeyword"/>
         </methods>
-      </class> <!-- com.amazon.automation.tests.cart.RemoveItemTest -->
+      </class> <!-- com.amazon.automation.tests.search.SearchKeywordTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

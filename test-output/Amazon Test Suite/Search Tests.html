@@ -1,0 +1,248 @@
+<html>
+<head>
+<title>TestNG:  Search Tests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Search Tests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>9/2/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Dec 30 11:40:33 NPT 2025</td>
+</tr>
+<tr><td>Total time:</td><td>253 seconds (253431 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchKeywordTests.searchWithMixedCaseKeyword()'><b>searchWithMixedCaseKeyword</b><br>Test class: com.amazon.automation.tests.search.SearchKeywordTests</td>
+<td><div><pre>java.lang.AssertionError: At least one search result is needed expected [true] but found [false]
+	at com.amazon.automation.tests.search.SearchKeywordTests.searchWithMixedCaseKeyword(SearchKeywordTests.java:36)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1802063884", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1802063884'><pre>java.lang.AssertionError: At least one search result is needed expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1590)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at com.amazon.automation.tests.search.SearchKeywordTests.searchWithMixedCaseKeyword(SearchKeywordTests.java:36)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>20</td>
+<td>com.amazon.automation.tests.search.SearchKeywordTests@74e52ef6</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.suggestionsUpdateOnAdditionalTyping()'><b>suggestionsUpdateOnAdditionalTyping</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests</td>
+<td><div><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
+  (Session info: chrome=143.0.7499.170)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [79ffc9aad4c9235f84edde3098cf4784, getElementText {id=f.A17B590E058E87A2BF681DCE82147B36.d.FB8B0065EC1D8C4025D2857220BBE5E8.e.61}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\I1002681\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62197}, goog:processID: 10436, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62197/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (79ffc9aad4c9235f84edde3098cf4784)] -&gt; css selector: div.autocomplete-results-container div.s-suggestion]
+Session ID: 79ffc9aad4c9235f84edde3098cf4784
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
+	at com.amazon.automation.components.SearchBarComponent.getSuggestionText(SearchBarComponent.java:55)
+	at com.amazon.automation.tests.search.SearchAutosuggestTests.suggestionsUpdateOnAdditionalTyping(SearchAutosuggestTests.java:59)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace373659514", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace373659514'><pre>org.openqa.selenium.StaleElementReferenceException: stale element reference: stale element not found in the current frame
+  (Session info: chrome=143.0.7499.170)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#staleelementreferenceexception
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [79ffc9aad4c9235f84edde3098cf4784, getElementText {id=f.A17B590E058E87A2BF681DCE82147B36.d.FB8B0065EC1D8C4025D2857220BBE5E8.e.61}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 143.0.7499.170, chrome: {chromedriverVersion: 143.0.7499.169 (164b20aab62..., userDataDir: C:\Users\I1002681\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62197}, goog:processID: 10436, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62197/devtoo..., se:cdpVersion: 143.0.7499.170, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (79ffc9aad4c9235f84edde3098cf4784)] -&gt; css selector: div.autocomplete-results-container div.s-suggestion]
+Session ID: 79ffc9aad4c9235f84edde3098cf4784
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.getText(RemoteWebElement.java:191)
+	at com.amazon.automation.components.SearchBarComponent.getSuggestionText(SearchBarComponent.java:55)
+	at com.amazon.automation.tests.search.SearchAutosuggestTests.suggestionsUpdateOnAdditionalTyping(SearchAutosuggestTests.java:59)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:741)
+	at org.testng.TestRunner.run(TestRunner.java:616)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+</pre></div></td>
+<td>7</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.suggestionsContainPartialText()'><b>suggestionsContainPartialText</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests</td>
+<td></td>
+<td>9</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchKeywordTests.searchAfterClearingPreviousInput()'><b>searchAfterClearingPreviousInput</b><br>Test class: com.amazon.automation.tests.search.SearchKeywordTests</td>
+<td></td>
+<td>19</td>
+<td>com.amazon.automation.tests.search.SearchKeywordTests@74e52ef6</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchNoResultsTests.searchWithInvalidKeywords()'><b>searchWithInvalidKeywords</b><br>Test class: com.amazon.automation.tests.search.SearchNoResultsTests<br>Test method: TC-02: Verify 'No results' state for invalid keywords</td>
+<td></td>
+<td>16</td>
+<td>com.amazon.automation.tests.search.SearchNoResultsTests@198b6731</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.NoSuggestionsForRandomInput()'><b>NoSuggestionsForRandomInput</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests</td>
+<td></td>
+<td>29</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchKeywordTests.searchWithExtraSpaces()'><b>searchWithExtraSpaces</b><br>Test class: com.amazon.automation.tests.search.SearchKeywordTests</td>
+<td></td>
+<td>19</td>
+<td>com.amazon.automation.tests.search.SearchKeywordTests@74e52ef6</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchKeywordTests.searchWithValidKeyword()'><b>searchWithValidKeyword</b><br>Test class: com.amazon.automation.tests.search.SearchKeywordTests<br>Test method: TC-01: Verify relevant products are displayed for valid keywords</td>
+<td></td>
+<td>18</td>
+<td>com.amazon.automation.tests.search.SearchKeywordTests@74e52ef6</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.visibilityOfSuggestions()'><b>visibilityOfSuggestions</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests<br>Test method: TC-03: Verify search suggestions appear and are clickable</td>
+<td></td>
+<td>23</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.suggestionsDisappearAfterClearing()'><b>suggestionsDisappearAfterClearing</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests</td>
+<td></td>
+<td>24</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+<tr>
+<td title='com.amazon.automation.tests.search.SearchAutosuggestTests.clickInvalidSuggestionIndex()'><b>clickInvalidSuggestionIndex</b><br>Test class: com.amazon.automation.tests.search.SearchAutosuggestTests</td>
+<td></td>
+<td>9</td>
+<td>com.amazon.automation.tests.search.SearchAutosuggestTests@7c6908d7</td></tr>
+</table><p>
+</body>
+</html>

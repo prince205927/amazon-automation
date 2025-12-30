@@ -5,12 +5,10 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.amazon.automation.utils.WaitUtils;
 
-public abstract class BaseComponent {
-	protected final WebDriver driver;
-	protected final WaitUtils wait;
 
-	protected BaseComponent(WebDriver driver) {
-		this.driver = driver;
-		this.wait = new WaitUtils(driver, 15);
-	}
+public abstract class BaseComponent extends AbstractBase {
+
+    protected BaseComponent(WebDriver driver) {
+        super(driver);
+    }
 }

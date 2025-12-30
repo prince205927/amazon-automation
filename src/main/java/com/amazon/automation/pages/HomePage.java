@@ -1,7 +1,6 @@
 package com.amazon.automation.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +13,8 @@ import com.amazon.automation.components.FilterPanelComponent;
 //import com.amazon.automation.components.FilterPanelComponent;
 import com.amazon.automation.components.SearchBarComponent;
 import com.amazon.automation.components.SortingComponent;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 
 public class HomePage extends BasePage {
 
@@ -44,9 +45,13 @@ public class HomePage extends BasePage {
 	}
 
 	public void changeLocation(String text) {
+
+		LoggerUtil.info("Changing shopping location to: " + text);
+		ExtentReportLogger.logStep("Changing delivery location to: " + text);
+
 		WebElement locationBtn = wait.presenceOfElement(locationModalButton);
 		wait.clickable(locationBtn);
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", locationBtn);
+		jsClick(locationBtn);
 
 		wait.presenceOfElement(locationPopoverWrapper);
 
@@ -56,9 +61,13 @@ public class HomePage extends BasePage {
 
 		WebElement doneBtn = wait.presenceOfElement(doneButton);
 		wait.clickable(doneBtn);
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", doneBtn);
+		jsClick(doneBtn);
 
 		wait.staleness(doneBtn);
 		wait.visible(logo);
+
+		LoggerUtil.info("Location changed successfully to: " + text);
+		ExtentReportLogger.pass("Delivery location updated successfully");
+
 	}
 }

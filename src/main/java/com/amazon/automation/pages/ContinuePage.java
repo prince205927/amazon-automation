@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.amazon.automation.base.BasePage;
+import com.amazon.automation.utils.ExtentReportLogger;
+import com.amazon.automation.utils.LoggerUtil;
 import com.amazon.automation.utils.WaitUtils;
 
 public class ContinuePage extends BasePage {
@@ -23,6 +25,9 @@ public class ContinuePage extends BasePage {
 	public boolean isDisplayed() {
 		try {
 			wait.visible(continueToShoppingBtn);
+
+			LoggerUtil.info("Continue shopping page is displayed");
+
 			return true;
 		} catch (Exception e) {
 			return false;
@@ -30,7 +35,15 @@ public class ContinuePage extends BasePage {
 	}
 
 	public HomePage continueShopping() {
+
+		LoggerUtil.info("Clicking 'Continue shopping' button");
+		ExtentReportLogger.logStep("Clicking Continue Shopping button");
+
 		wait.clickable(continueToShoppingBtn).click();
+
+		LoggerUtil.info("Navigating to HomePage after continue shopping");
+		ExtentReportLogger.pass("Navigated to Home page");
+
 		return new HomePage(driver);
 	}
 }

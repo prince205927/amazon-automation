@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
 import com.amazon.automation.base.BaseComponent;
+import com.amazon.automation.enums.SortOption;
 
 public class SortingComponent extends BaseComponent {
 
@@ -20,7 +21,8 @@ public class SortingComponent extends BaseComponent {
 		return new Select(wait.visible(sortingElement));
 	}
 
-	public void selectSort(String value) {
-		getDropdown().selectByValue(value);
+	public void selectSort(SortOption option) {
+		getDropdown().selectByValue(option.getValue());
 	}
+
 }

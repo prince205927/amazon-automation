@@ -11,12 +11,14 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverFactory {
-	private static WebDriver driver;
+	private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
 	public static void initDriver() {
+		removeDriver();
 		String browser = System.getProperty("browser", "chrome").toLowerCase();
 		boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-
+		
+		WebDriver driver = null;
 		switch (browser) {
 		case "chrome":
 			WebDriverManager.chromedriver().setup();
@@ -44,16 +46,32 @@ public class DriverFactory {
 			System.out.println("Unsupported browser" + browser);
 		}
 		driver.manage().window().maximize();
+		driverThreadLocal.set(driver);
 
 	}
 
 	public static WebDriver getDriver() {
+		WebDriver driver = driverThreadLocal.get();
+		if(driver==null) {
+			throw new IllegalStateException("WebDriver is not initialized");
+		}
 		return driver;
 	}
 
 	public static void quitDriver() {
+		WebDriver driver = driverThreadLocal.get();
 		if (driver != null) {
+			try {
 			driver.quit();
+			} catch(Exception e) {
+				System.out.println("Error while quitting driver:"+ e.getMessage());
+			}finally {
+				driverThreadLocal.remove();
+			}
 		}
+	}
+	
+	public static void removeDriver() {
+		quitDriver();
 	}
 }
